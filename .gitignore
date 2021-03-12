@@ -10,6 +10,15 @@
 
 # production
 /build
+/server/*.html
+/server/static
+/server/.gitignore
+/server/robots.txt
+/server/manifest.json
+/server/favicon.ico
+/server/asset-manifest.json
+/server/node_modules
+/server/.git
 
 # misc
 .DS_Store
