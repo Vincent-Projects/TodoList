@@ -12,9 +12,9 @@ const Login = React.lazy(() => import('./containers/Login'));
 const app = () => {
     return (
         <div>
-            <div>
+            {/* <div>
                 <p>Menu Here</p>
-            </div>
+            </div> // Add auth flow*/}
             <Switch>
                 <Route exact path="/">
                     <LandingPage />

@@ -1,14 +1,20 @@
 .Container {
-    width: fit-content;
+    display: flex;
+    flex-direction: column;
     width: 95%;
 }
 
 .Label {
+    padding: 0.3rem;
     font-size: 0.8rem;
 }
 
 .LabelError {
     color: rgb(var(--error));
+}
+
+.LabelLight {
+    color: rgb(var(--on-custom-bg-light));
 }
 
 .Input {
@@ -25,6 +31,10 @@
 
 .InputError {
     border-color: rgb(var(--error));
+}
+
+.InputLight {
+    color: rgb(var(--on-custom-bg-light));
 }
 
 .Input:active,

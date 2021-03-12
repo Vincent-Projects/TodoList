@@ -1,9 +1,16 @@
 :root {
     --custom-bg-0dp: 29, 34, 33;
     --on-custom-bg: 255, 255, 255;
+    --on-custom-bg-light: 0, 0, 0;
     --primary: 128, 203, 196;
     --primary-dark: 79, 154, 148;
     --primary-outline: 160, 60, 255;
-    --shadow: 161, 161, 161;
+    --shadow: 0, 0, 0;
     --error: 255, 97, 97;
+    --surface: 255, 255, 255;
+}
+
+@font-face {
+    font-family: "port-lligat-slab";
+    src: url("./assets/Port_Lligat_Slab/PortLligatSlab-Regular.ttf");
 }

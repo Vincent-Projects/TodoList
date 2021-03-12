@@ -3,13 +3,32 @@ import PropTypes from "prop-types";
 
 import classes from "./index.module.css";
 
-const GenericInput = ({ id, value, handleChangeText, label, placeholder = null, isError = false, type = "text" }) => {
-    const labelClasses = isError ? [classes.Label, classes.LabelError].join(" ") : classes.Label;
-    const inputClasses = isError ? [classes.Input, classes.InputError].join(" ") : classes.Input;
+const GenericInput = ({
+    id,
+    value,
+    handleChangeText,
+    label,
+    placeholder = null,
+    isError = false,
+    type = "text",
+    darkTheme = true
+}) => {
+    const labelClasses = [
+        (isError ? classes.LabelError : null),
+        (darkTheme ? null : classes.LabelLight),
+        classes.Label
+    ].join(" ");
+
+    const inputClasses = [
+        (isError ? classes.InputError : null),
+        (darkTheme ? null : classes.InputLight),
+        classes.Input
+    ].join(" ");;
+
 
     return (
         <div className={classes.Container}>
-            <label className={labelClasses} for={id}>
+            <label className={labelClasses} htmlFor={id}>
                 <span>
                     {label}
                 </span>

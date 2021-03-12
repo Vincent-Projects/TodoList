@@ -5,6 +5,10 @@
     user-select: none;
 }
 
+.ButtonLight {
+    color: rgb(var(--on-custom-bg-light));
+}
+
 .Button:after {
     content: "";
     position: absolute;

@@ -3,9 +3,14 @@ import PropTypes from "prop-types"
 
 import classes from "./index.module.css";
 
-const InTextBtn = ({ text, handleClick }) => {
+const InTextBtn = ({ text, handleClick, darkTheme = true }) => {
+    const btnClasses = [
+        classes.Button,
+        (darkTheme ? null : classes.ButtonLight)
+    ].join(" ");
+
     return (
-        <span className={classes.Button} onClick={handleClick}>
+        <span className={btnClasses} onClick={handleClick}>
             {text}
         </span>
     );

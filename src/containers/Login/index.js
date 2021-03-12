@@ -13,29 +13,46 @@ const Login = () => {
 
     }
 
+    const handleSignupClick = () => {
+
+    }
+
     return (
         <div className={classes.PageContainer}>
-            <form>
-                <h1>Welcome Back !</h1>
-                {/*  */}
+            <form className={classes.Form}>
+                <h1 className={classes.Title}>Welcome Back !</h1>
+
+                <div className={classes.Margin}></div>{/* Find a new way of doing this */}
+
                 <GenericInput
                     id="email"
                     value={email}
                     handleChangeText={text => setEmail(text)}
                     label="Email"
                     placeholder="sample@email.com"
+                    darkTheme={false}
                 />
+
+                <div className={classes.Margin}></div>{/* Find a new way of doing this */}
+
                 <GenericInput
                     id="password"
                     value={password}
                     label="Password"
                     handleChangeText={text => setPassword(text)}
                     type="password"
+                    darkTheme={false}
                 />
-                <GenericButton
-                    text="Login"
-                    handleClick={onLogin}
-                />
+
+                <div className={classes.Margin}></div>{/* Find a new way of doing this */}
+
+                <div className={classes.BtnGroup}>
+                    <GenericButton
+                        text="Login"
+                        handleClick={onLogin}
+                    />
+                    <p className={classes.InfosText}>Doesn't have an account yet ? <InTextBtn text="Sign up here" handleClick={handleSignupClick} darkTheme={false} /></p>
+                </div>
             </form>
         </div>
     );
