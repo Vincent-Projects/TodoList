@@ -7,6 +7,7 @@ import {
 import LandingPage from "./containers/LandingPage";
 
 const Dashboard = React.lazy(() => import('./containers/Dashboard'));
+const Login = React.lazy(() => import('./containers/Login'));
 
 const app = () => {
     return (
@@ -22,6 +23,14 @@ const app = () => {
                     <Suspense fallback={<div>Loading...</div>}>
                         <Dashboard />
                     </Suspense>
+                </Route>
+                <Route path="/login">
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Login />
+                    </Suspense>
+                </Route>
+                <Route>
+                    <h1>404 Error</h1>
                 </Route>
             </Switch>
         </div>

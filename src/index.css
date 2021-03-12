@@ -3,8 +3,13 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
+    background-color: rgb(var(--custom-bg-0dp));
+    color: rgb(var(--on-custom-bg));
+    font-family: sans-serif;
 }
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }

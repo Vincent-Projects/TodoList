@@ -1,0 +1,9 @@
+:root {
+    --custom-bg-0dp: 29, 34, 33;
+    --on-custom-bg: 255, 255, 255;
+    --primary: 128, 203, 196;
+    --primary-dark: 79, 154, 148;
+    --primary-outline: 160, 60, 255;
+    --shadow: 161, 161, 161;
+    --error: 255, 97, 97;
+}
