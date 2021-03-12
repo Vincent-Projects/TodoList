@@ -10,14 +10,11 @@
 
 # production
 /build
-/server/*.html
-/server/static
-/server/robots.txt
-/server/manifest.json
-/server/favicon.ico
-/server/asset-manifest.json
-/server/node_modules
-/server/.git*
+/server/*
+!/server/index.js
+!/server/package.json
+!/server/package-lock.json
+!/Procfile
 
 # misc
 .DS_Store
