@@ -7,12 +7,12 @@ import "./index.css";
 import App from "./App";
 
 const app = (
-    <Router>
-        <App />
-    </Router>
+  <Router>
+    <App />
+  </Router>
 );
 
 ReactDOM.render(
-    app,
-    document.getElementById("root")
+  app,
+  document.getElementById("root")
 );

@@ -1,0 +1,85 @@
+.PageContainer {
+  width: 100%;
+  height: 100vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Title {
+  font-size: 3rem;
+  font-family: "port-lligat-slab";
+  color: rgb(var(--on-custom-bg-light));
+}
+
+.Form {
+  width: 95%;
+  border-radius: 3px;
+  background-color: rgb(var(--surface));
+  box-shadow: 1px 2px 0px rgb(var(--shadow));
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.BtnGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.InfosText {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: rgb(var(--on-custom-bg-light));
+}
+
+.SocialMediaBar {
+  display: flex;
+  flex-direction: row;
+}
+
+.SocialMediaBtn {
+  margin: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .PageContainer {
+    align-items: flex-end;
+  }
+
+  .Title {
+    font-size: 3.2rem;
+  }
+
+  .Form {
+    width: 65%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .Title {
+    font-size: 3.6rem;
+  }
+
+  .Form {
+    margin-right: 5rem;
+    width: 38%;
+    height: 80%;
+  }
+}
+
+/* Remove this once new way of adding margin found */
+.Margin {
+  margin: 1.2rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .Margin {
+    margin: 0.9rem;
+  }
+}

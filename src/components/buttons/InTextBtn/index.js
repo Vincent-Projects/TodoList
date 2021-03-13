@@ -1,24 +1,25 @@
 import React from "react";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 import classes from "./index.module.css";
 
 const InTextBtn = ({ text, handleClick, darkTheme = true }) => {
-    const btnClasses = [
-        classes.Button,
-        (darkTheme ? null : classes.ButtonLight)
-    ].join(" ");
+  const btnClasses = [
+    classes.Button,
+    (darkTheme ? null : classes.ButtonLight)
+  ].join(" ");
 
-    return (
-        <span className={btnClasses} onClick={handleClick}>
-            {text}
-        </span>
-    );
+  return (
+    <span className={btnClasses} onClick={handleClick}>
+      {text}
+    </span>
+  );
 };
 
 InTextBtn.propTypes = {
-    text: PropTypes.string,
-    handleClick: PropTypes.func
+  text: PropTypes.string,
+  handleClick: PropTypes.func,
+  darkTheme: PropTypes.bool
 };
 
 export default InTextBtn;

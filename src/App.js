@@ -1,40 +1,46 @@
 import React, { Suspense } from "react";
 import {
-    Switch,
-    Route
+  Switch,
+  Route
 } from "react-router-dom";
 
 import LandingPage from "./containers/LandingPage";
 
-const Dashboard = React.lazy(() => import('./containers/Dashboard'));
-const Login = React.lazy(() => import('./containers/Login'));
+const Dashboard = React.lazy(() => import("./containers/Dashboard"));
+const Login = React.lazy(() => import("./containers/auth/Login"));
+const Signup = React.lazy(() => import("./containers/auth/Signup"));
 
 const app = () => {
-    return (
-        <div>
-            {/* <div>
+  return (
+    <div>
+      {/* <div>
                 <p>Menu Here</p>
             </div> // Add auth flow*/}
-            <Switch>
-                <Route exact path="/">
-                    <LandingPage />
-                </Route>
-                <Route path="/dashboard">
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <Dashboard />
-                    </Suspense>
-                </Route>
-                <Route path="/login">
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <Login />
-                    </Suspense>
-                </Route>
-                <Route>
-                    <h1>404 Error</h1>
-                </Route>
-            </Switch>
-        </div>
-    )
+      <Switch>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
+        <Route path="/dashboard">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Dashboard />
+          </Suspense>
+        </Route>
+        <Route path="/login">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Login />
+          </Suspense>
+        </Route>
+        <Route path="/signup">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Signup />
+          </Suspense>
+        </Route>
+        <Route>
+          <h1>404 Error</h1>
+        </Route>
+      </Switch>
+    </div>
+  );
 };
 
 export default app;
