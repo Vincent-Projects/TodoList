@@ -14,7 +14,7 @@
 !/server/index.js
 !/server/package.json
 !/server/package-lock.json
-!/Procfile
+!/server/Procfile
 
 # misc
 .DS_Store
