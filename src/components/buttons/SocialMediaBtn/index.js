@@ -7,7 +7,6 @@ import classes from "./index.module.css";
 const SocialMediaBtn = ({ name }) => {
     const medias = constants.SOCIAL_MEDIA;
     const socialMedia = medias.find(social => social.name === name);
-    console.log(socialMedia);
     let Logo = () => <div></div>;
     let link = "";
 

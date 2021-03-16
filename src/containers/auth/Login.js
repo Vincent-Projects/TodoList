@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import classes from "./index.module.css";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import GenericButton from "../../components/buttons/GenericButton";
 import GenericInput from "../../components/inputs/GenericInput";
@@ -8,14 +10,24 @@ import InTextBtn from "../../components/buttons/InTextBtn";
 import SocialMediaBtn from "../../components/buttons/SocialMediaBtn";
 
 import * as constants from "../../components/contants";
+import * as actions from "../../redux/actions";
 
 
-const Login = () => {
+const Login = ({
+  isAuth,
+  login
+}) => {
+  if (isAuth) {
+    return <Redirect to="/dashboard" />;
+  }
+
   let history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onLogin = () => {
+  const onLogin = (event) => {
+    event.preventDefault();
+    login(email, password);
   };
 
   const handleSignupClick = () => {
@@ -86,4 +98,21 @@ const Login = () => {
   );
 };
 
-export default Login;
+Login.propTypes = {
+  login: PropTypes.func,
+  isAuth: PropTypes.bool
+};
+
+const mapStateToProps = state => {
+  return {
+    isAuth: state.auth.isAuth
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    login: (email, password) => dispatch(actions.login(email, password))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

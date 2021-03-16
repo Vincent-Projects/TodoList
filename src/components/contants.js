@@ -1,5 +1,13 @@
+// SOCIAL MEDIA LOGO IMPORT
 import { ReactComponent as TwitterLogo } from "../assets/icons/social/twitter-brands.svg";
 import { ReactComponent as GithubLogo } from "../assets/icons/social/github-brands.svg";
+
+// ICON IMPORT
+import { ReactComponent as HomeIcon } from "../assets/icons/home-solid.svg";
+import { ReactComponent as ProjectIcon } from "../assets/icons/folder-solid.svg";
+import { ReactComponent as HabitIcon } from "../assets/icons/chart-bar-solid.svg";
+import { ReactComponent as GoalsIcon } from "../assets/icons/bullseye-solid.svg";
+import { ReactComponent as ProfileIcon } from "../assets/icons/user-solid.svg";
 
 export const SOCIAL_MEDIA = [
     {
@@ -18,3 +26,38 @@ export const SOCIAL_MEDIA = [
 
 export const TWITTER = "twitter";
 export const GITHUB = "github";
+
+
+export const ICONS = [
+    {
+        name: "HOME",
+        url: "icons/home-solid.svg",
+        img: HomeIcon
+    },
+    {
+        name: "PROJECT",
+        url: "icons/folder-solid.svg",
+        img: ProjectIcon
+    },
+    {
+        name: "HABIT",
+        url: "icons/chart-bar-solid.svg",
+        img: HabitIcon
+    },
+    {
+        name: "GOALS",
+        url: "icons/bullseye-solid.svg",
+        img: GoalsIcon
+    },
+    {
+        name: "PROFILE",
+        url: "icons/user-solid.svg",
+        img: ProfileIcon
+    }
+];
+
+export const HOME = "HOME";
+export const PROJECT = "PROJECT";
+export const HABIT = "HABIT";
+export const GOALS = "GOALS";
+export const PROFILE = "PROFILE";
