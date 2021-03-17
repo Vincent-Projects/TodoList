@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 
 import { checkAuthState } from "./redux/actions";
 
+import DiamondSpinner from "./components/DiamondSpinner";
+
 import LandingPage from "./containers/LandingPage";
 
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -31,18 +33,18 @@ const app = ({ checkAuth }) => {
         </Route>
         <Route path="/dashboard">
           <ProtectedRoute>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<DiamondSpinner mode="cubic" />}>
               <Dashboard />
             </Suspense>
           </ProtectedRoute>
         </Route>
         <Route path="/login">
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<DiamondSpinner mode="cubic" />}>
             <Login />
           </Suspense>
         </Route>
         <Route path="/signup">
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<DiamondSpinner mode="cubic" />}>
             <Signup />
           </Suspense>
         </Route>

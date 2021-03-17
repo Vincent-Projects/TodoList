@@ -3,7 +3,9 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
     isAuth: false,
     token: null,
-    token_expire: null
+    token_expire: null,
+    username: null,
+    email: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,7 +15,9 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isAuth: true,
                 token: action.payload.token,
-                token_expire: action.payload.token_expire
+                token_expire: action.payload.token_expire,
+                username: action.payload.username,
+                email: action.payload.email
             };
         default:
             return state;

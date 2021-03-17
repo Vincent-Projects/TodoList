@@ -6,7 +6,7 @@ import rootReducer from "./reducers";
 const logger = ({ getState }) => {
   return next => {
     return action => {
-      console.log(getState());
+      //console.log(getState());
       return next(action);
     };
   };

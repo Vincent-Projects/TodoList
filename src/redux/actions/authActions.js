@@ -56,7 +56,6 @@ export const login = (email, password) => {
 export const logout = () => {
     return dispatch => {
         localStorage.removeItem("token");
-        console.log("I should remove something");
 
         dispatch({
             type: actionTypes.LOGOUT
