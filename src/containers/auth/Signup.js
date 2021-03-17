@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import classes from "./index.module.css";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import GenericButton from "../../components/buttons/GenericButton";
 import GenericInput from "../../components/inputs/GenericInput";
@@ -10,14 +12,20 @@ import SocialMediaBtn from "../../components/buttons/SocialMediaBtn";
 import * as constants from "../../components/contants";
 
 
-const Signup = () => {
+const Signup = ({
+    isAuth
+}) => {
+    if (isAuth)
+        return <Redirect to="/dashboard" />;
+
     let history = useHistory();
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [code, setCode] = useState("");
 
-    const onLogin = () => {
+    const onSignup = () => {
 
     };
 
@@ -67,7 +75,7 @@ const Signup = () => {
 
                 <GenericInput
                     id="confirm"
-                    value={password}
+                    value={confirmPassword}
                     label="Confirm Password"
                     handleChangeText={text => setConfirmPassword(text)}
                     type="password"
@@ -76,10 +84,21 @@ const Signup = () => {
 
                 <div className={classes.Margin}></div>{/* Find a new way of doing this */}
 
+                <GenericInput
+                    id="code"
+                    value={code}
+                    handleChangeText={text => setCode(text)}
+                    label={<p>Signup Code</p>}
+                    type="password"
+                    darkTheme={false}
+                />
+
+                <div className={classes.Margin}></div>{/* Find a new way of doing this */}
+
                 <div className={classes.BtnGroup}>
                     <GenericButton
-                        text="Login"
-                        handleClick={onLogin}
+                        text="Signup"
+                        handleClick={onSignup}
                     />
                     <p className={classes.InfosText}>
                         {"Already have an account ? "}
@@ -111,4 +130,14 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+Signup.propTypes = {
+    isAuth: PropTypes.bool
+};
+
+const mapStateToProps = state => {
+    return {
+        isAuth: state.auth.isAuth
+    };
+};
+
+export default connect(mapStateToProps)(Signup);

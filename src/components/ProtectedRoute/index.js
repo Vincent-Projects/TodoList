@@ -9,6 +9,7 @@ const ProtectedRoute = ({
     isAuth,
     children
 }) => {
+    console.log("isAuth:" + isAuth);
     if (!isAuth) {
         return <Redirect to="/login" />;
     }

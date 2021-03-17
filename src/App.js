@@ -1,18 +1,26 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import {
   Switch,
   Route
 } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { checkAuthState } from "./redux/actions";
 
 import LandingPage from "./containers/LandingPage";
 
-import ProtectedRoute from "./components/ProtectedRoute"
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const Dashboard = React.lazy(() => import("./containers/Dashboard"));
 const Login = React.lazy(() => import("./containers/auth/Login"));
 const Signup = React.lazy(() => import("./containers/auth/Signup"));
 
-const app = () => {
+const app = ({ checkAuth }) => {
+  useEffect(() => {
+    console.log("I check");
+    checkAuth();
+  }, []);
+
   return (
     <div>
       {/* <div>
@@ -47,4 +55,9 @@ const app = () => {
   );
 };
 
-export default app;
+const mapDispatchToProps = dispatch => {
+  return {
+    checkAuth: () => dispatch(checkAuthState())
+  };
+};
+export default connect(null, mapDispatchToProps)(app);
