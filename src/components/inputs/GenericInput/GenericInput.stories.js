@@ -23,5 +23,6 @@ const Template = args => {
 export const Default = Template.bind({});
 Default.args = {
   id: "default",
-  label: "Email"
+  label: "Email",
+  errMessage: "Something wrong with data"
 };

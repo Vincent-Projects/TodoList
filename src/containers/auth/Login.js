@@ -9,6 +9,8 @@ import GenericInput from "../../components/inputs/GenericInput";
 import InTextBtn from "../../components/buttons/InTextBtn";
 import SocialMediaBtn from "../../components/buttons/SocialMediaBtn";
 
+import DiamondSpinner from "../../components/DiamondSpinner";
+
 import * as constants from "../../components/contants";
 import * as actions from "../../redux/actions";
 
@@ -22,16 +24,58 @@ const Login = ({
   }
 
   let history = useHistory();
+
+  const [isLoading, setIsLoading] = useState(false);
+
   const [email, setEmail] = useState("");
+  const [emailErr, setEmailErr] = useState(false);
+  const [emailErrMessage, setEmailErrMessage] = useState("");
+
   const [password, setPassword] = useState("");
+  const [passErr, setPassErr] = useState(false);
+  const [passErrMessage, setPassErrMessage] = useState("");
+
+  const handleEmailInput = text => {
+    setEmail(text);
+
+    if (emailErr) {
+      setEmailErr(false);
+      setEmailErrMessage("");
+    }
+  };
+
+  const handlePasswordInput = text => {
+    setPassword(text);
+
+    if (passErr) {
+      setPassErr(false);
+      setPassErrMessage("");
+    }
+  };
 
   const onLogin = (event) => {
     event.preventDefault();
-    login(email, password);
+    if (!email) {
+      setEmailErr(true);
+      setEmailErrMessage("Please enter your email");
+    }
+
+    if (!password) {
+      setPassErr(true);
+      setPassErrMessage("Please enter a password");
+    } else {
+      setIsLoading(true);
+      login(email, password);
+    }
+
   };
 
   const handleSignupClick = () => {
     history.push("/signup");
+  };
+
+  const handleForgotPasswordClick = () => {
+
   };
 
   return (
@@ -44,10 +88,12 @@ const Login = ({
         <GenericInput
           id="email"
           value={email}
-          handleChangeText={text => setEmail(text)}
+          handleChangeText={handleEmailInput}
           label="Email"
           placeholder="sample@email.com"
           darkTheme={false}
+          isError={emailErr}
+          errMessage={emailErrMessage}
         />
 
         <div className={classes.Margin}></div>{/* Find a new way of doing this */}
@@ -56,18 +102,34 @@ const Login = ({
           id="password"
           value={password}
           label="Password"
-          handleChangeText={text => setPassword(text)}
+          handleChangeText={handlePasswordInput}
           type="password"
           darkTheme={false}
+          isError={passErr}
+          errMessage={passErrMessage}
         />
+
+        <p className={classes.InfosText}>
+          <InTextBtn
+            text="forgot passord ?"
+            handleClick={handleForgotPasswordClick}
+            darkTheme={false}
+          />
+        </p>
 
         <div className={classes.Margin}></div>{/* Find a new way of doing this */}
 
         <div className={classes.BtnGroup}>
-          <GenericButton
-            text="Login"
-            handleClick={onLogin}
-          />
+          {isLoading
+            ?
+            <DiamondSpinner mode="circle" />
+            :
+            <GenericButton
+              text="Login"
+              handleClick={onLogin}
+            />
+          }
+
           <p className={classes.InfosText}>
             {"Doesn't have an account yet ? "}
             <InTextBtn
@@ -112,7 +174,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     login: (email, password) => dispatch(actions.login(email, password))
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

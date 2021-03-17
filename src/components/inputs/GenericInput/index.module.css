@@ -41,3 +41,8 @@
 .Input:focus {
     border-width: 3px;
 }
+
+.ErrorMessage {
+    color: rgb(var(--error));
+    margin-top: 0.2rem;
+}

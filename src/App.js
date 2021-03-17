@@ -17,7 +17,6 @@ const Signup = React.lazy(() => import("./containers/auth/Signup"));
 
 const app = ({ checkAuth }) => {
   useEffect(() => {
-    console.log("I check");
     checkAuth();
   }, []);
 
