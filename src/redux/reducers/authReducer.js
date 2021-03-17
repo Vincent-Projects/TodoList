@@ -5,7 +5,8 @@ const initialState = {
     token: null,
     token_expire: null,
     username: null,
-    email: null
+    email: null,
+    isLoading: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,6 +19,16 @@ const reducer = (state = initialState, action) => {
                 token_expire: action.payload.token_expire,
                 username: action.payload.username,
                 email: action.payload.email
+            };
+        case actionTypes.AUTH_START:
+            return {
+                ...state,
+                isLoading: true
+            };
+        case actionTypes.AUTH_STOP:
+            return {
+                ...state,
+                isLoading: false
             };
         default:
             return state;

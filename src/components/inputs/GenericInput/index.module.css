@@ -10,7 +10,7 @@
 }
 
 .LabelError {
-    color: rgb(var(--error));
+    color: rgb(var(--error)) !important;
 }
 
 .LabelLight {

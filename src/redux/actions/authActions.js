@@ -46,9 +46,7 @@ export const login = (email, password) => {
                     }
                 });
             }).catch(err => {
-                dispatch({
-                    type: actionTypes.LOGOUT,
-                });
+                dispatch(logout());
             });
     };
 };
@@ -108,5 +106,50 @@ export const checkAuthState = () => {
                 email: decodedToken.email
             }
         });
+    };
+};
+
+export const AUTH_START = () => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.AUTH_START
+        });
+    };
+};
+
+export const AUTH_STOP = () => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.AUTH_STOP
+        });
+    };
+};
+
+export const signup = (username, email, password, confirmPassword, code) => {
+    return dispatch => {
+        dispatch(AUTH_START());
+
+        /* axios.post(`https://todolist-api-public-demo.herokuapp.com/auth/signup/${code}`, {
+            username,
+            email,
+            password,
+            confirmPassword
+        }, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(result => {
+                dispatch(AUTH_STOP());
+            })
+            .catch(err => {
+                dispatch(AUTH_STOP());
+                dispatch(logout());
+            }); */
+
+        setTimeout(() => {
+            dispatch(AUTH_STOP());
+        }, 1000);
     };
 };
