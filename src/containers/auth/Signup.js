@@ -4,16 +4,16 @@ import classes from "./index.module.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import DiamondSpinner from "../../components/DiamondSpinner";
+import DiamondSpinner from "components/DiamondSpinner";
 
-import GenericButton from "../../components/buttons/GenericButton";
-import GenericInput from "../../components/inputs/GenericInput";
-import InTextBtn from "../../components/buttons/InTextBtn";
-import SocialMediaBtn from "../../components/buttons/SocialMediaBtn";
+import GenericButton from "components/buttons/GenericButton";
+import GenericInput from "components/inputs/GenericInput";
+import InTextBtn from "components/buttons/InTextBtn";
+import SocialMediaBtn from "components/buttons/SocialMediaBtn";
 
-import * as constants from "../../components/contants";
+import * as constants from "components/contants";
 
-import { signup, authErrReset } from '../../redux/actions';
+import { signup, authErrReset } from 'redux/actions';
 
 const Signup = ({
     isAuth,
