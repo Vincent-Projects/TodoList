@@ -13,12 +13,14 @@ import SocialMediaBtn from "../../components/buttons/SocialMediaBtn";
 
 import * as constants from "../../components/contants";
 
-import { signup } from '../../redux/actions';
+import { signup, authErrReset } from '../../redux/actions';
 
 const Signup = ({
     isAuth,
     signup,
-    isLoading
+    isLoading,
+    authErrMessage,
+    authErrReset
 }) => {
     if (isAuth)
         return <Redirect to="/dashboard" />;
@@ -92,6 +94,7 @@ const Signup = ({
     };
 
     const handleLoginClick = () => {
+        authErrReset();
         history.push("/login");
     };
 
@@ -106,6 +109,8 @@ const Signup = ({
         <div className={classes.PageContainer}>
             <form className={classes.Form}>
                 <h1 className={classes.Title}>Welcome to Flists !</h1>
+
+                {authErrMessage ? <p className={classes.Error}>{authErrMessage} </p> : null}
 
                 <div className={classes.Margin}></div>{/* Find a new way of doing this */}
 
@@ -216,19 +221,23 @@ const Signup = ({
 Signup.propTypes = {
     isAuth: PropTypes.bool,
     signup: PropTypes.func,
-    isLoading: PropTypes.bool
+    authErrReset: PropTypes.func,
+    isLoading: PropTypes.bool,
+    authErrMessage: PropTypes.string
 };
 
 const mapStateToProps = state => {
     return {
         isAuth: state.auth.isAuth,
-        isLoading: state.auth.isLoading
+        isLoading: state.auth.isLoading,
+        authErrMessage: state.auth.authErrMessage
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        signup: (username, email, password, confirmPassword, code) => dispatch(signup(username, email, password, confirmPassword, code))
+        signup: (username, email, password, confirmPassword, code) => dispatch(signup(username, email, password, confirmPassword, code)),
+        authErrReset: () => dispatch(authErrReset())
     };
 };
 

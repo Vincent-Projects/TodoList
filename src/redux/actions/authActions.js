@@ -1,5 +1,4 @@
-import axios from "axios";
-
+import API from "../../api";
 import jwt from "jsonwebtoken";
 import * as actionTypes from "./actionTypes";
 
@@ -8,18 +7,9 @@ const AUTH_SECRET = process.env.REACT_APP_AUTH_SECRET;
 
 export const login = (email, password) => {
     return dispatch => {
-        axios.post(
-            "https://todolist-api-public-demo.herokuapp.com/auth/login",
-            {
-                email,
-                password
-            },
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
+        dispatch(AUTH_START());
+
+        API.login(email, password)
             .then(result => {
                 const { token, token_expire, username, email } = result.data.data;
 
@@ -46,7 +36,11 @@ export const login = (email, password) => {
                     }
                 });
             }).catch(err => {
-                dispatch(logout());
+                if (err.response.status === 401) {
+                    dispatch(AUTH_FAIL("Wrong Credentials"));
+                } else {
+                    dispatch(AUTH_FAIL("Server Problem, please try later"));
+                } // Dispatch different message when account need to be verified
             });
     };
 };
@@ -119,8 +113,21 @@ export const AUTH_START = () => {
 
 export const AUTH_STOP = () => {
     return dispatch => {
+        console.log("here");
         dispatch({
             type: actionTypes.AUTH_STOP
+        });
+    };
+};
+
+export const AUTH_FAIL = (errMessage) => {
+    return dispatch => {
+        dispatch(AUTH_STOP());
+        dispatch({
+            type: actionTypes.AUTH_FAIL,
+            payload: {
+                errMessage: errMessage
+            }
         });
     };
 };
@@ -129,27 +136,26 @@ export const signup = (username, email, password, confirmPassword, code) => {
     return dispatch => {
         dispatch(AUTH_START());
 
-        /* axios.post(`https://todolist-api-public-demo.herokuapp.com/auth/signup/${code}`, {
-            username,
-            email,
-            password,
-            confirmPassword
-        }, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+        API.signup(username, email, password, confirmPassword, code)
             .then(result => {
-                dispatch(AUTH_STOP());
+                console.log(result);
+                dispatch(AUTH_FAIL("Waiting for backend new version"));
             })
             .catch(err => {
-                dispatch(AUTH_STOP());
-                dispatch(logout());
-            }); */
+                const statusCodeErr = err.response.status;
+                if (statusCodeErr !== 500) {
+                    dispatch(AUTH_FAIL("Wrong Credentials"));
+                } else {
+                    dispatch(AUTH_FAIL("Server Problem, please try later"));
+                }
+            });
+    };
+};
 
-        setTimeout(() => {
-            dispatch(AUTH_STOP());
-        }, 1000);
+export const authErrReset = () => {
+    return dispatch => {
+        dispatch({
+            type: actionTypes.AUTH_RESET
+        });
     };
 };

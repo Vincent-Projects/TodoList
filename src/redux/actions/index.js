@@ -2,5 +2,6 @@ export {
     login,
     logout,
     checkAuthState,
-    signup
+    signup,
+    authErrReset
 } from "./authActions";

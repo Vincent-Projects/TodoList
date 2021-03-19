@@ -6,7 +6,8 @@ const initialState = {
     token_expire: null,
     username: null,
     email: null,
-    isLoading: false
+    isLoading: false,
+    authErrMessage: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -29,6 +30,17 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false
+            };
+        case actionTypes.AUTH_FAIL:
+            return {
+                ...state,
+                authErrMessage: action.payload.errMessage
+            };
+        case actionTypes.AUTH_RESET:
+            return {
+                ...state,
+                authErrMessage: null,
+                isLoading: false,
             };
         default:
             return state;

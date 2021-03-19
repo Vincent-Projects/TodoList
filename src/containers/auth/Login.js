@@ -13,19 +13,21 @@ import DiamondSpinner from "../../components/DiamondSpinner";
 
 import * as constants from "../../components/contants";
 import * as actions from "../../redux/actions";
+import { authErrReset } from "../../redux/actions";
 
 
 const Login = ({
   isAuth,
-  login
+  login,
+  isLoading,
+  authErrMessage,
+  authErrReset
 }) => {
   if (isAuth) {
     return <Redirect to="/dashboard" />;
   }
 
   let history = useHistory();
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const [email, setEmail] = useState("");
   const [emailErr, setEmailErr] = useState(false);
@@ -64,13 +66,13 @@ const Login = ({
       setPassErr(true);
       setPassErrMessage("Please enter a password");
     } else {
-      setIsLoading(true);
       login(email, password);
     }
 
   };
 
   const handleSignupClick = () => {
+    authErrReset();
     history.push("/signup");
   };
 
@@ -82,6 +84,8 @@ const Login = ({
     <div className={classes.PageContainer}>
       <form className={classes.Form}>
         <h1 className={classes.Title}>Welcome Back !</h1>
+
+        {authErrMessage ? <p className={classes.Error}>{authErrMessage}</p> : null}
 
         <div className={classes.Margin}></div>{/* Find a new way of doing this */}
 
@@ -162,18 +166,24 @@ const Login = ({
 
 Login.propTypes = {
   login: PropTypes.func,
-  isAuth: PropTypes.bool
+  isAuth: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  authErrMessage: PropTypes.string,
+  authErrReset: PropTypes.func
 };
 
 const mapStateToProps = state => {
   return {
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    isLoading: state.auth.isLoading,
+    authErrMessage: state.auth.authErrMessage
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    login: (email, password) => dispatch(actions.login(email, password))
+    login: (email, password) => dispatch(actions.login(email, password)),
+    authErrReset: () => dispatch(authErrReset())
   };
 };
 
