@@ -1,4 +1,4 @@
-import API from "../../api";
+import API from "api";
 import jwt from "jsonwebtoken";
 import * as actionTypes from "./actionTypes";
 

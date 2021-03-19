@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ICONS } from "../contants";
+import { ICONS } from "components/contants";
 import classes from "./index.module.css";
 
 const Icon = ({ iconName }) => {

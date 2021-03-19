@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import classes from "./index.module.css";
 
-import Icon from "../Icon";
+import Icon from "components/Icon";
 
 const MenuLink = ({ iconName, text, to }) => {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import * as constants from "../../contants";
+import * as constants from "components/contants";
 
 import classes from "./index.module.css";
 
