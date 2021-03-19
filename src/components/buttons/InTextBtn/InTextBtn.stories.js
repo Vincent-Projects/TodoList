@@ -14,5 +14,12 @@ const Template = args => {
 
 export const Default = Template.bind({});
 Default.args = {
-  text: "sample text"
+  text: "sample text",
+  darkTheme: true
+};
+
+export const LightMode = Template.bind({});
+LightMode.args = {
+  text: "sample text",
+  darkTheme: false
 };

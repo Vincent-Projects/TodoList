@@ -1,5 +1,5 @@
 .Link {
-  color: rgb(var(--on-custom-bg-0dp));
+  color: rgb(var(--on-bg));
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -28,8 +28,8 @@
 .Active:after {
   opacity: 0.1;
   width: 100%;
-  background: linear-gradient(90deg,rgb(var(--primary)), transparent);
-} 
+  background: linear-gradient(90deg, rgb(var(--primary)), transparent);
+}
 
 .Active {
   border-left: 2px solid rgb(var(--primary));

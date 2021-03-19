@@ -1,16 +1,24 @@
 :root {
-    --custom-bg-0dp: 29, 34, 33;
-    --on-custom-bg: 255, 255, 255;
-    --on-custom-bg-light: 0, 0, 0;
-    --primary: 128, 203, 196;
-    --primary-dark: 79, 154, 148;
-    --primary-outline: 160, 60, 255;
-    --shadow: 0, 0, 0;
-    --error: 255, 97, 97;
-    --surface: 255, 255, 255;
+  --primary: 154, 214, 207;
+  --primary-light: 173, 245, 245;
+  --primary-dark: 79, 154, 148;
+  --on-primary: 0, 0, 0;
+  --error: 255, 97, 97;
+  --bg-0dp: 29, 34, 33;
+  --bg-1dp: 40, 45, 44;
+  --bg-2dp: 45, 49, 49;
+  --bg-4dp: 49, 54, 53;
+  --bg-6dp: 54, 58, 57;
+  --bg-12dp: 61, 65, 64;
+  --bg-24dp: 65, 69, 69;
+  --on-bg: 255, 255, 255;
+  --primary-outline: 160, 60, 255;
+  --shadow: 0, 0, 0;
+  --surface: 255, 255, 255;
+  --on-surface: 29, 34, 33;
 }
 
 @font-face {
-    font-family: "port-lligat-slab";
-    src: url("./assets/Port_Lligat_Slab/PortLligatSlab-Regular.ttf");
+  font-family: "port-lligat-slab";
+  src: url("./assets/Port_Lligat_Slab/PortLligatSlab-Regular.ttf");
 }
