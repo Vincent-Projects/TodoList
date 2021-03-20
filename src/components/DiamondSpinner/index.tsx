@@ -3,8 +3,13 @@ import PropTypes from "prop-types";
 
 import classes from "./index.module.css";
 
+type SpinnerMode = "cubic" | "circle";
 
-const DiamondSpinner = ({ mode = "cubic" }) => {
+type Props = {
+    mode: SpinnerMode
+}
+
+const DiamondSpinner = ({ mode = "cubic" } : Props) => {
     let loaderClasses = [
         classes.loader,
         (mode === "cubic" ? classes.Cubic :
@@ -21,10 +26,6 @@ const DiamondSpinner = ({ mode = "cubic" }) => {
             <div></div>
         </div>
     );
-};
-
-DiamondSpinner.propTypes = {
-    mode: PropTypes.string
 };
 
 export default DiamondSpinner;
