@@ -1,7 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
-
 import classes from "./index.module.css";
+import React from "react";
 
 type SpinnerMode = "cubic" | "circle";
 
@@ -9,7 +7,7 @@ type Props = {
     mode: SpinnerMode
 }
 
-const DiamondSpinner = ({ mode = "cubic" } : Props) => {
+const DiamondSpinner = ({ mode = "cubic" }: Props) => {
     let loaderClasses = [
         classes.loader,
         (mode === "cubic" ? classes.Cubic :

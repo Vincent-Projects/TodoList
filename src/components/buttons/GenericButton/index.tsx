@@ -1,10 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import classes from "./index.module.css";
 
-const GenericButton = ({ text, handleClick, isSubmit = null }) => {
-  const buttonType = isSubmit ? "submit" : null;
+interface Props {
+  text: string,
+  handleClick: () => void,
+  isSubmit: boolean
+}
+
+const GenericButton = ({ text, handleClick, isSubmit = false }: Props) => {
+  const buttonType = isSubmit ? "submit" : "button";
 
   return (
     <button
@@ -17,12 +22,6 @@ const GenericButton = ({ text, handleClick, isSubmit = null }) => {
       </span>
     </button>
   );
-};
-
-GenericButton.propTypes = {
-  text: PropTypes.string,
-  handleClick: PropTypes.func,
-  isSubmit: PropTypes.bool
 };
 
 export default GenericButton;

@@ -1,9 +1,14 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import classes from "./index.module.css";
 
-const InTextBtn = ({ text, handleClick, darkTheme = true }) => {
+interface Props {
+  text: string,
+  handleClick: () => void,
+  darkTheme: boolean
+}
+
+const InTextBtn = ({ text, handleClick, darkTheme = true }: Props) => {
   const btnClasses = [
     classes.Button,
     (darkTheme ? null : classes.ButtonLight)
@@ -14,12 +19,6 @@ const InTextBtn = ({ text, handleClick, darkTheme = true }) => {
       {text}
     </span>
   );
-};
-
-InTextBtn.propTypes = {
-  text: PropTypes.string,
-  handleClick: PropTypes.func,
-  darkTheme: PropTypes.bool
 };
 
 export default InTextBtn;

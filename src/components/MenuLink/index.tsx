@@ -1,12 +1,19 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
-
 import classes from "./index.module.css";
-
 import Icon from "components/Icon";
 
-const MenuLink = ({ iconName, text, to }) => {
+interface Props {
+  iconName: string,
+  text: string,
+  to: string
+}
+
+const MenuLink = ({
+  iconName,
+  text,
+  to
+}: Props) => {
   return (
     <NavLink className={classes.Link} to={to} activeClassName={classes.Active}>
       <Icon
@@ -15,12 +22,6 @@ const MenuLink = ({ iconName, text, to }) => {
       <p>{text}</p>
     </NavLink>
   );
-};
-
-MenuLink.propTypes = {
-  iconName: PropTypes.string,
-  text: PropTypes.string,
-  to: PropTypes.string
 };
 
 export default MenuLink;

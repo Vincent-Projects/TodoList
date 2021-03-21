@@ -1,19 +1,31 @@
 import React from "react";
-import PropTypes from "prop-types";
-
 import classes from "./index.module.css";
+
+type InputType = "text" | "password";
+
+interface Props {
+  id: string,
+  value: string,
+  handleChangeText: (text: string) => void,
+  label: string,
+  placeholder: string,
+  isError: boolean,
+  errMessage: string | null,
+  type: InputType,
+  darkTheme: boolean
+}
 
 const GenericInput = ({
   id,
   value,
   handleChangeText,
   label,
-  placeholder = null,
+  placeholder = "",
   isError = false,
-  errMessage = "",
+  errMessage = null,
   type = "text",
   darkTheme = true
-}) => {
+}: Props) => {
   const labelClasses = [
     (isError ? classes.LabelError : null),
     (darkTheme ? null : classes.LabelLight),
@@ -45,18 +57,6 @@ const GenericInput = ({
       { errComponent}
     </div>
   );
-};
-
-GenericInput.propTypes = {
-  id: PropTypes.string,
-  value: PropTypes.string,
-  handleChangeText: PropTypes.func,
-  label: PropTypes.string,
-  placeholder: PropTypes.string,
-  isError: PropTypes.bool,
-  type: PropTypes.string,
-  darkTheme: PropTypes.bool,
-  errMessage: PropTypes.string
 };
 
 export default GenericInput;
