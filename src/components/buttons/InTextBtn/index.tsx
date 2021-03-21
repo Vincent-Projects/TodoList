@@ -5,7 +5,7 @@ import classes from "./index.module.css";
 interface Props {
   text: string,
   handleClick: () => void,
-  darkTheme: boolean
+  darkTheme?: boolean
 }
 
 const InTextBtn = ({ text, handleClick, darkTheme = true }: Props) => {

@@ -8,11 +8,11 @@ interface Props {
   value: string,
   handleChangeText: (text: string) => void,
   label: string,
-  placeholder: string,
+  placeholder?: string,
   isError: boolean,
   errMessage: string | null,
-  type: InputType,
-  darkTheme: boolean
+  type?: InputType,
+  darkTheme?: boolean
 }
 
 const GenericInput = ({

@@ -4,7 +4,7 @@ import React from "react";
 type SpinnerMode = "cubic" | "circle";
 
 type Props = {
-    mode: SpinnerMode
+    mode?: SpinnerMode
 }
 
 const DiamondSpinner = ({ mode = "cubic" }: Props) => {

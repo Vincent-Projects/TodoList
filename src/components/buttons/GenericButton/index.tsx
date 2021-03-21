@@ -5,7 +5,7 @@ import classes from "./index.module.css";
 interface Props {
   text: string,
   handleClick: () => void,
-  isSubmit: boolean
+  isSubmit?: boolean
 }
 
 const GenericButton = ({ text, handleClick, isSubmit = false }: Props) => {
