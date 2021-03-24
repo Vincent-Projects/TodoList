@@ -1,16 +1,18 @@
 import React from "react";
-import SocialMediaBtn from "./index"
-
+import { Story } from "@storybook/react";
+import SocialMediaBtn, { SocialMediaBtnProps } from "./index";
 import * as constants from "../../contants";
 
 const configStoryComponent = {
   component: SocialMediaBtn,
-  title: "SocialMediaBtn"
+  title: "SocialMediaBtn",
 };
 
 export default configStoryComponent;
 
-const Template = args => <SocialMediaBtn {...args} />;
+const Template: Story<SocialMediaBtnProps> = (args) => (
+  <SocialMediaBtn {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {

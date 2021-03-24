@@ -3,19 +3,19 @@ import GenericInput from "./index";
 
 const configStoryComponent = {
   component: GenericInput,
-  title: "GenericInput"
+  title: "GenericInput",
 };
 
 export default configStoryComponent;
 
-
-const Template = args => {
+const Template = (args) => {
   const [value, setValue] = useState(args.value);
 
   return (
     <GenericInput
       value={value}
-      handleChangeText={(text) => setValue(text)} {...args}
+      handleChangeText={(text) => setValue(text)}
+      {...args}
     />
   );
 };
@@ -24,5 +24,5 @@ export const Default = Template.bind({});
 Default.args = {
   id: "default",
   label: "Email",
-  errMessage: "Something wrong with data"
+  errMessage: "Something wrong with data",
 };

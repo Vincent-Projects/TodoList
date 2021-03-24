@@ -1,49 +1,49 @@
 .Button {
-    padding: 0.4rem 0.8rem;
-    background-color: rgb(var(--primary));
-    border: none;
-    position: relative;
-    overflow: hidden;
-    border-radius: 3px;
-    font-size: 1rem;
-    cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  background-color: rgb(var(--primary));
+  border: none;
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .ButtonText {
-    z-index: 100;
-    position: relative;
+  z-index: 100;
+  position: relative;
 }
 
 .Button:after {
-    background-color: rgba(var(--primary-dark), 0.6);
-    width: 0%;
-    height: 100%;
-    position: absolute;
-    content: "";
-    left: -10%;
-    top: 0;
-    transition: 300ms;
-    transform: skewX(25deg);
+  background-color: rgba(var(--primary-dark), 0.6);
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  content: "";
+  left: -10%;
+  top: 0;
+  transition: 300ms;
+  transform: skewX(25deg);
 }
 
 .Button:before {
-    background-color: rgba(var(--primary-dark), 0.6);
-    width: 0%;
-    height: 100%;
-    position: absolute;
-    content: "";
-    right: -10%;
-    top: 0;
-    transition: 300ms;
-    transform: skewX(25deg);
+  background-color: rgba(var(--primary-dark), 0.6);
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  content: "";
+  right: -10%;
+  top: 0;
+  transition: 300ms;
+  transform: skewX(25deg);
 }
 
 .Button:hover:after,
 .Button:hover:before {
-    width: 60%;
+  width: 60%;
 }
 
 .Button:active,
 .Button:focus {
-    outline: 1px solid rgb(var(--primary-outline));
+  outline: 1px solid rgb(var(--primary-outline));
 }

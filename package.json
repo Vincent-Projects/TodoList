@@ -17,6 +17,7 @@
     "react-scripts": "4.0.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "styled-components": "^5.2.1",
     "web-vitals": "^1.1.0"
   },
   "scripts": {
@@ -26,7 +27,10 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "build:server": "mv build/* server/ && rmdir build"
+    "build:server": "mv build/* server/ && rmdir build",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src",
+    "format": "prettier --write src"
   },
   "eslintConfig": {
     "extends": [
@@ -56,9 +60,11 @@
     "@types/node": "^14.14.35",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
+    "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "^5.1.7",
     "eslint": "^7.22.0",
     "eslint-plugin-react": "^7.22.0",
+    "prettier": "^2.0.5",
     "typescript": "^4.2.3"
   }
 }

@@ -2,24 +2,22 @@ import React from "react";
 
 import classes from "./index.module.css";
 
-interface Props {
-  text: string,
-  handleClick: () => void,
-  isSubmit?: boolean
+export interface GenericButtonProps {
+  text: string;
+  handleClick: () => void;
+  isSubmit?: boolean;
 }
 
-const GenericButton = ({ text, handleClick, isSubmit = false }: Props) => {
+const GenericButton = ({
+  text,
+  handleClick,
+  isSubmit = false,
+}: GenericButtonProps) => {
   const buttonType = isSubmit ? "submit" : "button";
 
   return (
-    <button
-      className={classes.Button}
-      onClick={handleClick}
-      type={buttonType}
-    >
-      <span className={classes.ButtonText}>
-        {text}
-      </span>
+    <button className={classes.Button} onClick={handleClick} type={buttonType}>
+      <span className={classes.ButtonText}>{text}</span>
     </button>
   );
 };

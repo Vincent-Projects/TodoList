@@ -16,7 +16,7 @@ const TextTooltip = ({ text, content: ToolTipComponent }) => {
 
 TextTooltip.propTypes = {
   text: PropTypes.string,
-  content: PropTypes.object
+  content: PropTypes.object,
 };
 
 export default TextTooltip;

@@ -1,25 +1,24 @@
 import React from "react";
-import InTextBtn from "./index";
+import { Story } from "@storybook/react";
+import InTextBtn, { InTextBtnProps } from "./index";
 
 const configStoryComponent = {
   component: InTextBtn,
-  title: "InTextBtn"
+  title: "InTextBtn",
 };
 
 export default configStoryComponent;
 
-const Template = args => {
-  return <InTextBtn {...args} />;
-};
+const Template: Story<InTextBtnProps> = (args) => <InTextBtn {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   text: "sample text",
-  darkTheme: true
+  darkTheme: true,
 };
 
 export const LightMode = Template.bind({});
 LightMode.args = {
   text: "sample text",
-  darkTheme: false
+  darkTheme: false,
 };

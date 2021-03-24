@@ -1,8 +1,5 @@
 import React, { Suspense, useEffect } from "react";
-import {
-  Switch,
-  Route
-} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { checkAuthState } from "./redux/actions";
@@ -56,9 +53,9 @@ const app = ({ checkAuth }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    checkAuth: () => dispatch(checkAuthState())
+    checkAuth: () => dispatch(checkAuthState()),
   };
 };
 export default connect(null, mapDispatchToProps)(app);

@@ -3,5 +3,5 @@ export const SIGNUP = "/auth/signup";
 
 export default {
   LOGIN,
-  SIGNUP
+  SIGNUP,
 };

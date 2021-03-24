@@ -9,21 +9,16 @@ class API {
     return apiInstance.post(apiRoutes.LOGIN, data);
   }
 
-  static signup(username, email, password, confirmPassword, code) {
+  static signup(firstname, lastname, email, password, confirmPassword, code) {
     const data = {
-      username,
+      firstname,
+      lastname,
       email,
       password,
-      confirmPassword
+      confirmPassword,
     };
 
-    const config = {
-      params: {
-        code
-      }
-    };
-
-    return apiInstance.post(apiRoutes.SIGNUP, data, config);
+    return apiInstance.post(`${apiRoutes.SIGNUP}/${code}`, data);
   }
 
   // Todos calls
