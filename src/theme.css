@@ -16,6 +16,7 @@
   --shadow: 0, 0, 0;
   --surface: 255, 255, 255;
   --on-surface: 29, 34, 33;
+  --success: 94, 209, 51;
 }
 
 @font-face {
