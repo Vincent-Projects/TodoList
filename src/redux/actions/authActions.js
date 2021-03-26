@@ -15,7 +15,7 @@ export const login = (email, password) => {
 
         const tokenExpire = new Date(
           new Date().getTime() + token_expire * 1000
-        ); // replace 8000 -> tokenExpire got from api call
+        );
 
         const auth_data = {
           token: token,
@@ -37,6 +37,7 @@ export const login = (email, password) => {
             email,
           },
         });
+        dispatch(AUTH_STOP());
       })
       .catch((err) => {
         if (err?.response?.status === 401) {
@@ -55,11 +56,69 @@ export const logout = () => {
     dispatch({
       type: actionTypes.LOGOUT,
     });
+    dispatch(AUTH_STOP());
+  };
+};
+
+export const signup = (
+  firstname,
+  lastname,
+  email,
+  password,
+  confirmPassword,
+  code
+) => {
+  return (dispatch) => {
+    dispatch(AUTH_START());
+
+    API.signup(firstname, lastname, email, password, confirmPassword, code)
+      .then((result) => {
+        if (result.status !== 201) {
+          dispatch(AUTH_FAIL("Failed to create an account"));
+          return;
+        }
+
+        dispatch(
+          AUTH_SUCCESS(
+            "We sent you an activation link, check your email to access the app."
+          )
+        );
+        dispatch(AUTH_STOP());
+      })
+      .catch((err) => {
+        const statusCodeErr = err?.response?.status;
+        if (statusCodeErr !== 500) {
+          dispatch(AUTH_FAIL("Wrong Credentials"));
+        } else {
+          dispatch(AUTH_FAIL("Server Problem, please try later"));
+        }
+      });
+  };
+};
+
+export const validateAccount = (token) => {
+  return dispatch => {
+    dispatch(AUTH_START());
+
+    API.validateAccount(token)
+      .then(result => {
+        if (result?.status === 200) {
+          dispatch(AUTH_SUCCESS("Your account has been successfully validated."));
+        }
+        dispatch(AUTH_STOP());
+      })
+      .catch(err => {
+        dispatch(AUTH_FAIL("Failed to validate account"));
+        dispatch(AUTH_STOP());
+      });
+
+    // actionTypes.VALIDATE_ACCOUNT API call
   };
 };
 
 export const checkAuthState = () => {
   return (dispatch) => {
+    dispatch(AUTH_START());
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -106,6 +165,7 @@ export const checkAuthState = () => {
         email: decodedToken.email,
       },
     });
+    dispatch(AUTH_STOP());
   };
 };
 
@@ -127,7 +187,6 @@ export const AUTH_STOP = () => {
 
 export const AUTH_SUCCESS = (message) => {
   return (dispatch) => {
-    dispatch(AUTH_STOP());
     dispatch(authErrReset());
     dispatch({
       type: actionTypes.AUTH_SUCCESS,
@@ -147,41 +206,6 @@ export const AUTH_FAIL = (errMessage) => {
         errMessage: errMessage,
       },
     });
-  };
-};
-
-export const signup = (
-  firstname,
-  lastname,
-  email,
-  password,
-  confirmPassword,
-  code
-) => {
-  return (dispatch) => {
-    dispatch(AUTH_START());
-
-    API.signup(firstname, lastname, email, password, confirmPassword, code)
-      .then((result) => {
-        if (result.status !== 201) {
-          dispatch(AUTH_FAIL("Failed to create an account"));
-          return;
-        }
-
-        dispatch(
-          AUTH_SUCCESS(
-            "We sent you an activation link, check your email to access the app."
-          )
-        );
-      })
-      .catch((err) => {
-        const statusCodeErr = err?.response?.status;
-        if (statusCodeErr !== 500) {
-          dispatch(AUTH_FAIL("Wrong Credentials"));
-        } else {
-          dispatch(AUTH_FAIL("Server Problem, please try later"));
-        }
-      });
   };
 };
 

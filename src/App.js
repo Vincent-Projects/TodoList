@@ -15,6 +15,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 const Dashboard = React.lazy(() => import("./containers/Dashboard"));
 const Login = React.lazy(() => import("./containers/auth/Login"));
 const Signup = React.lazy(() => import("./containers/auth/Signup"));
+const ValidationAccount = React.lazy(() => import('./containers/auth/ValidationAccount'));
 
 const AppContainer = styled.div`
   display: flex;
@@ -35,7 +36,7 @@ const app = ({ checkAuth, isAuth }) => {
 
   return (
     <AppContainer>
-      {isAuth
+      {isAuth /* IF route === / remove menu */
         ? <Menu />
         : null
       }
@@ -62,6 +63,11 @@ const app = ({ checkAuth, isAuth }) => {
             <AuthPage>
               <Signup />
             </AuthPage>
+          </Suspense>
+        </Route>
+        <Route path="/auth/confirm/account/:token">
+          <Suspense fallback={<DiamondSpinner mode="cubic" />}>
+            <ValidationAccount />
           </Suspense>
         </Route>
         <Route>

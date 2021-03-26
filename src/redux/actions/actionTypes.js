@@ -2,6 +2,7 @@
 export const LOGIN = "LOGIN";
 export const SINGUP = "SIGNUP";
 export const LOGOUT = "LOGOUT";
+export const VALIDATE_ACCOUNT = "VALIDATE_ACCOUNT";
 export const AUTH_START = "AUTH_START";
 export const AUTH_STOP = "AUTH_STOP";
 export const AUTH_FAIL = "AUTH_FAIL";

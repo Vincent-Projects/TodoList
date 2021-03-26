@@ -34,15 +34,26 @@ const NotificationContainer = styled.div`
   animation: ${slideDownAnimation} 1s ease-in-out forwards;
 `;
 
-export interface GenericNotificationProps {
-  text: string;
-  actions?: any // Need to find out how to change this to allow single button, multiple button or a list of button ? That extends a components or type actionable
+interface TextProps {
+  error: boolean;
 }
 
-const GenericNotification = ({ text, actions }: GenericNotificationProps) => {
+const Text = styled.p<TextProps>`
+  color: ${props => props.error ? "rgb(var(--error))" : null} 
+`;
+
+export interface GenericNotificationProps {
+  text: string;
+  error?: boolean;
+  actions?: any; // Need to find out how to change this to allow single button, multiple button or a list of button ? That extends a components or type actionable
+}
+
+const GenericNotification = ({ text, error = false, actions }: GenericNotificationProps) => {
   return (
     <NotificationContainer>
-      <p>{text}</p>
+      <Text error={error}>
+        {text}
+      </Text>
       {actions}
     </NotificationContainer>
   );

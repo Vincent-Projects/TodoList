@@ -21,6 +21,10 @@ class API {
     return apiInstance.post(`${apiRoutes.SIGNUP}/${code}`, data);
   }
 
+  static validateAccount(token) {
+    return apiInstance.get(`${apiRoutes.VALIDATE_ACCOUNT}/${token}`);
+  }
+
   // Todos calls
 
   // Projects calls

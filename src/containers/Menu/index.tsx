@@ -56,7 +56,7 @@ interface MenuLinkListProps extends MenuLinkProps {
 
 interface MenuProps {
   isLoading: boolean,
-  logout: () => Function 
+  logout: () => Function
 }
 
 const Menu = ({ isLoading, logout }: MenuProps) => {
@@ -106,10 +106,16 @@ const Menu = ({ isLoading, logout }: MenuProps) => {
   );
 };
 
+const mapStateToProps = (state: any) => {
+  return {
+    isLoading: state.auth.isLoading
+  }
+}
+
 const mapDispatchToProps = (dispatch: any) => {
   return {
     logout: () => dispatch(logout())
   }
 }
 
-export default connect(null, mapDispatchToProps)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
