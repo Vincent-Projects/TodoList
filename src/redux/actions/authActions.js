@@ -39,7 +39,7 @@ export const login = (email, password) => {
         });
       })
       .catch((err) => {
-        if (err.response.status === 401) {
+        if (err?.response?.status === 401) {
           dispatch(AUTH_FAIL("Wrong Credentials"));
         } else {
           dispatch(AUTH_FAIL("Server Problem, please try later"));
@@ -128,6 +128,7 @@ export const AUTH_STOP = () => {
 export const AUTH_SUCCESS = (message) => {
   return (dispatch) => {
     dispatch(AUTH_STOP());
+    dispatch(authErrReset());
     dispatch({
       type: actionTypes.AUTH_SUCCESS,
       payload: {

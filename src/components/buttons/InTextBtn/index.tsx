@@ -6,12 +6,17 @@ export interface InTextBtnProps {
   text: string;
   handleClick: () => void;
   darkTheme?: boolean;
+  warning?: boolean
 }
 
-const InTextBtn = ({ text, handleClick, darkTheme = true }: InTextBtnProps) => {
+const InTextBtn = ({ text, handleClick, darkTheme = true, warning = false }: InTextBtnProps) => {
   const btnClasses = [
     classes.Button,
-    darkTheme ? null : classes.ButtonLight,
+    darkTheme
+      ? warning
+        ? classes.ButtonWarning
+        : null
+      : classes.ButtonLight,
   ].join(" ");
 
   return (

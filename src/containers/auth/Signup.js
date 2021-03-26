@@ -10,6 +10,7 @@ import GenericButton from "components/buttons/GenericButton";
 import GenericInput from "components/inputs/GenericInput";
 import InTextBtn from "components/buttons/InTextBtn";
 import SocialMediaBtn from "components/buttons/SocialMediaBtn";
+import GenericNotification from "components/notification/GenericNotification";
 
 import * as constants from "components/contants";
 
@@ -121,11 +122,15 @@ const Signup = ({
   let SuccessMessage;
 
   if (authSuccessMessage) {
-    SuccessMessage = <div>{authSuccessMessage}</div>;
+    SuccessMessage = (
+      <GenericNotification
+        text={authSuccessMessage}
+      />
+    );
   }
 
   return (
-    <div className={classes.PageContainer}>
+    <>
       {SuccessMessage ?? null}{" "}
       {/* Replace with notification component + absolute position top of screen and 90% || 80% || 65% width screen */}
       <form className={classes.Form}>
@@ -270,7 +275,7 @@ const Signup = ({
           </div>
         </div>
       </form>
-    </div>
+    </>
   );
 };
 

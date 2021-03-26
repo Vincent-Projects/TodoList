@@ -29,3 +29,7 @@
 .Button:active {
   opacity: 0.9;
 }
+
+.ButtonWarning {
+  color: rgb(var(--error));
+}

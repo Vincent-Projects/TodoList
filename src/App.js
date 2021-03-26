@@ -1,29 +1,44 @@
 import React, { Suspense, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
+import styled from "styled-components";
+
+import AuthPage from "hoc/AuthPage";
+import Page from "hoc/Page";
+import Menu from "containers/Menu";
 
 import { checkAuthState } from "./redux/actions";
-
 import DiamondSpinner from "./components/DiamondSpinner";
-
 import LandingPage from "./containers/LandingPage";
-
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const Dashboard = React.lazy(() => import("./containers/Dashboard"));
 const Login = React.lazy(() => import("./containers/auth/Login"));
 const Signup = React.lazy(() => import("./containers/auth/Signup"));
 
-const app = ({ checkAuth }) => {
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: 786px) {
+    & {
+      flex-direction: row;
+    }
+  }
+`;
+
+
+const app = ({ checkAuth, isAuth }) => {
   useEffect(() => {
     checkAuth();
   }, []);
 
   return (
-    <div>
-      {/* <div>
-                <p>Menu Here</p>
-            </div> // Add auth flow*/}
+    <AppContainer>
+      {isAuth
+        ? <Menu />
+        : null
+      }
       <Switch>
         <Route exact path="/">
           <LandingPage />
@@ -31,7 +46,9 @@ const app = ({ checkAuth }) => {
         <Route path="/dashboard">
           <ProtectedRoute>
             <Suspense fallback={<DiamondSpinner mode="cubic" />}>
-              <Dashboard />
+              <Page>
+                <Dashboard />
+              </Page>
             </Suspense>
           </ProtectedRoute>
         </Route>
@@ -42,15 +59,22 @@ const app = ({ checkAuth }) => {
         </Route>
         <Route path="/signup">
           <Suspense fallback={<DiamondSpinner mode="cubic" />}>
-            <Signup />
+            <AuthPage>
+              <Signup />
+            </AuthPage>
           </Suspense>
         </Route>
         <Route>
           <h1>404 Error</h1>
         </Route>
       </Switch>
-    </div>
+    </AppContainer>
   );
+};
+const mapStateToProps = state => {
+  return {
+    isAuth: state.auth.isAuth
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -58,4 +82,4 @@ const mapDispatchToProps = (dispatch) => {
     checkAuth: () => dispatch(checkAuthState()),
   };
 };
-export default connect(null, mapDispatchToProps)(app);
+export default connect(mapStateToProps, mapDispatchToProps)(app);

@@ -52,7 +52,7 @@ export const ICONS: IconList = [
     img: <HomeIcon />,
   },
   {
-    name: "PROJECT",
+    name: "PROJECTS",
     url: "icons/folder-solid.svg",
     img: <ProjectIcon />,
   },
@@ -74,7 +74,15 @@ export const ICONS: IconList = [
 ];
 
 export const HOME = "HOME";
-export const PROJECT = "PROJECT";
+export const PROJECTS = "PROJECTS";
 export const HABIT = "HABIT";
 export const GOALS = "GOALS";
 export const PROFILE = "PROFILE";
+
+export const ICONS_ROUTES = {
+  HOME,
+  PROJECTS,
+  HABIT,
+  GOALS,
+  PROFILE
+};

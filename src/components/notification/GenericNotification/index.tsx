@@ -16,7 +16,7 @@ const NotificationContainer = styled.div`
   width: 90%;
   background-color: rgb(var(--surface));
   color: rgb(var(--success));
-  padding: 0.2rem;
+  padding: 1rem;
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: 1rem;

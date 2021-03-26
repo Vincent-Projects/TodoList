@@ -10,6 +10,4 @@ const axiosConfig = {
 
 const apiInstance = axios.create(axiosConfig);
 
-console.log(apiInstance);
-
 export default apiInstance;
