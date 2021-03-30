@@ -1,6 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
+  accessLevel: null,
   isAuth: false,
   token: null,
   token_expire: null,
@@ -19,6 +20,7 @@ const login = (state, action) => {
     token_expire: action.payload.token_expire,
     username: action.payload.username,
     email: action.payload.email,
+    accessLevel: "FREE" // Change this using the returned value from API
   };
 };
 
