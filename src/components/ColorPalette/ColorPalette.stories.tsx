@@ -21,7 +21,7 @@ export const Default = Template.bind({});
 Default.args = {
   colors: COLORS,
   selectedColor: "02",
-  handleColorChange: () => {
-    return ""
+  handleColorChange: (color) => {
+    alert(color);
   }
 }

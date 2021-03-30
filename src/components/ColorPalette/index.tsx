@@ -35,7 +35,6 @@ const ColorPaletteStyle = styled.div`
 interface ColorProps {
   primary: string;
   secondary: string;
-  locked: boolean;
 }
 
 const Color = styled.div`
@@ -43,10 +42,12 @@ const Color = styled.div`
   aspect-ratio: 1;
   transition: 250ms;
   position: relative;
+`;
+
+const UnlockedColor = styled(Color)`
   cursor: pointer;
 
-  ${props => !props.locked ? `
-    &:hover {
+  &:hover {
     transform: scale(1.1);
     box-shadow: 1px 1px 1px rgba(var(--shadow), 0.3);
   }
@@ -55,14 +56,12 @@ const Color = styled.div`
     transform: scale(0.9);
     box-shadow: none;
   }
-  ` : `
-    cursor: not-allowed;
-  `}
-  
+`;
 
-  ${props => props.locked ? (
-    `
-    &:after {
+const LockedColor = styled(Color)`
+  cursor: not-allowed;
+
+  &:after {
     position: absolute;
     content: "";
     width: 100%;
@@ -72,16 +71,14 @@ const Color = styled.div`
     cursor: normal;
     pointer-events: none;
     background-color: rgba(0, 0, 0, 0.6);
-  }`
-  ) : null}
-  
+  }
 `;
 
 
 export interface ColorPaletteProps {
   selectedColor: string;
   colors: ColorObject[];
-  handleColorChange: () => string;
+  handleColorChange: (color: string) => void;
 }
 
 const ColorPalette = ({ selectedColor, colors, handleColorChange }: ColorPaletteProps) => {
@@ -90,12 +87,22 @@ const ColorPalette = ({ selectedColor, colors, handleColorChange }: ColorPalette
     <ColorPaletteContainer>
       <ColorPaletteStyle>
         {colors.map(color => (
-          <Color
-            key={color.id}
-            primary={color.color}
+          (color.accessLevel === ACCESSLEVEL.PREMIUM && !hasPremiumPermission())
+            ? (
+              <LockedColor
+                key={color.id}
+                primary={color.color}
             secondary={color.secondColor}
-            locked={(color.accessLevel === ACCESSLEVEL.PREMIUM && !hasPremiumPermission()) ? true : false}
-          />
+              />
+            )
+            : (
+              <UnlockedColor
+                key={color.id}
+                primary={color.color}
+                secondary={color.secondColor}
+                onClick={() => handleColorChange(color.id)}
+              />
+            )
           ))}
       </ColorPaletteStyle>
     </ColorPaletteContainer>
