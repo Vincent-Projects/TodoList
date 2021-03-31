@@ -29,7 +29,10 @@ const AppContainer = styled.div`
 `;
 
 
-const app = ({ checkAuth, isAuth }) => {
+const app = ({
+  checkAuth,
+  isAuth,
+}) => {
   useEffect(() => {
     checkAuth();
   }, []);

@@ -10,10 +10,16 @@ const configComponent = {
 
 export default configComponent;
 
-const Template: Story<GenericItemProps> = args => <GenericItem {...args} />;
+const Template: Story<GenericItemProps> = args => (
+  <>
+    <GenericItem {...args} />
+    <GenericItem {...args} />
+    <GenericItem {...args} />
+  </>
+);
 
 export const Default = Template.bind({});
 Default.args = {
   text: "This is a todo that need to be tackle during this day",
-  color: "01"
+  color: "1"
 }

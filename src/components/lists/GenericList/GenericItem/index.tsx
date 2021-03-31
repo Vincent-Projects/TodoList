@@ -14,22 +14,21 @@ const ItemContainer = styled.div`
 `;
 
 const ColorSelectContainer = styled.div`
-  display: block;
   margin-right: 0.5rem;
 `;
 
 const Text = styled.p`
-  display: block;
-  border: 1px solid red;
+  padding: 0.1rem;
+  margin: 0;
 `;
 
 const GenericItem = ({ text, color }: GenericItemProps) => {
   return (
     <ItemContainer>
       <ColorSelectContainer>
-        <ColorSelect color={color}/>
+        <ColorSelect color={color} />
       </ColorSelectContainer>
-      <p>{text}</p>
+      <Text>{text}</Text>
       <div>{/* Interaction buttons  */}</div>
     </ItemContainer>
   );
