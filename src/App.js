@@ -7,15 +7,16 @@ import AuthPage from "hoc/AuthPage";
 import Page from "hoc/Page";
 import Menu from "containers/Menu";
 
-import { checkAuthState } from "./redux/actions";
-import DiamondSpinner from "./components/DiamondSpinner";
-import LandingPage from "./containers/LandingPage";
-import ProtectedRoute from "./components/ProtectedRoute";
+import { checkAuthState } from "redux/actions";
+import DiamondSpinner from "components/DiamondSpinner";
+import LandingPage from "containers/LandingPage";
+import ProtectedRoute from "components/ProtectedRoute";
+import PageNotFound from "containers/PageNotFound";
 
-const Dashboard = React.lazy(() => import("./containers/Dashboard"));
-const Login = React.lazy(() => import("./containers/auth/Login"));
-const Signup = React.lazy(() => import("./containers/auth/Signup"));
-const ValidationAccount = React.lazy(() => import('./containers/auth/ValidationAccount'));
+const Dashboard = React.lazy(() => import("containers/Dashboard"));
+const Login = React.lazy(() => import("containers/auth/Login"));
+const Signup = React.lazy(() => import("containers/auth/Signup"));
+const ValidationAccount = React.lazy(() => import('containers/auth/ValidationAccount'));
 
 const AppContainer = styled.div`
   display: flex;
@@ -74,7 +75,9 @@ const app = ({
           </Suspense>
         </Route>
         <Route>
-          <h1>404 Error</h1>
+          <Page>
+            <PageNotFound />
+          </Page>
         </Route>
       </Switch>
     </AppContainer>

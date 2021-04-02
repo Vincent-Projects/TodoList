@@ -7,6 +7,7 @@ import MenuLink, { MenuLinkProps } from "components/MenuLink";
 import ROUTES from "./constants";
 import InTextBtn from "components/buttons/InTextBtn";
 import DiamondSpinner from "components/DiamondSpinner";
+import versions from "versions";
 
 const MenuContainer = styled.div`
   width: 100%;
@@ -49,6 +50,18 @@ const MenuLinkContainer = styled.div`
   width: 100%;
 `;
 
+const Versionning = styled.div`
+  font-size: 0.65rem;
+  margin: auto;
+  margin-top: 0.5rem;
+  color: gray;
+`;
+
+const LogoutContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 
 interface MenuLinkListProps extends MenuLinkProps {
   key: string;
@@ -75,6 +88,10 @@ const Menu = ({ isLoading, logout }: MenuProps) => {
     history.replace("/login");
   }
 
+  const handleRouteClick = (route: string) => {
+    history.push(route);
+  }
+
   return (
     <MenuContainer>
       <div>
@@ -90,7 +107,7 @@ const Menu = ({ isLoading, logout }: MenuProps) => {
           />
         ))}
       </MenuLinkContainer>
-      <div>
+      <LogoutContainer>
         {!isLoading
           ? (          
             <InTextBtn
@@ -100,8 +117,14 @@ const Menu = ({ isLoading, logout }: MenuProps) => {
             />
           )
           : <DiamondSpinner mode="cubic"/>
-      }
-      </div>
+        }
+        <Versionning>
+          <InTextBtn
+            text={versions}
+            handleClick={() => handleRouteClick("/versions")}
+          />
+        </Versionning>
+      </LogoutContainer>
     </MenuContainer>
   );
 };
