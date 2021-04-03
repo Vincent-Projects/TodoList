@@ -70,22 +70,22 @@ const logout = (state) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.LOGIN:
-      return login(state, action);
-    case actionTypes.AUTH_START:
-      return authStart(state);
-    case actionTypes.AUTH_STOP:
-      return authStop(state);
-    case actionTypes.AUTH_FAIL:
-      return authFail(state, action);
-    case actionTypes.AUTH_SUCCESS:
-      return authSuccess(state, action);
-    case actionTypes.AUTH_RESET:
-      return authResetErr(state);
-    case actionTypes.LOGOUT:
-      return logout(state);
-    default:
-      return state;
+  case actionTypes.LOGIN:
+    return login(state, action);
+  case actionTypes.AUTH_START:
+    return authStart(state);
+  case actionTypes.AUTH_STOP:
+    return authStop(state);
+  case actionTypes.AUTH_FAIL:
+    return authFail(state, action);
+  case actionTypes.AUTH_SUCCESS:
+    return authSuccess(state, action);
+  case actionTypes.AUTH_RESET:
+    return authResetErr(state);
+  case actionTypes.LOGOUT:
+    return logout(state);
+  default:
+    return state;
   }
 };
 

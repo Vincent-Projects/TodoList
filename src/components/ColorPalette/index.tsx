@@ -10,18 +10,23 @@ import Icon from "components/Icon";
 const ColorPaletteContainer = styled.div`
   width: 100%;
   height: 100%;
-  overflow-y: auto;
-  overflow-x: auto;
+  overflow-y: hidden;
+  overflow-x: hidden;
 
   &::-webkit-scrollbar {
+    width: 0.45rem;
     background-color: rgba(var(--primary), 0.6);
     border-radius: 5px;
-    width: 0.8rem;
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: rgb(var(--primary));
     border-radius: 5px;
+  }
+
+  &:hover{
+    overflow-y: auto;
+    overflow-x: auto;
   }
 `;
 

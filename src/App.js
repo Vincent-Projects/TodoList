@@ -16,7 +16,7 @@ import PageNotFound from "containers/PageNotFound";
 const Dashboard = React.lazy(() => import("containers/Dashboard"));
 const Login = React.lazy(() => import("containers/auth/Login"));
 const Signup = React.lazy(() => import("containers/auth/Signup"));
-const ValidationAccount = React.lazy(() => import('containers/auth/ValidationAccount'));
+const ValidationAccount = React.lazy(() => import("containers/auth/ValidationAccount"));
 
 const AppContainer = styled.div`
   display: flex;
