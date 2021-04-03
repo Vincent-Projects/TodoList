@@ -9,7 +9,7 @@ import GenericInput from "components/inputs/GenericInput";
 import InTextBtn from "components/buttons/InTextBtn";
 import SocialMediaBtn from "components/buttons/SocialMediaBtn";
 
-import DiamondSpinner from "components/DiamondSpinner";
+import DiamondSpinner from "components/loaders/DiamondSpinner";
 
 import * as constants from "components/contants";
 import * as actions from "redux/actions";
@@ -68,7 +68,7 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
     history.push("/signup");
   };
 
-  const handleForgotPasswordClick = () => {};
+  const handleForgotPasswordClick = () => { };
 
   return (
     <div className={classes.PageContainer}>

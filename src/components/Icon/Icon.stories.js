@@ -6,7 +6,7 @@ import { ICONS } from "../contants";
 
 const configStoryComponent = {
   component: Icon,
-  title: "Icon",
+  title: "Components/Icon",
 };
 
 export default configStoryComponent;

@@ -30,7 +30,8 @@ const ColorPaletteContainer = styled.div`
   height: 10rem;
   background-color: rgb(var(--bg-1dp));
   box-shadow: 1px 2px 1px rgb(var(--shadow));
-  display: ${(props: ColorPaletteContainerProps) => props.visible ? "visible": "none"};
+  display: ${(props: ColorPaletteContainerProps) => props.visible ? "visible" : "none"};
+  z-index: 10;
 `;
 
 interface ColorSelectProps {

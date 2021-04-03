@@ -6,7 +6,7 @@ import styled from "styled-components";
 import MenuLink, { MenuLinkProps } from "components/MenuLink";
 import ROUTES from "./constants";
 import InTextBtn from "components/buttons/InTextBtn";
-import DiamondSpinner from "components/DiamondSpinner";
+import DiamondSpinner from "components/loaders/DiamondSpinner";
 import versions from "versions";
 
 const MenuContainer = styled.div`

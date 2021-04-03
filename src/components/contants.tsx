@@ -10,6 +10,9 @@ import { ReactComponent as HabitIcon } from "../assets/icons/chart-bar-solid.svg
 import { ReactComponent as GoalsIcon } from "../assets/icons/bullseye-solid.svg";
 import { ReactComponent as ProfileIcon } from "../assets/icons/user-solid.svg";
 
+import { ReactComponent as CheckIcon } from "assets/icons/check-solid.svg";
+
+
 export interface SocialMediaType {
   name: string;
   url: string;
@@ -71,6 +74,11 @@ export const ICONS: IconList = [
     url: "icons/user-solid.svg",
     img: <ProfileIcon />,
   },
+  {
+    name: "CHECK",
+    url: "icons/check-solid.svg",
+    img: <CheckIcon />
+  }
 ];
 
 export const HOME = "HOME";
@@ -78,6 +86,7 @@ export const PROJECTS = "PROJECTS";
 export const HABIT = "HABIT";
 export const GOALS = "GOALS";
 export const PROFILE = "PROFILE";
+export const CHECK = "CHECK";
 
 export const ICONS_ROUTES = {
   HOME,

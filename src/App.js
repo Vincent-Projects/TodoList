@@ -8,7 +8,7 @@ import Page from "hoc/Page";
 import Menu from "containers/Menu";
 
 import { checkAuthState } from "redux/actions";
-import DiamondSpinner from "components/DiamondSpinner";
+import DiamondSpinner from "components/loaders/DiamondSpinner";
 import LandingPage from "containers/LandingPage";
 import ProtectedRoute from "components/ProtectedRoute";
 import PageNotFound from "containers/PageNotFound";

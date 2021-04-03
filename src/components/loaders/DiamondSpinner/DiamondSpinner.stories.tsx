@@ -4,7 +4,7 @@ import DiamondSpinner, { DiamondSpinnerProps } from "./index";
 
 const configStoryComponent = {
   component: DiamondSpinner,
-  title: "DiamondSpinner",
+  title: "Components/Loaders/DiamondSpinner",
 };
 
 export default configStoryComponent;

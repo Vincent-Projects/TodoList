@@ -4,7 +4,7 @@ import GenericButton, { GenericButtonProps } from "./index";
 
 const configStoryComponent = {
   component: GenericButton,
-  title: "GenericButton",
+  title: "Components/Buttons/GenericButton",
 };
 
 export default configStoryComponent;

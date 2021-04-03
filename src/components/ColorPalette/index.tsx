@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { ColorObject } from "utils/colors";
 import { hasPremiumPermission } from "utils/auth";
 import { ACCESSLEVEL } from "utils/constants";
+import { CHECK } from "components/contants";
+import Icon from "components/Icon";
 
 const ColorPaletteContainer = styled.div`
   width: 100%;
@@ -58,6 +60,23 @@ const UnlockedColor = styled(Color)`
   }
 `;
 
+const UnlockedColorSelected = styled(UnlockedColor)`
+  position: relative;
+`;
+
+const IconCheck = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+`;
+
 const LockedColor = styled(Color)`
   cursor: not-allowed;
 
@@ -95,7 +114,22 @@ const ColorPalette = ({ selectedColor, colors, handleColorChange }: ColorPalette
             secondary={color.secondColor}
               />
             )
-            : (
+            : color.id === selectedColor
+              ? (
+                <UnlockedColorSelected
+                  key={color.id}
+                  primary={color.color}
+                  secondary={color.secondColor}
+                  onClick={() => handleColorChange(color.id)}
+                >
+                  <IconCheck>
+                    <Icon
+                      iconName= {CHECK}
+                    />
+                  </IconCheck>
+                </UnlockedColorSelected>
+              )
+                : (
               <UnlockedColor
                 key={color.id}
                 primary={color.color}

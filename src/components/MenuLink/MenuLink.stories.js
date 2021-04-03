@@ -6,7 +6,7 @@ import { ICONS } from "../contants";
 
 const configStoryComponent = {
   component: MenuLink,
-  title: "MenuLink",
+  title: "Menu/MenuLink",
 };
 
 export default configStoryComponent;

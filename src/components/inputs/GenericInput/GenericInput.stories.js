@@ -3,7 +3,7 @@ import GenericInput from "./index";
 
 const configStoryComponent = {
   component: GenericInput,
-  title: "GenericInput",
+  title: "Components/Inputs/GenericInput",
 };
 
 export default configStoryComponent;

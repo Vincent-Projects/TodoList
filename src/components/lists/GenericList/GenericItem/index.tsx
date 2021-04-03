@@ -50,8 +50,7 @@ const GenericItem = ({ done, text, color, handleClick }: GenericItemProps) => {
   return (
     <ItemContainer
       onClick={handleClick}
-    >
-      <ColorSelectContainer>
+    ><ColorSelectContainer>
         <ColorSelect color={color} />
       </ColorSelectContainer>
       <CheckBox

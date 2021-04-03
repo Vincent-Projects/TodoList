@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { validateAccount } from "redux/actions";
 import styled from "styled-components";
 import GenericButton from "components/buttons/GenericButton";
-import DiamondSpinner from "components/DiamondSpinner";
+import DiamondSpinner from "components/loaders/DiamondSpinner";
 import GenericNotification from "components/notification/GenericNotification";
 
 const Container = styled.div`

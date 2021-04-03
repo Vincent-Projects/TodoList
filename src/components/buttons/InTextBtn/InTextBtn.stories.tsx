@@ -4,7 +4,7 @@ import InTextBtn, { InTextBtnProps } from "./index";
 
 const configStoryComponent = {
   component: InTextBtn,
-  title: "InTextBtn",
+  title: "Components/Buttons/InTextBtn",
 };
 
 export default configStoryComponent;

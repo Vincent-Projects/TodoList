@@ -5,7 +5,7 @@ import * as constants from "../../contants";
 
 const configStoryComponent = {
   component: SocialMediaBtn,
-  title: "SocialMediaBtn",
+  title: "Components/Buttons/SocialMediaBtn",
 };
 
 export default configStoryComponent;

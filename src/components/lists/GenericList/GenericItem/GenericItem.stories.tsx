@@ -5,7 +5,7 @@ import GenericItem, { GenericItemProps} from "./index";
 
 const configComponent = {
   component: GenericItem,
-  title: "GenericItem"
+  title: "Components/Lists/GenericList/GenericItem"
 };
 
 export default configComponent;

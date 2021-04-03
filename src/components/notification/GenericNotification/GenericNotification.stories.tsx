@@ -5,7 +5,7 @@ import GenericButton from "components/buttons/GenericButton";
 
 const configStoryComponent = {
   component: GenericNotification,
-  title: "GenericNotification"
+  title: "Components/Notifications/GenericNotification"
 };
 
 export default configStoryComponent;

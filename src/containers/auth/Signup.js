@@ -4,7 +4,7 @@ import classes from "./index.module.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import DiamondSpinner from "components/DiamondSpinner";
+import DiamondSpinner from "components/loaders/DiamondSpinner";
 
 import GenericButton from "components/buttons/GenericButton";
 import GenericInput from "components/inputs/GenericInput";

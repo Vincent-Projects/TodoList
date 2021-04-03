@@ -4,7 +4,7 @@ import TextTooltip from "./index";
 
 const configStoryComponent = {
   component: TextTooltip,
-  title: "TextTooltip",
+  title: "Experiments/TextTooltip",
 };
 
 export default configStoryComponent;
