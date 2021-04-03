@@ -71,7 +71,9 @@ const app = ({
         </Route>
         <Route path="/auth/confirm/account/:token">
           <Suspense fallback={<DiamondSpinner mode="cubic" />}>
-            <ValidationAccount />
+            <AuthPage>
+              <ValidationAccount />
+            </AuthPage>
           </Suspense>
         </Route>
         <Route>
