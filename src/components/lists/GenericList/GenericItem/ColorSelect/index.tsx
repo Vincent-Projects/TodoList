@@ -24,11 +24,11 @@ interface ColorPaletteContainerProps {
 
 const ColorPaletteContainer = styled.div`
   position: absolute;
-  top: 0;
+  top: 100%;
   left: 100%;
   width: 10rem;
   height: 10rem;
-  background-color: rgb(var(--bg-1dp));
+  background-color: rgb(var(--bg-24dp));
   box-shadow: 1px 2px 1px rgb(var(--shadow));
   display: ${(props: ColorPaletteContainerProps) => props.visible ? "visible" : "none"};
   z-index: 10;
@@ -74,8 +74,8 @@ const ColorSelect = ({ color: colorId }: ColorSelectProps) => {
     <SelectContainer primary={color?.color} secondary={color?.secondColor} onClick={handleClick}>
       <ColorPaletteContainer ref={refElement} visible={visible} onClick={cancelParentClick}>{/* Maybe change top 0 to auto */}
         <ColorPalette
-          colors={[]}
-          selectedColor={""}
+          colors={COLORS}
+          selectedColor={`${color?.id}`}
           handleColorChange={(color) => console.log(color)}
         />
       </ColorPaletteContainer>

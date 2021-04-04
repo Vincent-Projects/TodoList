@@ -10,6 +10,8 @@ import Icon from "components/Icon";
 const ColorPaletteContainer = styled.div`
   width: 100%;
   height: 100%;
+  padding: 2px;
+  padding-right: calc(2px + 0.45rem);
   overflow-y: hidden;
   overflow-x: hidden;
 
@@ -25,6 +27,7 @@ const ColorPaletteContainer = styled.div`
   }
 
   &:hover{
+    padding-right: 2px;
     overflow-y: auto;
     overflow-x: auto;
   }

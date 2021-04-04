@@ -9,3 +9,12 @@ export const ACCESSLEVEL = {
   PREMIUM,
   BELIEVER
 };
+
+export interface TaskType {
+  _id: string,
+  task: string,
+  complete: boolean,
+  userId: string,
+  projectId?: string,
+  tagColor?: string,
+}
