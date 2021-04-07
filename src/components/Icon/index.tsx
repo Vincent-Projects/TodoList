@@ -7,7 +7,7 @@ export interface IconProps {
 }
 
 const Icon = ({ iconName }: IconProps) => {
-  let icon = ICONS.find((icon) => icon.name === iconName);
+  const icon = ICONS.find((icon) => icon.name === iconName);
   let IconImg;
 
   if (icon) {

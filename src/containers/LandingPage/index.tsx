@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import GenericButton from "components/buttons/GenericButton";
 import Button from "hoc/Button";
 import classes from "./index.module.css";
-import logo from "assets/icons/appicon.png";
+//import logo from "assets/icons/appicon.png";
 
 const LandingPage = () => {
   const history = useHistory();

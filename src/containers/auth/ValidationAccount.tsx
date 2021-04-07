@@ -37,7 +37,7 @@ interface TokenParam {
 
 interface ValidationAccountProps {
   isLoading: boolean;
-  validateAccount: (token: string) => Function;
+  validateAccount: (token: string) => void;
   authSuccessMessage: string;
   authErrMessage: string;
 }

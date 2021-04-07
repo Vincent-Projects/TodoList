@@ -26,16 +26,12 @@
             "warn",
             "unix"
         ],
-        "quotes": [
-            "warn",
-            "double"
-        ],
         "semi": [
             "warn",
             "always"
         ],
         "no-unused-vars": [
-            "warn",
+            "error",
             {
                 "vars": "all",
                 "args": "after-used",
@@ -43,5 +39,35 @@
             }
         ],
         "react/prop-types": 0
-    }
+    },
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "env": {
+                "browser": true,
+                "es2021": true,
+                "node": true
+            },
+            "extends": [
+                "eslint:recommended",
+                "plugin:react/recommended",
+                "plugin:@typescript-eslint/eslint-recommended",
+                "plugin:@typescript-eslint/recommended"
+            ],
+            "parser": "@typescript-eslint/parser",
+            "plugins": [
+                "react",
+                "@typescript-eslint"
+            ],
+            "rules": {
+                "semi": "warn",
+                "linebreak-style": [
+                    "warn",
+                    "unix"
+                ],
+                "@typescript-eslint/no-explicit-any": "off",
+                "@typescript-eslint/explicit-module-boundary-types": "off"
+            }
+        }
+    ]
 }

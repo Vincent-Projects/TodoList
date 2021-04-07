@@ -68,14 +68,14 @@ interface MenuLinkListProps extends MenuLinkProps {
 
 interface MenuProps {
   isLoading: boolean;
-  logout: () => Function;
+  logout: () => void;
 }
 
 const Menu = ({ isLoading, logout }: MenuProps) => {
   const history = useHistory();
 
-  let links: MenuLinkListProps[] = [];
-  for (let [key, object] of Object.entries(ROUTES)) {
+  const links: MenuLinkListProps[] = [];
+  for (const [key, object] of Object.entries(ROUTES)) {
     links.push({
       ...object,
       key: key,

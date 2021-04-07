@@ -11,7 +11,7 @@ const SocialMediaBtn = ({ name }: SocialMediaBtnProps) => {
   const medias = constants.SOCIAL_MEDIA;
   const socialMedia = medias.find((social) => social.name === name);
   let Logo;
-  let link: string = "";
+  let link = "";
 
   if (socialMedia && socialMedia.logo) {
     Logo = socialMedia.logo;

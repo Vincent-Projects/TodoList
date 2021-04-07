@@ -23,5 +23,7 @@ Default.args = {
   text: "This is a todo that need to be tackle during this day",
   color: "1",
   done: true,
-  handleClick: () => {},
+  handleClick: () => {
+    console.log("Something");
+  },
 };

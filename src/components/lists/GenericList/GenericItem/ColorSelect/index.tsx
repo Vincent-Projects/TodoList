@@ -61,21 +61,21 @@ const ColorSelect = ({ color: colorId }: ColorSelectProps) => {
     setVisible(!visible);
   };
 
-  const resetVisible = (event: any) => {
+  /* const resetVisible = (event: any) => {
     if (refElement.current && event.target === refElement) {
       alert("Click dans l'element");
     } else {
       alert("Click en dehors");
     }
-    /* alert("Something")
-    setVisible(false); */
-  };
+    alert("Something")
+    setVisible(false); 
+  }; */
 
   const cancelParentClick = (event: any) => {
     event.stopPropagation();
   };
 
-  let color = COLORS[+colorId - 1];
+  const color = COLORS[+colorId - 1];
 
   return (
     <SelectContainer
