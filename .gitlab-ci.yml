@@ -44,9 +44,13 @@ deploy:
   stage: deploy
   before_script:
     - cd server
+    - git init
     - git config user.email "vincent.crys.dev@gmail.com"
     - git config user.name "Flists"
   script:
+    - ls
+    - git add .
+    - git commit -m "deployment"
     - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
     - git push -f heroku HEAD:master
   environment:
