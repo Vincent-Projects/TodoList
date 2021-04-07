@@ -15,6 +15,4 @@ describe("<GenericInput />", () => {
     expect(wrapper.find(HTMLLabelElement)).toHaveLength(1);
     expect(wrapper.find(HTMLInputElement)).toHaveLength(1);
   });
-
-  //it('should render a label with the label provided and the id provided');
 });

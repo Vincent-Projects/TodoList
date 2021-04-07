@@ -109,7 +109,7 @@ export const validateAccount = (token) => {
         }
         dispatch(AUTH_STOP());
       })
-      .catch((err) => {
+      .catch(() => {
         dispatch(AUTH_FAIL("Failed to validate account"));
         dispatch(AUTH_STOP());
       });
