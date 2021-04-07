@@ -31,6 +31,9 @@ build-server:
   stage: post-build
   script:
     - npm run build:server
+  artifacts:
+    paths:
+      - server/
 
 tests:
   stage: test
@@ -41,6 +44,7 @@ deploy:
   stage: deploy
   before_script:
     - cd server
+    - ls
     - git config user.email "vincent.crys.dev@gmail.com"
     - git config user.name "Flists"
   script:
