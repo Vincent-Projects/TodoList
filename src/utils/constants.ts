@@ -18,3 +18,5 @@ export interface TaskType {
   projectId?: string,
   tagColor?: string,
 }
+
+export const passwordRequirements = "( at least 8 characters, 1 uppercase, 1 lowercase, 1 digit, 1 special(@$&%#§!?) )";

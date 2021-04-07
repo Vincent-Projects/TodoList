@@ -3,6 +3,7 @@ import { useHistory, Redirect } from "react-router-dom";
 import classes from "./index.module.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { passwordRequirements } from "utils/constants";
 
 import DiamondSpinner from "components/loaders/DiamondSpinner";
 
@@ -205,6 +206,7 @@ const Signup = ({
           darkTheme={false}
           isError={passwordErr}
           errMessage={passwordErrMessage}
+          requirements={passwordRequirements}
         />
 
         <div className={classes.Margin}></div>
@@ -237,11 +239,12 @@ const Signup = ({
           handleChangeText={(text) =>
             handleInput(text, setCode, codeErr, setCodeErr)
           }
-          label="Signup Code"
+          label="Alpha Code"
           type="password"
           darkTheme={false}
           isError={codeErr}
           errMessage={codeErrMessage}
+          requirements={"Code provided by email sent by @Vincent"}
         />
 
         <div className={classes.Margin}></div>
