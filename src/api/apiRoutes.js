@@ -5,5 +5,5 @@ export const VALIDATE_ACCOUNT = "/auth/verify";
 export default {
   LOGIN,
   SIGNUP,
-  VALIDATE_ACCOUNT
+  VALIDATE_ACCOUNT,
 };

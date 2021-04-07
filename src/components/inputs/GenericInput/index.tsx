@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./index.module.css";
-import styled from "styled-components"
+import styled from "styled-components";
 
 const Requirements = styled.p`
   opacity: 0.8;
@@ -19,7 +19,7 @@ interface Props {
   errMessage: string | null;
   type?: InputType;
   darkTheme?: boolean;
-  requirements?: string
+  requirements?: string;
 }
 
 const GenericInput = ({
@@ -32,7 +32,7 @@ const GenericInput = ({
   errMessage = null,
   type = "text",
   darkTheme = true,
-  requirements = ""
+  requirements = "",
 }: Props) => {
   const labelClasses = [
     isError ? classes.LabelError : null,
@@ -49,7 +49,7 @@ const GenericInput = ({
   const errComponent = isError ? (
     <p className={classes.ErrorMessage}>{errMessage}</p>
   ) : null;
-  
+
   return (
     <div className={classes.Container}>
       <label className={labelClasses} htmlFor={id}>

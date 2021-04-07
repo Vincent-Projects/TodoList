@@ -6,13 +6,13 @@ import COLORS from "utils/colors";
 
 const configComponent = {
   component: ColorPalette,
-  title: "Components/ColorPalette"
+  title: "Components/ColorPalette",
 };
 
 export default configComponent;
 
-const Template: Story<ColorPaletteProps> = args => (
-  <div style={{width: "10rem", height: "10rem"}}>
+const Template: Story<ColorPaletteProps> = (args) => (
+  <div style={{ width: "10rem", height: "10rem" }}>
     <ColorPalette {...args} />
   </div>
 );
@@ -23,5 +23,5 @@ Default.args = {
   selectedColor: "2",
   handleColorChange: (color) => {
     alert(color);
-  }
-}
+  },
+};

@@ -20,7 +20,7 @@ const initialState = {
       complete: true,
       userId: "someidhere",
     },
-  ]
+  ],
 };
 
 const reducer = (state = initialState, action) => {

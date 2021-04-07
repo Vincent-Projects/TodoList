@@ -7,16 +7,17 @@ const BELIEVER: AccessLevelType = "BELIEVER";
 export const ACCESSLEVEL = {
   FREE,
   PREMIUM,
-  BELIEVER
+  BELIEVER,
 };
 
 export interface TaskType {
-  _id: string,
-  task: string,
-  complete: boolean,
-  userId: string,
-  projectId?: string,
-  tagColor?: string,
+  _id: string;
+  task: string;
+  complete: boolean;
+  userId: string;
+  projectId?: string;
+  tagColor?: string;
 }
 
-export const passwordRequirements = "( at least 8 characters, 1 uppercase, 1 lowercase, 1 digit, 1 special(@$&%#§!?) )";
+export const passwordRequirements =
+  "( at least 8 characters, 1 uppercase, 1 lowercase, 1 digit, 1 special(@$&%#§!?) )";

@@ -10,7 +10,7 @@ const LandingPage = () => {
 
   const handleRouteClick = (route: string) => {
     history.push(route);
-  }
+  };
 
   return (
     <div className={classes.Container}>
@@ -40,7 +40,9 @@ const LandingPage = () => {
 
       <div className={classes.BigTitleContainer}>
         <h1 className={classes.BigTitle}>Flists</h1>
-        <h2 className={classes.BigSubTitle}>Take control of your <span>life.</span></h2>
+        <h2 className={classes.BigSubTitle}>
+          Take control of your <span>life.</span>
+        </h2>
       </div>
     </div>
   );

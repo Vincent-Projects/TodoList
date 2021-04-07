@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 const slideDownAnimation = keyframes`
   from {
@@ -39,7 +39,7 @@ interface TextProps {
 }
 
 const Text = styled.p<TextProps>`
-  color: ${props => props.error ? "rgb(var(--error))" : null} 
+  color: ${(props) => (props.error ? "rgb(var(--error))" : null)};
 `;
 
 export interface GenericNotificationProps {
@@ -48,15 +48,17 @@ export interface GenericNotificationProps {
   actions?: any; // Need to find out how to change this to allow single button, multiple button or a list of button ? That extends a components or type actionable
 }
 
-const GenericNotification = ({ text, error = false, actions }: GenericNotificationProps) => {
+const GenericNotification = ({
+  text,
+  error = false,
+  actions,
+}: GenericNotificationProps) => {
   return (
     <NotificationContainer>
-      <Text error={error}>
-        {text}
-      </Text>
+      <Text error={error}>{text}</Text>
       {actions}
     </NotificationContainer>
   );
-}
+};
 
 export default GenericNotification;

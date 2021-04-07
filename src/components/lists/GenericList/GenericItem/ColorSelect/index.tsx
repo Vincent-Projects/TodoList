@@ -13,9 +13,15 @@ const SelectContainer = styled.div`
   position: relative;
   background: linear-gradient(
     45deg,
-    rgb(var(--color-${(props: SelectContainerProps) => props.primary ?? 'transparent'})) 0% 48%, 
-    rgb(var(--color-${props => props.secondary ?? "transparent"})) 52% 100%
-    );
+    rgb(
+        var(
+          --color-
+            ${(props: SelectContainerProps) => props.primary ?? "transparent"}
+        )
+      )
+      0% 48%,
+    rgb(var(--color- ${(props) => props.secondary ?? "transparent"})) 52% 100%
+  );
 `;
 
 interface ColorPaletteContainerProps {
@@ -30,7 +36,8 @@ const ColorPaletteContainer = styled.div`
   height: 10rem;
   background-color: rgb(var(--bg-24dp));
   box-shadow: 1px 2px 1px rgb(var(--shadow));
-  display: ${(props: ColorPaletteContainerProps) => props.visible ? "visible" : "none"};
+  display: ${(props: ColorPaletteContainerProps) =>
+    props.visible ? "visible" : "none"};
   z-index: 10;
 `;
 
@@ -52,7 +59,7 @@ const ColorSelect = ({ color: colorId }: ColorSelectProps) => {
   const handleClick = (event: any) => {
     event.stopPropagation();
     setVisible(!visible);
-  }
+  };
 
   const resetVisible = (event: any) => {
     if (refElement.current && event.target === refElement) {
@@ -62,17 +69,26 @@ const ColorSelect = ({ color: colorId }: ColorSelectProps) => {
     }
     /* alert("Something")
     setVisible(false); */
-  }
+  };
 
   const cancelParentClick = (event: any) => {
     event.stopPropagation();
-  }
+  };
 
   let color = COLORS[+colorId - 1];
 
   return (
-    <SelectContainer primary={color?.color} secondary={color?.secondColor} onClick={handleClick}>
-      <ColorPaletteContainer ref={refElement} visible={visible} onClick={cancelParentClick}>{/* Maybe change top 0 to auto */}
+    <SelectContainer
+      primary={color?.color}
+      secondary={color?.secondColor}
+      onClick={handleClick}
+    >
+      <ColorPaletteContainer
+        ref={refElement}
+        visible={visible}
+        onClick={cancelParentClick}
+      >
+        {/* Maybe change top 0 to auto */}
         <ColorPalette
           colors={COLORS}
           selectedColor={`${color?.id}`}
@@ -84,4 +100,3 @@ const ColorSelect = ({ color: colorId }: ColorSelectProps) => {
 };
 
 export default ColorSelect;
-

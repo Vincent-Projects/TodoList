@@ -31,7 +31,7 @@ const Text = styled.p`
   margin-bottom: 1rem;
 `;
 
-interface TokenParam  {
+interface TokenParam {
   token: string;
 }
 
@@ -46,35 +46,31 @@ const ValidationAccount = ({
   isLoading,
   validateAccount,
   authSuccessMessage,
-  authErrMessage
+  authErrMessage,
 }: ValidationAccountProps) => {
   const { token }: TokenParam = useParams();
 
   const handleClick = () => {
     validateAccount(token);
-  }
-
-
+  };
 
   return (
     <Container>
-      { authSuccessMessage
-        ? <GenericNotification text={authSuccessMessage} />
-        : authErrMessage
-        ? <GenericNotification text={authErrMessage} error={true} />
-        : null
-      }
+      {authSuccessMessage ? (
+        <GenericNotification text={authSuccessMessage} />
+      ) : authErrMessage ? (
+        <GenericNotification text={authErrMessage} error={true} />
+      ) : null}
       <Title>Welcome to Flists</Title>
-      <Text>To activate your account and enjoy this app, you need first to push that button and open the doors to your app. ;)</Text>
-      { isLoading
-        ? <DiamondSpinner mode="circle" />
-        : (
-          <GenericButton
-          text="Activate My Account"
-          handleClick={handleClick}
-          />
-          )
-        }
+      <Text>
+        To activate your account and enjoy this app, you need first to push that
+        button and open the doors to your app. ;)
+      </Text>
+      {isLoading ? (
+        <DiamondSpinner mode="circle" />
+      ) : (
+        <GenericButton text="Activate My Account" handleClick={handleClick} />
+      )}
     </Container>
   );
 };
@@ -83,14 +79,14 @@ const mapStateToProps = (state: any) => {
   return {
     isLoading: state.auth.isLoading,
     authSuccessMessage: state.auth.authSuccessMessage,
-    authErrMessage: state.auth.authErrMessage
-  }
-}
+    authErrMessage: state.auth.authErrMessage,
+  };
+};
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    validateAccount: (token: string) => dispatch(validateAccount(token)) 
-  }
-}
+    validateAccount: (token: string) => dispatch(validateAccount(token)),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ValidationAccount);

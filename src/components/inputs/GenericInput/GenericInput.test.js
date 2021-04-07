@@ -7,11 +7,9 @@ import GenericInput from "./index";
 
 configure({ adapter: new Adapter() });
 
-describe('<GenericInput />', () => {
-  it('should render a div element with label and input inside', () => {
-    const wrapper = shallow((
-      <GenericInput />
-    ));
+describe("<GenericInput />", () => {
+  it("should render a div element with label and input inside", () => {
+    const wrapper = shallow(<GenericInput />);
 
     expect(wrapper.find(HTMLDivElement)).toHaveLength(1);
     expect(wrapper.find(HTMLLabelElement)).toHaveLength(1);

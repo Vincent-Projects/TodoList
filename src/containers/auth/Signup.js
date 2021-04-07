@@ -123,11 +123,7 @@ const Signup = ({
   let SuccessMessage;
 
   if (authSuccessMessage) {
-    SuccessMessage = (
-      <GenericNotification
-        text={authSuccessMessage}
-      />
-    );
+    SuccessMessage = <GenericNotification text={authSuccessMessage} />;
   }
 
   return (

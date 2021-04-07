@@ -4,12 +4,12 @@ import GenericList, { GenericListProps } from "./index";
 
 const configComponent = {
   component: GenericList,
-  title: "Components/Lists/GenericList/GenericList"
-}
+  title: "Components/Lists/GenericList/GenericList",
+};
 
 export default configComponent;
 
-const Template: Story<GenericListProps> = args => <GenericList {...args} />;
+const Template: Story<GenericListProps> = (args) => <GenericList {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
@@ -19,7 +19,7 @@ Default.args = {
       task: "Clean the kitchen",
       complete: false,
       tagColor: "",
-      userId: "something"
-    }
-  ]
-}
+      userId: "something",
+    },
+  ],
+};

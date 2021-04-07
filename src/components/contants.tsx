@@ -12,7 +12,6 @@ import { ReactComponent as ProfileIcon } from "../assets/icons/user-solid.svg";
 
 import { ReactComponent as CheckIcon } from "assets/icons/check-solid.svg";
 
-
 export interface SocialMediaType {
   name: string;
   url: string;
@@ -77,8 +76,8 @@ export const ICONS: IconList = [
   {
     name: "CHECK",
     url: "icons/check-solid.svg",
-    img: <CheckIcon />
-  }
+    img: <CheckIcon />,
+  },
 ];
 
 export const HOME = "HOME";
@@ -93,5 +92,5 @@ export const ICONS_ROUTES = {
   PROJECTS,
   HABIT,
   GOALS,
-  PROFILE
+  PROFILE,
 };
