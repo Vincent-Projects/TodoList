@@ -41,6 +41,7 @@ const GenericInput = ({
   const errComponent = isError ? (
     <p className={classes.ErrorMessage}>{errMessage}</p>
   ) : null;
+  
   return (
     <div className={classes.Container}>
       <label className={labelClasses} htmlFor={id}>
