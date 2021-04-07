@@ -1,0 +1,46 @@
+image: node:12
+
+stages:
+  - pre-build
+  - build
+  - test
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+install-deps:
+  stage: pre-build
+  script:
+    - npm install
+  cache:
+    paths:
+      - node_modules/
+
+build-app:
+  stage: build
+  script:
+    - npm run build
+
+build-server:
+  stage: build
+  script:
+    - npm run build:server
+
+tests:
+  stage: test
+  script: 
+    - npm run test
+
+deploy:
+  stage: deploy
+  script:
+    - cd server
+    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git
+    - git push -f heroku master
+  environment:
+    name: production
+    url: https://flists-front.herokuapp.com/
+  only:
+    - master

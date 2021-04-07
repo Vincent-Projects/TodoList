@@ -1,0 +1,35 @@
+.Container {
+  width: 35px;
+  height: 35px;
+}
+
+.Link {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+.Link:hover {
+  animation: squeeze 300ms ease-in-out;
+}
+
+.Link * {
+  width: 100%;
+  height: 100%;
+  color: rgb(var(--primary));
+}
+
+@keyframes squeeze {
+  0%,
+  50%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+}

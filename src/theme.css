@@ -1,0 +1,39 @@
+:root {
+  --primary: 154, 214, 207;
+  --primary-light: 173, 245, 245;
+  --primary-dark: 79, 154, 148;
+  --on-primary: 0, 0, 0;
+  --error: 255, 97, 97;
+  --bg-0dp: 29, 34, 33;
+  --bg-1dp: 40, 45, 44;
+  --bg-2dp: 45, 49, 49;
+  --bg-4dp: 49, 54, 53;
+  --bg-6dp: 54, 58, 57;
+  --bg-12dp: 61, 65, 64;
+  --bg-24dp: 65, 69, 69;
+  --on-bg: 255, 255, 255;
+  --primary-outline: 160, 60, 255;
+  --shadow: 0, 0, 0;
+  --surface: 255, 255, 255;
+  --on-surface: 29, 34, 33;
+  --success: 94, 209, 51;
+
+  /* List Item Colors */
+  --color-1: 0, 255, 204;
+  --color-2: 255, 156, 191;
+  --color-3: 43, 214, 50;
+  --color-4: 242, 255, 87;
+  --color-5: 201, 185, 245;
+  --color-6: 255, 168, 168;
+  --color-7: 169, 214, 109;
+  --color-8: 198, 208, 214;
+  --color-9: 74, 203, 240;
+  --color-10: 200, 205, 40;
+  --color-11: 255, 173, 52;
+  --color-12: 255, 255, 255;
+}
+
+@font-face {
+  font-family: "port-lligat-slab";
+  src: url("./assets/Port_Lligat_Slab/PortLligatSlab-Regular.ttf");
+}
