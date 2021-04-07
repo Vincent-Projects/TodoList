@@ -1,1 +1,4 @@
 src/stories
+node_modules
+server
+public

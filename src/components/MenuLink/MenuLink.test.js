@@ -8,15 +8,15 @@ import { NavLink } from "react-router-dom";
 
 configure({ adapter: new Adapter() });
 
-describe('<MenuLink />', () => {
+describe("<MenuLink />", () => {
   it("should render a <NavLink /> element, if text, route, and iconName are provided", () => {
-    const wrapper = shallow((
+    const wrapper = shallow(
       <MenuLink
         text="sample string"
         iconName="sample string"
         to="/sample_route"
       />
-    ));
+    );
     expect(wrapper.find(NavLink)).toHaveLength(1);
   });
 });

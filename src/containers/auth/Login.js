@@ -68,7 +68,7 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
     history.push("/signup");
   };
 
-  const handleForgotPasswordClick = () => { };
+  const handleForgotPasswordClick = () => {};
 
   return (
     <div className={classes.PageContainer}>

@@ -62,35 +62,34 @@ const LogoutContainer = styled.div`
   flex-direction: column;
 `;
 
-
 interface MenuLinkListProps extends MenuLinkProps {
   key: string;
 }
 
 interface MenuProps {
-  isLoading: boolean,
-  logout: () => Function
+  isLoading: boolean;
+  logout: () => void;
 }
 
 const Menu = ({ isLoading, logout }: MenuProps) => {
   const history = useHistory();
 
-  let links: MenuLinkListProps[] = [];
-  for (let [key, object] of Object.entries(ROUTES)) {
+  const links: MenuLinkListProps[] = [];
+  for (const [key, object] of Object.entries(ROUTES)) {
     links.push({
       ...object,
-      key: key
+      key: key,
     });
   }
 
   const handleLogout = () => {
     logout();
     history.replace("/login");
-  }
+  };
 
   const handleRouteClick = (route: string) => {
     history.push(route);
-  }
+  };
 
   return (
     <MenuContainer>
@@ -98,7 +97,7 @@ const Menu = ({ isLoading, logout }: MenuProps) => {
         <Title>Flists</Title>
       </div>
       <MenuLinkContainer>
-        {links.map(link => (
+        {links.map((link) => (
           <MenuLink
             key={link.key}
             to={link.to}
@@ -108,16 +107,11 @@ const Menu = ({ isLoading, logout }: MenuProps) => {
         ))}
       </MenuLinkContainer>
       <LogoutContainer>
-        {!isLoading
-          ? (          
-            <InTextBtn
-            text="logout"
-            handleClick={handleLogout}
-            warning={true}
-            />
-          )
-          : <DiamondSpinner mode="cubic"/>
-        }
+        {!isLoading ? (
+          <InTextBtn text="logout" handleClick={handleLogout} warning={true} />
+        ) : (
+          <DiamondSpinner mode="cubic" />
+        )}
         <Versionning>
           <InTextBtn
             text={versions}
@@ -131,14 +125,14 @@ const Menu = ({ isLoading, logout }: MenuProps) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    isLoading: state.auth.isLoading
-  }
-}
+    isLoading: state.auth.isLoading,
+  };
+};
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    logout: () => dispatch(logout())
-  }
-}
+    logout: () => dispatch(logout()),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

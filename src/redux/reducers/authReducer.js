@@ -20,42 +20,42 @@ const login = (state, action) => {
     token_expire: action.payload.token_expire,
     username: action.payload.username,
     email: action.payload.email,
-    accessLevel: "FREE" // Change this using the returned value from API
+    accessLevel: "FREE", // Change this using the returned value from API
   };
 };
 
 const authStart = (state) => {
   return {
     ...state,
-    isLoading: true
+    isLoading: true,
   };
 };
 
 const authStop = (state) => {
   return {
     ...state,
-    isLoading: false
+    isLoading: false,
   };
 };
 
 const authFail = (state, action) => {
   return {
     ...state,
-    authErrMessage: action.payload.errMessage
+    authErrMessage: action.payload.errMessage,
   };
 };
 
 const authSuccess = (state, action) => {
   return {
     ...state,
-    authSuccessMessage: action.payload.successMessage
+    authSuccessMessage: action.payload.successMessage,
   };
 };
 
 const authResetErr = (state) => {
   return {
     ...state,
-    authErrMessage: null
+    authErrMessage: null,
   };
 };
 
@@ -70,22 +70,22 @@ const logout = (state) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-  case actionTypes.LOGIN:
-    return login(state, action);
-  case actionTypes.AUTH_START:
-    return authStart(state);
-  case actionTypes.AUTH_STOP:
-    return authStop(state);
-  case actionTypes.AUTH_FAIL:
-    return authFail(state, action);
-  case actionTypes.AUTH_SUCCESS:
-    return authSuccess(state, action);
-  case actionTypes.AUTH_RESET:
-    return authResetErr(state);
-  case actionTypes.LOGOUT:
-    return logout(state);
-  default:
-    return state;
+    case actionTypes.LOGIN:
+      return login(state, action);
+    case actionTypes.AUTH_START:
+      return authStart(state);
+    case actionTypes.AUTH_STOP:
+      return authStop(state);
+    case actionTypes.AUTH_FAIL:
+      return authFail(state, action);
+    case actionTypes.AUTH_SUCCESS:
+      return authSuccess(state, action);
+    case actionTypes.AUTH_RESET:
+      return authResetErr(state);
+    case actionTypes.LOGOUT:
+      return logout(state);
+    default:
+      return state;
   }
 };
 

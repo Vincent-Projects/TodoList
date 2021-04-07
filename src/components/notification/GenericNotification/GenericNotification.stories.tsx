@@ -5,12 +5,14 @@ import GenericButton from "components/buttons/GenericButton";
 
 const configStoryComponent = {
   component: GenericNotification,
-  title: "Components/Notifications/GenericNotification"
+  title: "Components/Notifications/GenericNotification",
 };
 
 export default configStoryComponent;
 
-const Template: Story<GenericNotificationProps> = args => <GenericNotification {...args} />
+const Template: Story<GenericNotificationProps> = (args) => (
+  <GenericNotification {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -20,10 +22,5 @@ Default.args = {
 export const NotificationSingleBtn = Template.bind({});
 NotificationSingleBtn.args = {
   text: "Notification with a single button",
-  actions: (
-    <GenericButton
-      text="X"
-      handleClick={() => alert("Something")}
-    />
-  )
+  actions: <GenericButton text="X" handleClick={() => alert("Something")} />,
 };

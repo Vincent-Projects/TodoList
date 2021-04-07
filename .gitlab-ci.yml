@@ -3,6 +3,7 @@ image: node:12
 stages:
   - pre-build
   - build
+  - post-build
   - test
   - deploy
 
@@ -22,9 +23,12 @@ build-app:
   stage: build
   script:
     - npm run build
+  artifacts:
+    paths: 
+      - build/
 
 build-server:
-  stage: build
+  stage: post-build
   script:
     - npm run build:server
 

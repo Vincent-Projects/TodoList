@@ -30,28 +30,27 @@ interface PageNotFoundProps {
 
 const PageNotFound = ({ isAuth }: PageNotFoundProps) => {
   const history = useHistory();
-  
+
   const handleRouteRedirect = (route: string) => {
     history.replace(route);
-  }
+  };
   return (
     <PageNotFoundContainer>
       <Title>Page Not Found</Title>
       <Text>
-        Sorry, it seems that the page you requested for is not avaible or does not exists. Click this link to head back to the app :
-        {isAuth
-          ? (
-            <InTextBtn
-              text=" Go back to the app"
-              handleClick={() => handleRouteRedirect("/dashboard")}
-            />
-          )
-          : (
-            <InTextBtn
-              text=" Go back to main page"
-              handleClick={() => handleRouteRedirect("/")}
-            />
-          )}
+        Sorry, it seems that the page you requested for is not avaible or does
+        not exists. Click this link to head back to the app :
+        {isAuth ? (
+          <InTextBtn
+            text=" Go back to the app"
+            handleClick={() => handleRouteRedirect("/dashboard")}
+          />
+        ) : (
+          <InTextBtn
+            text=" Go back to main page"
+            handleClick={() => handleRouteRedirect("/")}
+          />
+        )}
       </Text>
     </PageNotFoundContainer>
   );
@@ -59,8 +58,8 @@ const PageNotFound = ({ isAuth }: PageNotFoundProps) => {
 
 const mapStateToProps = (state: any) => {
   return {
-    isAuth: state.auth.isAuth
-  }
-}
+    isAuth: state.auth.isAuth,
+  };
+};
 
 export default connect(mapStateToProps)(PageNotFound);

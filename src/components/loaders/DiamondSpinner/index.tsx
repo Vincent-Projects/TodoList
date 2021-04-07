@@ -8,7 +8,7 @@ export type DiamondSpinnerProps = {
 };
 
 const DiamondSpinner = ({ mode = "cubic" }: DiamondSpinnerProps) => {
-  let loaderClasses = [
+  const loaderClasses = [
     classes.loader,
     mode === "cubic"
       ? classes.Cubic

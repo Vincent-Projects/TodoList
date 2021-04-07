@@ -26,7 +26,7 @@ const ColorPaletteContainer = styled.div`
     border-radius: 5px;
   }
 
-  &:hover{
+  &:hover {
     padding-right: 2px;
     overflow-y: auto;
     overflow-x: auto;
@@ -48,7 +48,11 @@ interface ColorProps {
 }
 
 const Color = styled.div`
-  background: linear-gradient(45deg, rgb(var(--color-${(props: ColorProps) => props.primary})) 0% 48%, rgb(var(--color-${props => props.secondary})) 52% 100%);
+  background: linear-gradient(
+    45deg,
+    rgb(var(--color- ${(props: ColorProps) => props.primary})) 0% 48%,
+    rgb(var(--color- ${(props) => props.secondary})) 52% 100%
+  );
   aspect-ratio: 1;
   transition: 250ms;
   position: relative;
@@ -101,51 +105,49 @@ const LockedColor = styled(Color)`
   }
 `;
 
-
 export interface ColorPaletteProps {
   selectedColor: string;
   colors: ColorObject[];
   handleColorChange: (color: string) => void;
 }
 
-const ColorPalette = ({ selectedColor, colors, handleColorChange }: ColorPaletteProps) => {
+const ColorPalette = ({
+  selectedColor,
+  colors,
+  handleColorChange,
+}: ColorPaletteProps) => {
   console.log(hasPremiumPermission());
   return (
     <ColorPaletteContainer>
       <ColorPaletteStyle>
-        {colors.map(color => (
-          (color.accessLevel === ACCESSLEVEL.PREMIUM && !hasPremiumPermission())
-            ? (
-              <LockedColor
-                key={color.id}
-                primary={color.color}
-            secondary={color.secondColor}
-              />
-            )
-            : color.id === selectedColor
-              ? (
-                <UnlockedColorSelected
-                  key={color.id}
-                  primary={color.color}
-                  secondary={color.secondColor}
-                  onClick={() => handleColorChange(color.id)}
-                >
-                  <IconCheck>
-                    <Icon
-                      iconName= {CHECK}
-                    />
-                  </IconCheck>
-                </UnlockedColorSelected>
-              )
-                : (
-              <UnlockedColor
-                key={color.id}
-                primary={color.color}
-                secondary={color.secondColor}
-                onClick={() => handleColorChange(color.id)}
-              />
-            )
-          ))}
+        {colors.map((color) =>
+          color.accessLevel === ACCESSLEVEL.PREMIUM &&
+          !hasPremiumPermission() ? (
+            <LockedColor
+              key={color.id}
+              primary={color.color}
+              secondary={color.secondColor}
+            />
+          ) : color.id === selectedColor ? (
+            <UnlockedColorSelected
+              key={color.id}
+              primary={color.color}
+              secondary={color.secondColor}
+              onClick={() => handleColorChange(color.id)}
+            >
+              <IconCheck>
+                <Icon iconName={CHECK} />
+              </IconCheck>
+            </UnlockedColorSelected>
+          ) : (
+            <UnlockedColor
+              key={color.id}
+              primary={color.color}
+              secondary={color.secondColor}
+              onClick={() => handleColorChange(color.id)}
+            />
+          )
+        )}
       </ColorPaletteStyle>
     </ColorPaletteContainer>
   );

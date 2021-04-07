@@ -97,17 +97,19 @@ export const signup = (
 };
 
 export const validateAccount = (token) => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(AUTH_START());
 
     API.validateAccount(token)
-      .then(result => {
+      .then((result) => {
         if (result?.status === 200) {
-          dispatch(AUTH_SUCCESS("Your account has been successfully validated."));
+          dispatch(
+            AUTH_SUCCESS("Your account has been successfully validated.")
+          );
         }
         dispatch(AUTH_STOP());
       })
-      .catch(err => {
+      .catch(() => {
         dispatch(AUTH_FAIL("Failed to validate account"));
         dispatch(AUTH_STOP());
       });

@@ -1,4 +1,4 @@
-import * as actionTypes from "../actions/actionTypes";
+//import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   tasks: [
@@ -20,7 +20,7 @@ const initialState = {
       complete: true,
       userId: "someidhere",
     },
-  ]
+  ],
 };
 
 const reducer = (state = initialState, action) => {

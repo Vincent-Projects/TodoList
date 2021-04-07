@@ -7,7 +7,11 @@ interface ColorObject {
   accessLevel: AccessLevel;
 }
 
-function generateColorObject(number1: number, number2: number = number1, id = number1): ColorObject {
+function generateColorObject(
+  number1: number,
+  number2: number = number1,
+  id = number1
+): ColorObject {
   let accessLevel: AccessLevel = "FREE";
 
   if (id > 5) {
@@ -18,7 +22,7 @@ function generateColorObject(number1: number, number2: number = number1, id = nu
     id: id.toString(),
     color: number1.toString(),
     secondColor: number2?.toString(),
-    accessLevel: accessLevel
+    accessLevel: accessLevel,
   };
 }
 
@@ -46,7 +50,4 @@ const COLORS: ColorObject[] = [
 ];
 
 export default COLORS;
-export type {
-  AccessLevel,
-  ColorObject
-}
+export type { AccessLevel, ColorObject };

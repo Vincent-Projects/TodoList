@@ -16,7 +16,9 @@ import PageNotFound from "containers/PageNotFound";
 const Dashboard = React.lazy(() => import("containers/Dashboard"));
 const Login = React.lazy(() => import("containers/auth/Login"));
 const Signup = React.lazy(() => import("containers/auth/Signup"));
-const ValidationAccount = React.lazy(() => import("containers/auth/ValidationAccount"));
+const ValidationAccount = React.lazy(() =>
+  import("containers/auth/ValidationAccount")
+);
 
 const AppContainer = styled.div`
   display: flex;
@@ -29,21 +31,14 @@ const AppContainer = styled.div`
   }
 `;
 
-
-const app = ({
-  checkAuth,
-  isAuth,
-}) => {
+const app = ({ checkAuth, isAuth }) => {
   useEffect(() => {
     checkAuth();
   }, []);
 
   return (
     <AppContainer>
-      {isAuth /* IF route === / remove menu */
-        ? <Menu />
-        : null
-      }
+      {isAuth /* IF route === / remove menu */ ? <Menu /> : null}
       <Switch>
         <Route exact path="/">
           <LandingPage />
@@ -85,9 +80,9 @@ const app = ({
     </AppContainer>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
   };
 };
 

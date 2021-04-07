@@ -25,7 +25,9 @@ const ToolTipContainer = styled.div`
     border-left-color: transparent;
     border-top-color: transparent;
     border-right-color: transparent;
-    transform: translateX(${(props: {transform: number}) => props.transform}px);
+    transform: translateX(
+      ${(props: { transform: number }) => props.transform}px
+    );
   }
 `;
 
@@ -58,9 +60,9 @@ const Content = styled.div`
 `;
 
 interface TextToolTipProps {
-  text: string,
-  content: React.ReactChildren,
-  Component: any
+  text: string;
+  content: React.ReactChildren;
+  Component: any;
 }
 
 const TextTooltip = ({ text, content, Component }: TextToolTipProps) => {
@@ -75,7 +77,7 @@ const TextTooltip = ({ text, content, Component }: TextToolTipProps) => {
       if (tooltipRect.x < 0) {
         const xDiff = 0 - tooltipRect.x;
         tooltip.current.style.transform = `translateX(calc(${xDiff}px + 1rem))`;
-        setTransform((0 - xDiff));
+        setTransform(0 - xDiff);
       }
 
       console.log(tooltipRect.y, window.screen.availHeight);
@@ -84,16 +86,31 @@ const TextTooltip = ({ text, content, Component }: TextToolTipProps) => {
         
       } */
     }
-  }
-  
+  };
+
   useEffect(() => {
     computeScreenValidity();
   }, []);
-  
+
   return (
-    <div style={{position: "relative", width: "fit-content", transform: "translateX(100px)"}}>
+    <div
+      style={{
+        position: "relative",
+        width: "fit-content",
+        transform: "translateX(100px)",
+      }}
+    >
       <Component />
-      <div ref={tooltip} style={{position: "absolute", top: "calc(100% + 15px)", left: "calc(0px - 15rem + 50%)", width: "max-content", height: "max-content"}}>
+      <div
+        ref={tooltip}
+        style={{
+          position: "absolute",
+          top: "calc(100% + 15px)",
+          left: "calc(0px - 15rem + 50%)",
+          width: "max-content",
+          height: "max-content",
+        }}
+      >
         <ToolTipContainer ref={tooltipArrow} transform={transform}>
           <Title>{text}</Title>
           <Content>{content}</Content>
