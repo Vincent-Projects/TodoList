@@ -28,7 +28,6 @@ const GenericList = ({ elements, saveNewItem }: GenericListProps) => {
   };
 
   const handleNewItemInput = (event: any) => {
-    console.log(event.target.value);
     setNewItemValue(event.target.value);
   };
 
@@ -41,7 +40,6 @@ const GenericList = ({ elements, saveNewItem }: GenericListProps) => {
   return (
     <div style={{}}>
       {elements.map((element) => {
-        console.log(element);
         return (
           <GenericItem
             key={element._id}

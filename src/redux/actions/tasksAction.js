@@ -1,4 +1,5 @@
 import * as actionTypes from "./actionTypes";
+import api from "api";
 
 export const startRequest = () => {
   return dispatch => {
@@ -24,34 +25,51 @@ export const failRequest = () => {
   };
 };
 
-export const addIntrant = (task) => {
-  return dispatch => {
+export const getTasks = () => {
+  return (dispatch, getState) => {
     dispatch(startRequest());
-    // Make request to add an item only string
-    // object returned by api : 
-    const newItemSaved = {
-      _id: Math.random(),
-      task: task,
-      complete: false,
-      userId: "someuserid",
-      projectId: null,
-      primaryTagColor: null,
-      secondaryTagColor: null,
-      startedRecuringTime: null,
-      recuringTime: null,
-      recuringDate: null,
-      recuringDay: null,
-      recuringWeekDay: null,
-      dueDate: null,
-      createdAt: new Date(Date.now()),
-      lastUpdate: new Date(Date.now())
-    };
+    const token = getState().auth.token;
+    api.getTasks(token)
+      .then(result => {
+        if (result.status === 200) {
+          dispatch({
+            type: actionTypes.INIT_TASKS,
+            payload: {
+              tasks: result.data.data.todos
+            }
+          });
+          dispatch(successRequest());
+        } else {
+          dispatch(failRequest());
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch(failRequest());
+      });
+  };
+};
 
-    dispatch({
-      type: actionTypes.ADD_INTRANT,
-      payload: {
-        task: newItemSaved
-      }
-    });
+export const addIntrant = (task) => {
+  return (dispatch, getState) => {
+    dispatch(startRequest());
+    const token = getState().auth.token;
+
+    api.postTodo(token, task)
+      .then(result => {
+        if (result.status === 200) {
+          dispatch({
+            type: actionTypes.ADD_INTRANT,
+            payload: {
+              task: result.data.data.todo
+            }
+          });
+          dispatch(successRequest());
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch(failRequest());
+      });
   };
 };

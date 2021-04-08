@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { addIntrant } from "redux/actions";
+import { addIntrant, getTasks } from "redux/actions";
 import { filteredList, INTRANT_FILTER } from "utils/tasks";
 import { TaskType } from "utils/constants";
 
 interface DashboardProps {
   tasks: TaskType[];
   addIntrant: (task: string) => void;
+  getTasks: () => void;
 }
 
-const Dashboard = ({ tasks, addIntrant }: DashboardProps) => {
+const Dashboard = ({ tasks, addIntrant, getTasks }: DashboardProps) => {
+  useEffect(() => {
+    getTasks();
+  }, []);
   const IntrantList = filteredList(tasks, INTRANT_FILTER, addIntrant);
   return (
     <div
@@ -36,6 +40,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
+    getTasks: () => dispatch(getTasks()),
     addIntrant: (task: string) => dispatch(addIntrant(task))
   }
 }

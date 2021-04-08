@@ -116,7 +116,7 @@ const ColorPalette = ({
   colors,
   handleColorChange,
 }: ColorPaletteProps) => {
-  console.log(hasPremiumPermission());
+  //console.log(hasPremiumPermission());
   return (
     <ColorPaletteContainer>
       <ColorPaletteStyle>

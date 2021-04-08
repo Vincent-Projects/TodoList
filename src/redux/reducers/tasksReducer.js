@@ -1,26 +1,16 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
-  tasks: [
-    {
-      _id: "someId",
-      task: "Do something interesting here",
-      complete: false,
-      userId: "someidhere",
-    },
-    {
-      _id: "dzad",
-      task: "I need to do something here",
-      complete: false,
-      userId: "someidhere",
-    },
-    {
-      _id: "somgerqaheId",
-      task: "This thing is finished",
-      complete: true,
-      userId: "someidhere",
-    },
-  ],
+  tasks: [],
+};
+
+const initTasks = (state, action) => {
+  return {
+    ...state,
+    tasks: [
+      ...action.payload.tasks
+    ]
+  };
 };
 
 const addIntrant = (state, action) => {
@@ -47,6 +37,8 @@ const addIntrant = (state, action) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.INIT_TASKS:
+      return initTasks(state, action);
     case actionTypes.ADD_INTRANT:
       return addIntrant(state, action);
     default:
