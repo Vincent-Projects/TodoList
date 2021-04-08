@@ -25,7 +25,7 @@ const Dashboard = ({ tasks, addIntrant, getTasks }: DashboardProps) => {
       }}
     >
       <div>
-        <h2>Today</h2>
+        <h2 style={{marginBottom: "1rem"}}>Today</h2>
         <IntrantList />
       </div>
     </div>

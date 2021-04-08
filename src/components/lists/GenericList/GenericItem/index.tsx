@@ -12,8 +12,27 @@ export interface GenericItemProps {
 const ItemContainer = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 0.65rem;
+  padding: 0.20rem;
   cursor: pointer;
+  font-size: 0.9rem;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-color: rgb(var(--primary));
+    opacity: 0;
+    transition: 350ms;
+  }
+
+  &:hover:before {
+    width: 100%;
+    opacity: 0.1;
+  }
 `;
 
 interface CheckBoxProps {
@@ -26,7 +45,7 @@ const CheckBox = styled.div`
   align-self: center;
   margin-right: 0.5rem;
   border-radius: 50%;
-  border: 2px solid rgb(var(--surface));
+  border: 2px solid rgb(var(--primary));
   background-color: ${(props: CheckBoxProps) =>
     props.done ? "rgb(var(--primary))" : "transparent"};
 `;
@@ -38,10 +57,11 @@ const ColorSelectContainer = styled.div`
 interface TextProps {
   done: boolean;
 }
-
 const Text = styled.p`
   padding: 0.1rem;
   margin: 0;
+  word-break: break-all;
+  width: 100%;
   text-decoration: ${(props: TextProps) =>
     props.done ? "line-through" : "none"};
   opacity: ${(props) => (props.done ? "0.6" : "1")};
