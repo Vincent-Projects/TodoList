@@ -6,3 +6,6 @@ export {
   checkAuthState,
   authErrReset,
 } from "./authActions";
+export {
+  addIntrant
+} from "./tasksAction";

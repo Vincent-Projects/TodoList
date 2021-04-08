@@ -1,13 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import GenericList from "components/lists/GenericList";
+import { addIntrant } from "redux/actions";
+import { filteredList, INTRANT_FILTER } from "utils/tasks";
 import { TaskType } from "utils/constants";
 
 interface DashboardProps {
   tasks: TaskType[];
+  addIntrant: (task: string) => void;
 }
 
-const Dashboard = ({ tasks }: DashboardProps) => {
+const Dashboard = ({ tasks, addIntrant }: DashboardProps) => {
+  const IntrantList = filteredList(tasks, INTRANT_FILTER, addIntrant);
   return (
     <div
       style={{
@@ -19,7 +22,7 @@ const Dashboard = ({ tasks }: DashboardProps) => {
     >
       <div>
         <h2>Today</h2>
-        <GenericList elements={tasks} />
+        <IntrantList />
       </div>
     </div>
   );
@@ -31,4 +34,9 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    addIntrant: (task: string) => dispatch(addIntrant(task))
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
