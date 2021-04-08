@@ -15,6 +15,24 @@ const ItemContainer = styled.div`
   padding: 0.20rem;
   cursor: pointer;
   font-size: 0.9rem;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-color: rgb(var(--primary));
+    opacity: 0;
+    transition: 350ms;
+  }
+
+  &:hover:before {
+    width: 100%;
+    opacity: 0.1;
+  }
 `;
 
 interface CheckBoxProps {
@@ -27,7 +45,7 @@ const CheckBox = styled.div`
   align-self: center;
   margin-right: 0.5rem;
   border-radius: 50%;
-  border: 2px solid rgb(var(--surface));
+  border: 2px solid rgb(var(--primary));
   background-color: ${(props: CheckBoxProps) =>
     props.done ? "rgb(var(--primary))" : "transparent"};
 `;
