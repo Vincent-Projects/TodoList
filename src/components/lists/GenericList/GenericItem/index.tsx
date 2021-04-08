@@ -12,7 +12,7 @@ export interface GenericItemProps {
 const ItemContainer = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 0.20rem;
+  padding: 0.2rem;
   cursor: pointer;
   font-size: 0.9rem;
   position: relative;
