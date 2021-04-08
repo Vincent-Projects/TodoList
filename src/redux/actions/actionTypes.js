@@ -8,3 +8,10 @@ export const AUTH_STOP = "AUTH_STOP";
 export const AUTH_FAIL = "AUTH_FAIL";
 export const AUTH_RESET = "AUTH_RESET";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
+
+// TASKS Action Types
+export const REQUEST_START = "REQUEST_START";
+export const REQUEST_SUCCESS = "REQUEST_SUCCESS";
+export const REQUEST_FAIL = "REQUEST_FAIL";
+export const INIT_TASKS = "INIT_TASKS";
+export const ADD_INTRANT = "ADD_INTRANT";

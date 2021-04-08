@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import GenericList from "components/lists/GenericList";
+import { addIntrant, getTasks } from "redux/actions";
+import { filteredList, INTRANT_FILTER } from "utils/tasks";
 import { TaskType } from "utils/constants";
 
 interface DashboardProps {
   tasks: TaskType[];
+  addIntrant: (task: string) => void;
+  getTasks: () => void;
 }
 
-const Dashboard = ({ tasks }: DashboardProps) => {
+const Dashboard = ({ tasks, addIntrant, getTasks }: DashboardProps) => {
+  useEffect(() => {
+    getTasks();
+  }, []);
+  const IntrantList = filteredList(tasks, INTRANT_FILTER, addIntrant);
   return (
     <div
       style={{
@@ -18,8 +25,8 @@ const Dashboard = ({ tasks }: DashboardProps) => {
       }}
     >
       <div>
-        <h2 style={{marginBottom: "1rem"}}>Today</h2>
-        <GenericList elements={tasks} />
+        <h2 style={{ marginBottom: "1rem" }}>Today</h2>
+        <IntrantList />
       </div>
     </div>
   );
@@ -31,4 +38,10 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    getTasks: () => dispatch(getTasks()),
+    addIntrant: (task: string) => dispatch(addIntrant(task)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
