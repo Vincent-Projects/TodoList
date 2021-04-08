@@ -9,11 +9,10 @@ export interface GenericItemProps {
   handleClick: () => void;
 }
 
-const ItemContainer = styled.div`
+export const ItemContainer = styled.div`
   display: flex;
   flex-direction: row;
   padding: 0.2rem;
-  cursor: pointer;
   font-size: 0.9rem;
   position: relative;
 
@@ -52,6 +51,7 @@ const CheckBox = styled.div`
 
 const ColorSelectContainer = styled.div`
   margin-right: 0.5rem;
+  cursor: pointer;
 `;
 
 interface TextProps {
@@ -65,6 +65,7 @@ const Text = styled.p`
   text-decoration: ${(props: TextProps) =>
     props.done ? "line-through" : "none"};
   opacity: ${(props) => (props.done ? "0.6" : "1")};
+  cursor: pointer;
 `;
 
 const GenericItem = ({ done, text, color, handleClick }: GenericItemProps) => {
