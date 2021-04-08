@@ -12,8 +12,9 @@ export interface GenericItemProps {
 const ItemContainer = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 0.65rem;
+  padding: 0.20rem;
   cursor: pointer;
+  font-size: 0.9rem;
 `;
 
 interface CheckBoxProps {
@@ -38,10 +39,11 @@ const ColorSelectContainer = styled.div`
 interface TextProps {
   done: boolean;
 }
-
 const Text = styled.p`
   padding: 0.1rem;
   margin: 0;
+  word-break: break-all;
+  width: 100%;
   text-decoration: ${(props: TextProps) =>
     props.done ? "line-through" : "none"};
   opacity: ${(props) => (props.done ? "0.6" : "1")};
