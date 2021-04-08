@@ -41,7 +41,7 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     getTasks: () => dispatch(getTasks()),
-    addIntrant: (task: string) => dispatch(addIntrant(task))
-  }
-}
+    addIntrant: (task: string) => dispatch(addIntrant(task)),
+  };
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

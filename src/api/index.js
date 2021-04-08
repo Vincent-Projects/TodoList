@@ -29,8 +29,8 @@ class API {
   static getTasks(token) {
     const config = {
       headers: {
-        "Authorization": `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
 
     return apiInstance.get(`${apiRoutes.GET_TODO}`, config);
@@ -39,12 +39,12 @@ class API {
   static postTodo(token, task) {
     const config = {
       headers: {
-        "Authorization": `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
 
     const data = {
-      task: task
+      task: task,
     };
 
     return apiInstance.post(apiRoutes.POST_TODO, data, config);

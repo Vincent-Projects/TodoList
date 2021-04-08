@@ -21,7 +21,7 @@ const GenericList = ({ elements, saveNewItem }: GenericListProps) => {
   };
 
   const handleKeyPress = (event: any) => {
-    if (event.key === "Enter") { 
+    if (event.key === "Enter") {
       event.preventDefault();
       saveNewItem(newItemValue);
     }
@@ -32,10 +32,10 @@ const GenericList = ({ elements, saveNewItem }: GenericListProps) => {
   };
 
   useEffect(() => {
-    if (isAddingItem && inputRef && inputRef.current) { 
+    if (isAddingItem && inputRef && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [isAddingItem])
+  }, [isAddingItem]);
 
   return (
     <div style={{}}>
@@ -50,30 +50,26 @@ const GenericList = ({ elements, saveNewItem }: GenericListProps) => {
           />
         );
       })}
-      {!isAddingItem
-        ? (
-          <div style={{ opacity: "0.5" }}>
-            <GenericItem
-              done={false}
-              text={"Add Something..."}
-              color={""}
-              handleClick={handleAddItem}
-            />
-          </div>
-        )
-        : (
-          <div>
-            <input
-              ref={inputRef}
-              style={{backgroundColor: "transparent", border: "none"}}
-              value={newItemValue}
-              onChange={handleNewItemInput}
-              onKeyPress={handleKeyPress}
-            />
-          </div>
-        )
-      }
-      
+      {!isAddingItem ? (
+        <div style={{ opacity: "0.5" }}>
+          <GenericItem
+            done={false}
+            text={"Add Something..."}
+            color={""}
+            handleClick={handleAddItem}
+          />
+        </div>
+      ) : (
+        <div>
+          <input
+            ref={inputRef}
+            style={{ backgroundColor: "transparent", border: "none" }}
+            value={newItemValue}
+            onChange={handleNewItemInput}
+            onKeyPress={handleKeyPress}
+          />
+        </div>
+      )}
     </div>
   );
 };

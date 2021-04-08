@@ -7,19 +7,12 @@ const initialState = {
 const initTasks = (state, action) => {
   return {
     ...state,
-    tasks: [
-      ...action.payload.tasks
-    ]
+    tasks: [...action.payload.tasks],
   };
 };
 
 const addIntrant = (state, action) => {
-  const {
-    _id,
-    task,
-    complete,
-    userId
-  } = action.payload.task;
+  const { _id, task, complete, userId } = action.payload.task;
 
   return {
     ...state,
@@ -29,9 +22,9 @@ const addIntrant = (state, action) => {
         _id,
         task,
         complete,
-        userId
-      }
-    ]
+        userId,
+      },
+    ],
   };
 };
 

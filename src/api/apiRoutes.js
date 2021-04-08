@@ -9,5 +9,5 @@ export default {
   SIGNUP,
   VALIDATE_ACCOUNT,
   GET_TODO,
-  POST_TODO
+  POST_TODO,
 };

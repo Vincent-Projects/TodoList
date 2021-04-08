@@ -2,25 +2,25 @@ import * as actionTypes from "./actionTypes";
 import api from "api";
 
 export const startRequest = () => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch({
-      type: actionTypes.REQUEST_START
+      type: actionTypes.REQUEST_START,
     });
   };
 };
 
 export const successRequest = () => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch({
-      type: actionTypes.REQUEST_SUCCESS
+      type: actionTypes.REQUEST_SUCCESS,
     });
   };
 };
 
 export const failRequest = () => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch({
-      type: actionTypes.REQUEST_FAIL
+      type: actionTypes.REQUEST_FAIL,
     });
   };
 };
@@ -29,21 +29,22 @@ export const getTasks = () => {
   return (dispatch, getState) => {
     dispatch(startRequest());
     const token = getState().auth.token;
-    api.getTasks(token)
-      .then(result => {
+    api
+      .getTasks(token)
+      .then((result) => {
         if (result.status === 200) {
           dispatch({
             type: actionTypes.INIT_TASKS,
             payload: {
-              tasks: result.data.data.todos
-            }
+              tasks: result.data.data.todos,
+            },
           });
           dispatch(successRequest());
         } else {
           dispatch(failRequest());
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         dispatch(failRequest());
       });
@@ -55,19 +56,20 @@ export const addIntrant = (task) => {
     dispatch(startRequest());
     const token = getState().auth.token;
 
-    api.postTodo(token, task)
-      .then(result => {
+    api
+      .postTodo(token, task)
+      .then((result) => {
         if (result.status === 200) {
           dispatch({
             type: actionTypes.ADD_INTRANT,
             payload: {
-              task: result.data.data.todo
-            }
+              task: result.data.data.todo,
+            },
           });
           dispatch(successRequest());
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         dispatch(failRequest());
       });
