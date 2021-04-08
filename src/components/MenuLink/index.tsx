@@ -9,7 +9,7 @@ export interface MenuLinkProps {
   to: string;
 }
 
-const MenuLink = ({ iconName, text, to }: MenuLinkProps) => {
+const MenuLink = ({ iconName, text, to = "" }: MenuLinkProps) => {
   return (
     <NavLink className={classes.Link} to={to} activeClassName={classes.Active}>
       <Icon iconName={iconName} />
