@@ -21,5 +21,12 @@ Default.args = {
       tagColor: "",
       userId: "something",
     },
+    {
+      _id: "dzaddaz",
+      task: "Another thing to do",
+      complete: true,
+      tagColor: "",
+      userId: "something",
+    },
   ],
 };
