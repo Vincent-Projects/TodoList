@@ -27,6 +27,7 @@ build-app:
     - echo "REACT_APP_SALT_ROUND=$REACT_APP_SALT_ROUND" >> .env
     - echo "REACT_APP_JWT_SECRET=$REACT_APP_JWT_SECRET" >> .env
     - echo "REACT_APP_AUTH_SECRET=$REACT_APP_AUTH_SECRET" >> .env
+    - echo "REACT_APP_API_VERSION=$REACT_APP_API_VERSION" >> .env
   script:
     - npm run build
   artifacts:
