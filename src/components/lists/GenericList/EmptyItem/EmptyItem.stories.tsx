@@ -5,20 +5,20 @@ import EmptyItem, { EmptyItemProps } from "./index";
 
 const configComponent = {
   component: EmptyItem,
-  title: "Components/Lists/GenericList/EmptyItem"
+  title: "Components/Lists/GenericList/EmptyItem",
 };
 
 export default configComponent;
 
-const Template: Story<EmptyItemProps> = args => (
- <>
-  <EmptyItem {...args} />
-  <EmptyItem {...args} />
-</>
+const Template: Story<EmptyItemProps> = (args) => (
+  <>
+    <EmptyItem {...args} />
+    <EmptyItem {...args} />
+  </>
 );
 
 export const Default = Template.bind({});
 Default.args = {
   text: "Add something to do...",
-  handleSave: (text) => alert(text)
+  handleSave: (text) => alert(text),
 };

@@ -12,23 +12,26 @@ export default function withVisible(Component: (T: any) => JSX.Element) {
 
     const handleSetVisible = () => {
       setIsVisible(!isVisible);
-    }
+    };
 
-    const handleOutsideClick = (event: any) => {
+    const handleOutsideClick = () => {
       setIsVisible(false);
-      console.log("Here");
-    }
+    };
 
     useEffect(() => {
       document.addEventListener("click", handleOutsideClick);
       return () => {
         document.removeEventListener("click", handleOutsideClick);
-      }
+      };
     }, []);
 
     return (
-      <Component {...props} isVisible={isVisible} handleSetVisible={handleSetVisible} />
+      <Component
+        {...props}
+        isVisible={isVisible}
+        handleSetVisible={handleSetVisible}
+      />
     );
-  }
+  };
   /* eslint-enable react/display-name */
 }

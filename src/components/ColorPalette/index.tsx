@@ -6,6 +6,7 @@ import { hasPremiumPermission } from "utils/auth";
 import { ACCESSLEVEL } from "utils/constants";
 import { CHECK } from "components/contants";
 import Icon from "components/Icon";
+import { sanitizeColorCSS } from "utils/colors";
 
 const ColorPaletteContainer = styled.div`
   width: 100%;
@@ -50,8 +51,8 @@ interface ColorProps {
 const Color = styled.div`
   background: linear-gradient(
     45deg,
-    rgb(var(--color- ${(props: ColorProps) => props.primary})) 0% 48%,
-    rgb(var(--color- ${(props) => props.secondary})) 52% 100%
+    ${(props: ColorProps) => sanitizeColorCSS(props.primary)} 0% 48%,
+    ${(props) => sanitizeColorCSS(props.secondary)} 52% 100%
   );
   aspect-ratio: 1;
   transition: 250ms;
@@ -116,7 +117,6 @@ const ColorPalette = ({
   colors,
   handleColorChange,
 }: ColorPaletteProps) => {
-  //console.log(hasPremiumPermission());
   return (
     <ColorPaletteContainer>
       <ColorPaletteStyle>
