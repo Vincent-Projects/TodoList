@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 import ColorPalette from "components/ColorPalette";
 import COLORS from "utils/colors";
@@ -43,47 +43,27 @@ const ColorSelect = ({
   color: colorId,
   isVisible,
   handleSetVisible,
+  elementRef,
 }: ColorSelectProps) => {
-  /* const [visible, setVisible] = useState(false); */
-  const refElement = useRef(null);
-
-  /* useEffect(() => {
-    document.addEventListener("click", resetVisible); // Problem: This will add as many event listner as duplication of this component
-    return () => {
-      document.removeEventListener("click", resetVisible);
-    }
-  }, []); */
-
-  const handleClick = (event: any) => {
-    event.stopPropagation();
+  const handleClick = () => {
     handleSetVisible();
   };
-
-  /* const resetVisible = (event: any) => {
-    if (refElement.current && event.target === refElement) {
-      alert("Click dans l'element");
-    } else {
-      alert("Click en dehors");
-    }
-    alert("Something")
-    setVisible(false); 
-  }; */
 
   const cancelParentClick = (event: any) => {
     event.stopPropagation();
   };
 
   const color = COLORS[+colorId - 1];
-  console.log(colorId);
 
   return (
     <SelectContainer
       primary={color?.color}
       secondary={color?.secondColor}
       onClick={handleClick}
+      ref={elementRef}
     >
       {isVisible ? (
-        <ColorPaletteContainer ref={refElement} onClick={cancelParentClick}>
+        <ColorPaletteContainer onClick={cancelParentClick}>
           {/* Maybe change top 0 to auto */}
           <ColorPalette
             colors={COLORS}

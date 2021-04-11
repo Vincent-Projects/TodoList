@@ -1,21 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 export interface VisibleProps {
   isVisible: boolean;
   handleSetVisible: () => void;
+  elementRef: RefObject<any>;
 }
 
 export default function withVisible(Component: (T: any) => JSX.Element) {
   /* eslint-disable react/display-name */
   return (props: any) => {
     const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef<typeof Component>(null);
 
     const handleSetVisible = () => {
       setIsVisible(!isVisible);
     };
 
-    const handleOutsideClick = () => {
-      setIsVisible(false);
+    const handleOutsideClick = (event: any) => {
+      if (ref && ref.current && event.target !== ref.current) {
+        setIsVisible(false);
+      }
     };
 
     useEffect(() => {
@@ -30,6 +34,7 @@ export default function withVisible(Component: (T: any) => JSX.Element) {
         {...props}
         isVisible={isVisible}
         handleSetVisible={handleSetVisible}
+        elementRef={ref}
       />
     );
   };
