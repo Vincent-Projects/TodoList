@@ -1,7 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import ColorPalette from "components/ColorPalette";
 import COLORS from "utils/colors";
+import withVisible, { VisibleProps } from "hooks/withVisible";
+import { sanitizeColorCSS } from "utils/colors";
 
 interface SelectContainerProps {
   primary: string;
@@ -13,20 +15,14 @@ const SelectContainer = styled.div`
   position: relative;
   background: linear-gradient(
     45deg,
-    rgb(
-        var(
-          --color-
-            ${(props: SelectContainerProps) => props.primary ?? "transparent"}
-        )
-      )
-      0% 48%,
-    rgb(var(--color- ${(props) => props.secondary ?? "transparent"})) 52% 100%
+    ${(props: SelectContainerProps) => sanitizeColorCSS(props.primary)} 0% 48%,
+    ${(props) => sanitizeColorCSS(props.secondary)} 52% 100%
   );
 `;
-
+/* 
 interface ColorPaletteContainerProps {
   visible: boolean;
-}
+} */
 
 const ColorPaletteContainer = styled.div`
   position: absolute;
@@ -36,17 +32,19 @@ const ColorPaletteContainer = styled.div`
   height: 10rem;
   background-color: rgb(var(--bg-24dp));
   box-shadow: 1px 2px 1px rgb(var(--shadow));
-  display: ${(props: ColorPaletteContainerProps) =>
-    props.visible ? "visible" : "none"};
   z-index: 10;
 `;
 
-interface ColorSelectProps {
+interface ColorSelectProps extends VisibleProps {
   color: string;
 }
 
-const ColorSelect = ({ color: colorId }: ColorSelectProps) => {
-  const [visible, setVisible] = useState(false);
+const ColorSelect = ({
+  color: colorId,
+  isVisible,
+  handleSetVisible,
+}: ColorSelectProps) => {
+  /* const [visible, setVisible] = useState(false); */
   const refElement = useRef(null);
 
   /* useEffect(() => {
@@ -58,7 +56,7 @@ const ColorSelect = ({ color: colorId }: ColorSelectProps) => {
 
   const handleClick = (event: any) => {
     event.stopPropagation();
-    setVisible(!visible);
+    handleSetVisible();
   };
 
   /* const resetVisible = (event: any) => {
@@ -76,6 +74,7 @@ const ColorSelect = ({ color: colorId }: ColorSelectProps) => {
   };
 
   const color = COLORS[+colorId - 1];
+  console.log(colorId);
 
   return (
     <SelectContainer
@@ -83,20 +82,18 @@ const ColorSelect = ({ color: colorId }: ColorSelectProps) => {
       secondary={color?.secondColor}
       onClick={handleClick}
     >
-      <ColorPaletteContainer
-        ref={refElement}
-        visible={visible}
-        onClick={cancelParentClick}
-      >
-        {/* Maybe change top 0 to auto */}
-        <ColorPalette
-          colors={COLORS}
-          selectedColor={`${color?.id}`}
-          handleColorChange={(color) => console.log(color)}
-        />
-      </ColorPaletteContainer>
+      {isVisible ? (
+        <ColorPaletteContainer ref={refElement} onClick={cancelParentClick}>
+          {/* Maybe change top 0 to auto */}
+          <ColorPalette
+            colors={COLORS}
+            selectedColor={`${color?.id}`}
+            handleColorChange={(color) => console.log(color)}
+          />
+        </ColorPaletteContainer>
+      ) : null}
     </SelectContainer>
   );
 };
 
-export default ColorSelect;
+export default withVisible(ColorSelect);
