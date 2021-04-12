@@ -11,11 +11,21 @@ interface DashboardProps {
   updateComplete: (itemId: string, complete: boolean) => void;
 }
 
-const Dashboard = ({ tasks, addIntrant, getTasks, updateComplete }: DashboardProps) => {
+const Dashboard = ({
+  tasks,
+  addIntrant,
+  getTasks,
+  updateComplete,
+}: DashboardProps) => {
   useEffect(() => {
     getTasks();
   }, []);
-  const IntrantList = filteredList(tasks, INTRANT_FILTER, addIntrant, updateComplete);
+  const IntrantList = filteredList(
+    tasks,
+    INTRANT_FILTER,
+    addIntrant,
+    updateComplete
+  );
   return (
     <div
       style={{
@@ -43,7 +53,8 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     getTasks: () => dispatch(getTasks()),
     addIntrant: (task: string) => dispatch(addIntrant(task)),
-    updateComplete: (itemId: string, complete: boolean) => dispatch(updateComplete(itemId, complete)) 
+    updateComplete: (itemId: string, complete: boolean) =>
+      dispatch(updateComplete(itemId, complete)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
