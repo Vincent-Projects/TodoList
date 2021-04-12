@@ -15,3 +15,4 @@ export const REQUEST_SUCCESS = "REQUEST_SUCCESS";
 export const REQUEST_FAIL = "REQUEST_FAIL";
 export const INIT_TASKS = "INIT_TASKS";
 export const ADD_INTRANT = "ADD_INTRANT";
+export const UPDATE_COMPLETE = "UPDATE_COMPLETE";
