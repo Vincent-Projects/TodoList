@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
@@ -41,7 +41,7 @@ const app = ({ checkAuth, isAuth }) => {
       {isAuth /* IF route === / remove menu */ ? <Menu /> : null}
       <Switch>
         <Route exact path="/">
-          <LandingPage />
+          {isAuth ? <Redirect to="/dashboard" /> : <LandingPage />}
         </Route>
         <Route path="/dashboard">
           <ProtectedRoute>
