@@ -30,7 +30,12 @@ export interface EmptyItemProps {
   isVisible: boolean;
 }
 
-const EmptyItem = ({ text, handleSave, isVisible, handleSetVisible }: EmptyItemProps) => {
+const EmptyItem = ({
+  text,
+  handleSave,
+  isVisible,
+  handleSetVisible,
+}: EmptyItemProps) => {
   /* const [isTyping, setIsTyping] = useState(false); */
   const [value, setValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -39,7 +44,7 @@ const EmptyItem = ({ text, handleSave, isVisible, handleSetVisible }: EmptyItemP
     if (isVisible && inputRef && inputRef.current) {
       inputRef.current.focus();
     }
-  }
+  };
 
   useEffect(focusInput, [isVisible]);
 
@@ -50,36 +55,33 @@ const EmptyItem = ({ text, handleSave, isVisible, handleSetVisible }: EmptyItemP
     } else {
       focusInput();
     }
-  }
+  };
 
   const handleChange = (event: any) => {
     setValue(event.target.value);
-  }
+  };
 
   const handleKeyPress = (event: any) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       event.preventDefault();
       handleSave(value);
     }
-  }
+  };
 
   return (
     <ItemContainer onClick={handleClick}>
-      {!isVisible
-        ? (
-          <Text>{text}</Text>
-        )
-        : (
-          <Input
-            ref={inputRef}
-            value={value}
-            onChange={handleChange}
-            onKeyPress={handleKeyPress}
-          />
-        )
-      }
+      {!isVisible ? (
+        <Text>{text}</Text>
+      ) : (
+        <Input
+          ref={inputRef}
+          value={value}
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
+        />
+      )}
     </ItemContainer>
   );
-}
+};
 
 export default withVisible(EmptyItem);

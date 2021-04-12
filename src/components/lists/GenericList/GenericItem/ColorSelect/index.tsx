@@ -1,8 +1,12 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 import ColorPalette from "components/ColorPalette";
 import COLORS from "utils/colors";
 import withVisible, { VisibleProps } from "hooks/withVisible";
+<<<<<<< HEAD
+=======
+import { sanitizeColorCSS } from "utils/colors";
+>>>>>>> ac77eddd79ace189f6a40e38135e17682e45ced2
 
 interface SelectContainerProps {
   primary: string;
@@ -14,14 +18,8 @@ const SelectContainer = styled.div`
   position: relative;
   background: linear-gradient(
     45deg,
-    rgb(
-        var(
-          --color-
-            ${(props: SelectContainerProps) => props.primary ?? "transparent"}
-        )
-      )
-      0% 48%,
-    rgb(var(--color- ${(props) => props.secondary ?? "transparent"})) 52% 100%
+    ${(props: SelectContainerProps) => sanitizeColorCSS(props.primary)} 0% 48%,
+    ${(props) => sanitizeColorCSS(props.secondary)} 52% 100%
   );
 `;
 /* 
@@ -44,31 +42,15 @@ interface ColorSelectProps extends VisibleProps {
   color: string;
 }
 
-const ColorSelect = ({ color: colorId, isVisible, handleSetVisible }: ColorSelectProps) => {
-  /* const [visible, setVisible] = useState(false); */
-  const refElement = useRef(null);
-
-  /* useEffect(() => {
-    document.addEventListener("click", resetVisible); // Problem: This will add as many event listner as duplication of this component
-    return () => {
-      document.removeEventListener("click", resetVisible);
-    }
-  }, []); */
-
-  const handleClick = (event: any) => {
-    event.stopPropagation();
-    handleSetVisible()
+const ColorSelect = ({
+  color: colorId,
+  isVisible,
+  handleSetVisible,
+  elementRef,
+}: ColorSelectProps) => {
+  const handleClick = () => {
+    handleSetVisible();
   };
-
-  /* const resetVisible = (event: any) => {
-    if (refElement.current && event.target === refElement) {
-      alert("Click dans l'element");
-    } else {
-      alert("Click en dehors");
-    }
-    alert("Something")
-    setVisible(false); 
-  }; */
 
   const cancelParentClick = (event: any) => {
     event.stopPropagation();
@@ -81,25 +63,18 @@ const ColorSelect = ({ color: colorId, isVisible, handleSetVisible }: ColorSelec
       primary={color?.color}
       secondary={color?.secondColor}
       onClick={handleClick}
+      ref={elementRef}
     >
-      {isVisible
-        ? (
-          <ColorPaletteContainer
-        ref={refElement}
-        onClick={cancelParentClick}
-      >
-        {/* Maybe change top 0 to auto */}
-        <ColorPalette
-          colors={COLORS}
-          selectedColor={`${color?.id}`}
-          handleColorChange={(color) => console.log(color)}
-        />
-      </ColorPaletteContainer>
-      )
-          : (
-        null      
-          )
-    }
+      {isVisible ? (
+        <ColorPaletteContainer onClick={cancelParentClick}>
+          {/* Maybe change top 0 to auto */}
+          <ColorPalette
+            colors={COLORS}
+            selectedColor={`${color?.id}`}
+            handleColorChange={(color) => console.log(color)}
+          />
+        </ColorPaletteContainer>
+      ) : null}
     </SelectContainer>
   );
 };

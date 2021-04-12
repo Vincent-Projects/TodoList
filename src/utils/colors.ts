@@ -20,8 +20,8 @@ function generateColorObject(
 
   return {
     id: id.toString(),
-    color: number1.toString(),
-    secondColor: number2?.toString(),
+    color: number1.toString().trim(),
+    secondColor: number2?.toString().trim(),
     accessLevel: accessLevel,
   };
 }
@@ -51,3 +51,7 @@ const COLORS: ColorObject[] = [
 
 export default COLORS;
 export type { AccessLevel, ColorObject };
+
+export const sanitizeColorCSS = (color: string) => {
+  return `rgb(var(--color-${color}))`;
+};

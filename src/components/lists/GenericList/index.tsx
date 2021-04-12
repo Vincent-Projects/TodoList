@@ -14,6 +14,7 @@ const GenericList = ({ elements, saveNewItem }: GenericListProps) => {
 
   const handleClick = (id: string) => {
     console.log(id);
+    console.clear();
   };
 
   const handleAddItem = () => {
