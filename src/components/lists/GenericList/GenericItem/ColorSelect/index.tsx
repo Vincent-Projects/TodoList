@@ -3,10 +3,7 @@ import styled from "styled-components";
 import ColorPalette from "components/ColorPalette";
 import COLORS from "utils/colors";
 import withVisible, { VisibleProps } from "hooks/withVisible";
-<<<<<<< HEAD
-=======
 import { sanitizeColorCSS } from "utils/colors";
->>>>>>> ac77eddd79ace189f6a40e38135e17682e45ced2
 
 interface SelectContainerProps {
   primary: string;
