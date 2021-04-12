@@ -75,3 +75,26 @@ export const addIntrant = (task) => {
       });
   };
 };
+
+export const updateComplete = (itemId, complete) => {
+  return (dispatch, getState) => {
+    dispatch(startRequest());
+
+    const token = getState().auth.token;
+
+    api.updateTask(token, itemId, { complete: !complete })
+      .then(() => {
+        dispatch(successRequest());
+        dispatch({
+          type: actionTypes.UPDATE_COMPLETE,
+          payload: {
+            id: itemId
+          }
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        dispatch(failRequest());
+      });
+  };
+};

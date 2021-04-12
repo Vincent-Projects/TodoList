@@ -28,12 +28,29 @@ const addIntrant = (state, action) => {
   };
 };
 
+const updateComplete = (state, action) => {
+  const updatedTasks = [
+    ...state.tasks
+  ];
+  const index = updatedTasks.findIndex(task => task._id === action.payload.id);
+  updatedTasks[index].complete = !updatedTasks[index].complete;
+
+  return {
+    ...state,
+    tasks: [
+      ...updatedTasks
+    ]
+  };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.INIT_TASKS:
       return initTasks(state, action);
     case actionTypes.ADD_INTRANT:
       return addIntrant(state, action);
+    case actionTypes.UPDATE_COMPLETE:
+      return updateComplete(state, action);
     default:
       return state;
   }

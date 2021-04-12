@@ -5,16 +5,16 @@ import { TaskType } from "utils/constants";
 export interface GenericListProps {
   elements: TaskType[];
   saveNewItem: (item: string) => void;
+  updateComplete: (itemId: string, complete: boolean) => void;
 }
 
-const GenericList = ({ elements, saveNewItem }: GenericListProps) => {
+const GenericList = ({ elements, saveNewItem, updateComplete }: GenericListProps) => {
   const [isAddingItem, setIsAddingItem] = useState(false);
   const [newItemValue, setNewItemValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleClick = (id: string) => {
-    console.log(id);
-    console.clear();
+  const handleClick = (id: string, complete: boolean) => {
+    updateComplete(id, complete);
   };
 
   const handleAddItem = () => {
@@ -47,7 +47,7 @@ const GenericList = ({ elements, saveNewItem }: GenericListProps) => {
             done={element.complete}
             text={element.task}
             color={element.tagColor ?? ""}
-            handleClick={() => handleClick(element._id)}
+            handleClick={() => handleClick(element._id, element.complete)}
           />
         );
       })}
