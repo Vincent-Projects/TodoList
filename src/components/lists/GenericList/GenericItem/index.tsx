@@ -70,12 +70,12 @@ const Text = styled.p`
 
 const GenericItem = ({ done, text, color, handleClick }: GenericItemProps) => {
   return (
-    <ItemContainer onClick={handleClick}>
+    <ItemContainer>
       <ColorSelectContainer>
         <ColorSelect color={color} />
       </ColorSelectContainer>
       <CheckBox done={done} />
-      <Text done={done}>{text}</Text>
+      <Text done={done} onClick={handleClick}>{text}</Text>
       <div>{/* Interaction buttons  */}</div>
     </ItemContainer>
   );
