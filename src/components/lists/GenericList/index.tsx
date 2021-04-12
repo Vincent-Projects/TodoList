@@ -8,7 +8,11 @@ export interface GenericListProps {
   updateComplete: (itemId: string, complete: boolean) => void;
 }
 
-const GenericList = ({ elements, saveNewItem, updateComplete }: GenericListProps) => {
+const GenericList = ({
+  elements,
+  saveNewItem,
+  updateComplete,
+}: GenericListProps) => {
   const [isAddingItem, setIsAddingItem] = useState(false);
   const [newItemValue, setNewItemValue] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);

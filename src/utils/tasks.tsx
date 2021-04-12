@@ -15,7 +15,13 @@ export const filteredList = (
   const items = tasks.filter(filter);
   /* eslint-disable react/display-name */
   return () => {
-    return <GenericList elements={items} saveNewItem={handleSave} updateComplete={handleComplete} />;
+    return (
+      <GenericList
+        elements={items}
+        saveNewItem={handleSave}
+        updateComplete={handleComplete}
+      />
+    );
   };
   /* eslint-enable react/display-name */
 };

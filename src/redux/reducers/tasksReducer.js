@@ -29,17 +29,15 @@ const addIntrant = (state, action) => {
 };
 
 const updateComplete = (state, action) => {
-  const updatedTasks = [
-    ...state.tasks
-  ];
-  const index = updatedTasks.findIndex(task => task._id === action.payload.id);
+  const updatedTasks = [...state.tasks];
+  const index = updatedTasks.findIndex(
+    (task) => task._id === action.payload.id
+  );
   updatedTasks[index].complete = !updatedTasks[index].complete;
 
   return {
     ...state,
-    tasks: [
-      ...updatedTasks
-    ]
+    tasks: [...updatedTasks],
   };
 };
 

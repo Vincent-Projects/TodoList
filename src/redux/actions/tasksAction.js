@@ -82,17 +82,18 @@ export const updateComplete = (itemId, complete) => {
 
     const token = getState().auth.token;
 
-    api.updateTask(token, itemId, { complete: !complete })
+    api
+      .updateTask(token, itemId, { complete: !complete })
       .then(() => {
         dispatch(successRequest());
         dispatch({
           type: actionTypes.UPDATE_COMPLETE,
           payload: {
-            id: itemId
-          }
+            id: itemId,
+          },
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         dispatch(failRequest());
       });

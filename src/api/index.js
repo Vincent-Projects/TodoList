@@ -53,14 +53,18 @@ class API {
   static updateTask(token, itemId, updatedData) {
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     };
 
     const fields = Object.keys(updatedData);
     const urlParams = fields.join(";");
 
-    return apiInstance.put(`${apiRoutes.POST_TODO}/${itemId}?fields=${urlParams}`, updatedData, config);
+    return apiInstance.put(
+      `${apiRoutes.POST_TODO}/${itemId}?fields=${urlParams}`,
+      updatedData,
+      config
+    );
   }
   // Projects calls
 }
