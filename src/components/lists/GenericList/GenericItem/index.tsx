@@ -26,6 +26,7 @@ export const ItemContainer = styled.div`
     background-color: rgb(var(--primary));
     opacity: 0;
     transition: 350ms;
+    pointer-events: none;
   }
 
   &:hover:before {
