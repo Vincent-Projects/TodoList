@@ -7,6 +7,7 @@ export interface GenericItemProps {
   text: string;
   color: string;
   handleClick: () => void;
+  handleColorChange: (color: string) => void;
 }
 
 export const ItemContainer = styled.div`
@@ -69,11 +70,14 @@ const Text = styled.p`
   cursor: pointer;
 `;
 
-const GenericItem = ({ done, text, color, handleClick }: GenericItemProps) => {
+const GenericItem = ({ done, text, color, handleClick, handleColorChange }: GenericItemProps) => {
   return (
     <ItemContainer>
       <ColorSelectContainer>
-        <ColorSelect color={color} />
+        <ColorSelect 
+          color={color}
+          handleColorChange={handleColorChange} 
+        />
       </ColorSelectContainer>
       <CheckBox done={done} />
       <Text done={done} onClick={handleClick}>{text}</Text>

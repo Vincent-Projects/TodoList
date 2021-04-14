@@ -37,6 +37,7 @@ const ColorPaletteContainer = styled.div`
 
 interface ColorSelectProps extends VisibleProps {
   color: string;
+  handleColorChange: (colorId: string) => void;
 }
 
 const ColorSelect = ({
@@ -44,7 +45,9 @@ const ColorSelect = ({
   isVisible,
   handleSetVisible,
   elementRef,
+  handleColorChange
 }: ColorSelectProps) => {
+  console.log(colorId);
   const handleClick = () => {
     handleSetVisible();
   };
@@ -68,7 +71,7 @@ const ColorSelect = ({
           <ColorPalette
             colors={COLORS}
             selectedColor={`${color?.id}`}
-            handleColorChange={(color) => console.log(color)}
+            handleColorChange={(colorId) => handleColorChange(colorId)}
           />
         </ColorPaletteContainer>
       ) : null}

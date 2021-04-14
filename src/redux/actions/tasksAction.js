@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
 import api from "api";
+import COLORS from "utils/colors";
 
 export const startRequest = () => {
   return (dispatch) => {
@@ -99,3 +100,33 @@ export const updateComplete = (itemId, complete) => {
       });
   };
 };
+
+export const updateColor = (itemId, colorId) => {
+  return (dispatch, getState) => {
+    dispatch(startRequest());
+
+    const token = getState().auth.token;
+
+    const color = COLORS.find(c => c.id === colorId);
+    const primary = color.color;
+    const secondary = color.secondaryColor;
+    // need to check for permissions
+
+    api.updateTask(token, itemId, { primaryTagColor: primary, secondaryTagColor: secondary })
+    .then(result=> {
+      dispatch(successRequest());
+      console.log(result);
+      /* dispatch({
+        type: actionTypes.UPDATE_COLOR,
+        payload: {
+          primaryTagColor: primary,
+          secondaryTagColor: secondary
+        }
+      }) */
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch(failRequest());
+    });
+  }
+}
