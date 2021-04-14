@@ -10,7 +10,8 @@ export const filteredList = (
   tasks: TaskType[],
   filter: (task: TaskType) => boolean,
   handleSave: (value: string) => void,
-  handleComplete: (itemId: string, complete: boolean) => void
+  handleComplete: (itemId: string, complete: boolean) => void,
+  handleColorChange: (itemId: string, colorId: string) => void
 ) => {
   const items = tasks.filter(filter);
   /* eslint-disable react/display-name */
@@ -20,6 +21,7 @@ export const filteredList = (
         elements={items}
         saveNewItem={handleSave}
         updateComplete={handleComplete}
+        handleColorChange={handleColorChange}
       />
     );
   };

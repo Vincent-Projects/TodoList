@@ -1,17 +1,20 @@
 import React, { useState, useRef, useEffect } from "react";
 import GenericItem from "./GenericItem";
 import { TaskType } from "utils/constants";
+import COLORS, { hexToColorId } from "utils/colors";
 
 export interface GenericListProps {
   elements: TaskType[];
   saveNewItem: (item: string) => void;
   updateComplete: (itemId: string, complete: boolean) => void;
+  handleColorChange: (itemId: string, colorId: string) => void;
 }
 
 const GenericList = ({
   elements,
   saveNewItem,
   updateComplete,
+  handleColorChange,
 }: GenericListProps) => {
   const [isAddingItem, setIsAddingItem] = useState(false);
   const [newItemValue, setNewItemValue] = useState("");
@@ -45,13 +48,28 @@ const GenericList = ({
   return (
     <div style={{}}>
       {elements.map((element) => {
+        const hasColor = element.primaryTagColor || element.secondaryTagColor;
+        let colorId;
+        if (hasColor) {
+          const primaryColorId = hexToColorId(element.primaryTagColor!);
+          const secondaryColorId = hexToColorId(element.secondaryTagColor!);
+          const color = COLORS.find(
+            (c) =>
+              c.color === primaryColorId.toString() &&
+              c.secondColor === secondaryColorId.toString()
+          );
+          colorId = color?.id;
+        }
         return (
           <GenericItem
             key={element._id}
             done={element.complete}
             text={element.task}
-            color={element.tagColor ?? ""}
+            color={colorId ?? ""}
             handleClick={() => handleClick(element._id, element.complete)}
+            handleColorChange={(colorId) =>
+              handleColorChange(element._id, colorId)
+            }
           />
         );
       })}
@@ -62,6 +80,7 @@ const GenericList = ({
             text={"Add Something..."}
             color={""}
             handleClick={handleAddItem}
+            handleColorChange={() => false}
           />
         </div>
       ) : (

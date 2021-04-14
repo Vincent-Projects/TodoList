@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
 import api from "api";
+import COLORS, { colorIdToHex } from "utils/colors";
 
 export const startRequest = () => {
   return (dispatch) => {
@@ -90,6 +91,40 @@ export const updateComplete = (itemId, complete) => {
           type: actionTypes.UPDATE_COMPLETE,
           payload: {
             id: itemId,
+          },
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(failRequest());
+      });
+  };
+};
+
+export const updateColor = (itemId, colorId) => {
+  return (dispatch, getState) => {
+    dispatch(startRequest());
+
+    const token = getState().auth.token;
+
+    const color = COLORS.find((c) => c.id === colorId);
+    const primary = colorIdToHex(color.color);
+    const secondary = colorIdToHex(color.secondColor);
+    // need to check for permissions
+
+    api
+      .updateTask(token, itemId, {
+        primaryTagColor: primary,
+        secondaryTagColor: secondary,
+      })
+      .then((result) => {
+        dispatch(successRequest());
+        dispatch({
+          type: actionTypes.UPDATE_COLOR,
+          payload: {
+            id: result.data.data.todo._id,
+            primaryTagColor: result.data.data.todo.primaryTagColor,
+            secondaryTagColor: result.data.data.todo.secondaryTagColor,
           },
         });
       })

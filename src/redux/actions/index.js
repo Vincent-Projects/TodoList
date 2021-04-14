@@ -6,4 +6,9 @@ export {
   checkAuthState,
   authErrReset,
 } from "./authActions";
-export { getTasks, addIntrant, updateComplete } from "./tasksAction";
+export {
+  getTasks,
+  addIntrant,
+  updateComplete,
+  updateColor,
+} from "./tasksAction";

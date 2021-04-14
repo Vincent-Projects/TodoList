@@ -16,7 +16,8 @@ export interface TaskType {
   complete: boolean;
   userId: string;
   projectId?: string;
-  tagColor?: string;
+  primaryTagColor?: string;
+  secondaryTagColor?: string;
 }
 
 export const passwordRequirements =

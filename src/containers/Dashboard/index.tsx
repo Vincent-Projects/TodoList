@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { addIntrant, getTasks, updateComplete } from "redux/actions";
+import {
+  addIntrant,
+  getTasks,
+  updateComplete,
+  updateColor,
+} from "redux/actions";
 import { filteredList, INTRANT_FILTER } from "utils/tasks";
 import { TaskType } from "utils/constants";
 
@@ -9,6 +14,7 @@ interface DashboardProps {
   addIntrant: (task: string) => void;
   getTasks: () => void;
   updateComplete: (itemId: string, complete: boolean) => void;
+  updateColor: (itemId: string, colorId: string) => void;
 }
 
 const Dashboard = ({
@@ -16,15 +22,18 @@ const Dashboard = ({
   addIntrant,
   getTasks,
   updateComplete,
+  updateColor,
 }: DashboardProps) => {
   useEffect(() => {
     getTasks();
   }, []);
+
   const IntrantList = filteredList(
     tasks,
     INTRANT_FILTER,
     addIntrant,
-    updateComplete
+    updateComplete,
+    updateColor
   );
   return (
     <div
@@ -55,6 +64,8 @@ const mapDispatchToProps = (dispatch: any) => {
     addIntrant: (task: string) => dispatch(addIntrant(task)),
     updateComplete: (itemId: string, complete: boolean) =>
       dispatch(updateComplete(itemId, complete)),
+    updateColor: (itemId: string, colorId: string) =>
+      dispatch(updateColor(itemId, colorId)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

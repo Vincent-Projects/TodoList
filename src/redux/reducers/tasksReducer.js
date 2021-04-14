@@ -41,6 +41,20 @@ const updateComplete = (state, action) => {
   };
 };
 
+const updateColor = (state, action) => {
+  const updatedTasks = [...state.tasks];
+  const index = updatedTasks.findIndex(
+    (task) => task._id === action.payload.id
+  );
+  updatedTasks[index].primaryTagColor = action.payload.primaryTagColor;
+  updatedTasks[index].secondaryTagColor = action.payload.secondaryTagColor;
+
+  return {
+    ...state,
+    tasks: [...updatedTasks],
+  };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.INIT_TASKS:
@@ -49,6 +63,8 @@ const reducer = (state = initialState, action) => {
       return addIntrant(state, action);
     case actionTypes.UPDATE_COMPLETE:
       return updateComplete(state, action);
+    case actionTypes.UPDATE_COLOR:
+      return updateColor(state, action);
     default:
       return state;
   }
