@@ -70,7 +70,13 @@ const Text = styled.p`
   cursor: pointer;
 `;
 
-const GenericItem = ({ done, text, color, handleClick, handleColorChange }: GenericItemProps) => {
+const GenericItem = ({ 
+  done, 
+  text, 
+  color, 
+  handleClick, 
+  handleColorChange 
+}: GenericItemProps) => {
   return (
     <ItemContainer>
       <ColorSelectContainer>

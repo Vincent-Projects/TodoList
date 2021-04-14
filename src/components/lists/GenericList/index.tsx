@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import GenericItem from "./GenericItem";
 import { TaskType } from "utils/constants";
-import COLORS from "utils/colors";
+import COLORS, { hexToColorId } from "utils/colors";
 
 export interface GenericListProps {
   elements: TaskType[];
@@ -51,7 +51,9 @@ const GenericList = ({
         const hasColor = element.primaryTagColor || element.secondaryTagColor;
         let colorId;
         if(hasColor) {
-          const color = COLORS.find(c => c.color === element.primaryTagColor && c.secondColor === element.secondaryTagColor);
+          const primaryColorId = hexToColorId(element.primaryTagColor!);
+          const secondaryColorId = hexToColorId(element.secondaryTagColor!);
+          const color = COLORS.find(c => c.color === primaryColorId.toString() && c.secondColor === secondaryColorId.toString());
           colorId = color?.id;
         }
         return (

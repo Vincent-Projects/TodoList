@@ -55,3 +55,26 @@ export type { AccessLevel, ColorObject };
 export const sanitizeColorCSS = (color: string) => {
   return `rgb(var(--color-${color}))`;
 };
+
+const HEX_COLORS = [
+  "00ffcc",
+  "ff9cbf",
+  "2bd632",
+  "f2ff57",
+  "c9b9f5",
+  "ffa8a8",
+  "a9d66d",
+  "c6d0d6",
+  "4acbf0",
+  "c8cd28",
+  "ffad34",
+  "ffffff"
+];
+
+export const colorIdToHex = (colorId: string) => {
+  return HEX_COLORS[+colorId];
+}
+
+export const hexToColorId = (hex: string) => {
+  return HEX_COLORS.findIndex(hexColor => hex === hexColor);
+}
