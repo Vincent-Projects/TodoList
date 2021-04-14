@@ -107,26 +107,30 @@ export const updateColor = (itemId, colorId) => {
 
     const token = getState().auth.token;
 
-    const color = COLORS.find(c => c.id === colorId);
+    const color = COLORS.find((c) => c.id === colorId);
     const primary = colorIdToHex(color.color);
     const secondary = colorIdToHex(color.secondColor);
     // need to check for permissions
 
-    api.updateTask(token, itemId, { primaryTagColor: primary, secondaryTagColor: secondary })
-    .then(result=> {
-      dispatch(successRequest());
-      dispatch({
-        type: actionTypes.UPDATE_COLOR,
-        payload: {
-          id: result.data.data.todo._id,
-          primaryTagColor: result.data.data.todo.primaryTagColor,
-          secondaryTagColor: result.data.data.todo.secondaryTagColor
-        }
+    api
+      .updateTask(token, itemId, {
+        primaryTagColor: primary,
+        secondaryTagColor: secondary,
       })
-    })
-    .catch(err => {
-      console.log(err);
-      dispatch(failRequest());
-    });
-  }
-}
+      .then((result) => {
+        dispatch(successRequest());
+        dispatch({
+          type: actionTypes.UPDATE_COLOR,
+          payload: {
+            id: result.data.data.todo._id,
+            primaryTagColor: result.data.data.todo.primaryTagColor,
+            secondaryTagColor: result.data.data.todo.secondaryTagColor,
+          },
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(failRequest());
+      });
+  };
+};

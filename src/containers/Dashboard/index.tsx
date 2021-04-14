@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { 
-  addIntrant, 
-  getTasks, 
+import {
+  addIntrant,
+  getTasks,
   updateComplete,
-  updateColor
+  updateColor,
 } from "redux/actions";
 import { filteredList, INTRANT_FILTER } from "utils/tasks";
 import { TaskType } from "utils/constants";
@@ -22,15 +22,11 @@ const Dashboard = ({
   addIntrant,
   getTasks,
   updateComplete,
-  updateColor
+  updateColor,
 }: DashboardProps) => {
   useEffect(() => {
     getTasks();
   }, []);
-
-  const handleColorChange = (colorId: string) => {
-    console.log(colorId);
-  };
 
   const IntrantList = filteredList(
     tasks,
@@ -68,7 +64,8 @@ const mapDispatchToProps = (dispatch: any) => {
     addIntrant: (task: string) => dispatch(addIntrant(task)),
     updateComplete: (itemId: string, complete: boolean) =>
       dispatch(updateComplete(itemId, complete)),
-    updateColor: (itemId: string, colorId: string) => dispatch(updateColor(itemId, colorId))
+    updateColor: (itemId: string, colorId: string) =>
+      dispatch(updateColor(itemId, colorId)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

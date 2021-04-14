@@ -68,13 +68,13 @@ const HEX_COLORS = [
   "4acbf0",
   "c8cd28",
   "ffad34",
-  "ffffff"
+  "ffffff",
 ];
 
 export const colorIdToHex = (colorId: string) => {
   return HEX_COLORS[+colorId];
-}
+};
 
 export const hexToColorId = (hex: string) => {
-  return HEX_COLORS.findIndex(hexColor => hex === hexColor);
-}
+  return HEX_COLORS.findIndex((hexColor) => hex === hexColor);
+};

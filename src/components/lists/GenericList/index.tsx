@@ -14,7 +14,7 @@ const GenericList = ({
   elements,
   saveNewItem,
   updateComplete,
-  handleColorChange
+  handleColorChange,
 }: GenericListProps) => {
   const [isAddingItem, setIsAddingItem] = useState(false);
   const [newItemValue, setNewItemValue] = useState("");
@@ -50,10 +50,14 @@ const GenericList = ({
       {elements.map((element) => {
         const hasColor = element.primaryTagColor || element.secondaryTagColor;
         let colorId;
-        if(hasColor) {
+        if (hasColor) {
           const primaryColorId = hexToColorId(element.primaryTagColor!);
           const secondaryColorId = hexToColorId(element.secondaryTagColor!);
-          const color = COLORS.find(c => c.color === primaryColorId.toString() && c.secondColor === secondaryColorId.toString());
+          const color = COLORS.find(
+            (c) =>
+              c.color === primaryColorId.toString() &&
+              c.secondColor === secondaryColorId.toString()
+          );
           colorId = color?.id;
         }
         return (
@@ -63,7 +67,9 @@ const GenericList = ({
             text={element.task}
             color={colorId ?? ""}
             handleClick={() => handleClick(element._id, element.complete)}
-            handleColorChange={(colorId) => handleColorChange(element._id, colorId)}
+            handleColorChange={(colorId) =>
+              handleColorChange(element._id, colorId)
+            }
           />
         );
       })}

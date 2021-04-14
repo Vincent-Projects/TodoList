@@ -53,7 +53,7 @@ const updateColor = (state, action) => {
     ...state,
     tasks: [...updatedTasks],
   };
-}
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

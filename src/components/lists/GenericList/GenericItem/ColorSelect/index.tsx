@@ -45,7 +45,7 @@ const ColorSelect = ({
   isVisible,
   handleSetVisible,
   elementRef,
-  handleColorChange
+  handleColorChange,
 }: ColorSelectProps) => {
   const handleClick = () => {
     handleSetVisible();
