@@ -81,6 +81,7 @@ const GenericList = ({
             color={""}
             handleClick={handleAddItem}
             handleColorChange={() => false}
+            isNew
           />
         </div>
       ) : (

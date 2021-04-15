@@ -9,7 +9,7 @@ import { ReactComponent as ProjectIcon } from "../assets/icons/folder-solid.svg"
 import { ReactComponent as HabitIcon } from "../assets/icons/chart-bar-solid.svg";
 import { ReactComponent as GoalsIcon } from "../assets/icons/bullseye-solid.svg";
 import { ReactComponent as ProfileIcon } from "../assets/icons/user-solid.svg";
-
+import { ReactComponent as ElipsisIcon } from "../assets/icons/ellipsis-h-solid.svg";
 import { ReactComponent as CheckIcon } from "assets/icons/check-solid.svg";
 
 export interface SocialMediaType {
@@ -78,6 +78,11 @@ export const ICONS: IconList = [
     url: "icons/check-solid.svg",
     img: <CheckIcon />,
   },
+  {
+    name: "ELLIPSIS",
+    url: "icons/ellipsis-h-solid.svg",
+    img: <ElipsisIcon />
+  }
 ];
 
 export const HOME = "HOME";
@@ -86,6 +91,7 @@ export const HABIT = "HABIT";
 export const GOALS = "GOALS";
 export const PROFILE = "PROFILE";
 export const CHECK = "CHECK";
+export const ELLIPSIS = "ELLIPSIS"
 
 export const ICONS_ROUTES = {
   HOME,
@@ -93,4 +99,5 @@ export const ICONS_ROUTES = {
   HABIT,
   GOALS,
   PROFILE,
+  ELLIPSIS
 };
