@@ -2,6 +2,16 @@ import React, { useState, useRef, useEffect } from "react";
 import GenericItem from "./GenericItem";
 import { TaskType } from "utils/constants";
 import COLORS, { hexToColorId } from "utils/colors";
+import styled from "styled-components";
+
+const Input = styled.input`
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgb(var(--on-bg));
+  padding: 0.2rem;
+  padding-left: 2.5rem;
+`;
 
 export interface GenericListProps {
   elements: TaskType[];
@@ -45,6 +55,14 @@ const GenericList = ({
     }
   }, [isAddingItem]);
 
+  const inputBlurHandler = () => {
+    if (newItemValue !== "") {
+      saveNewItem(newItemValue);
+    } else {
+      setIsAddingItem(false);
+    }
+  }
+
   return (
     <div style={{}}>
       {elements.map((element) => {
@@ -86,12 +104,13 @@ const GenericList = ({
         </div>
       ) : (
         <div>
-          <input
+          <Input
             ref={inputRef}
             style={{ backgroundColor: "transparent", border: "none" }}
             value={newItemValue}
             onChange={handleNewItemInput}
             onKeyPress={handleKeyPress}
+            onBlur={inputBlurHandler}  
           />
         </div>
       )}

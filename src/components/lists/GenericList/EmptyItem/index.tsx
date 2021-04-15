@@ -73,7 +73,7 @@ const EmptyItem = ({
       {!isVisible ? (
         <Text>{text}</Text>
       ) : (
-        <Input
+          <Input
           ref={inputRef}
           value={value}
           onChange={handleChange}
