@@ -16,16 +16,20 @@ const MenuContainer = styled.div`
   justify-content: space-around;
   align-items: center;
 
+  background: rgb(${(props: any) => props.theme.bg1dp});
+  box-shadow: 1px 1px 2px rgb(var(--shadow));
+
   @media only screen and (min-width: 786px) {
     & {
-      width: 20%;
+      width: 18%;
       height: 100vh;
+      box-shadow: 1px 1px 2px rgb(var(--shadow));
     }
   }
 
   @media only screen and (min-width: 1200px) {
     & {
-      width: 15%;
+      width: 14%;
     }
   }
 `;

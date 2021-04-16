@@ -12,3 +12,6 @@ export {
   updateComplete,
   updateColor,
 } from "./tasksAction";
+export {
+  invertTheme
+} from "./settingsAction";

@@ -8,7 +8,7 @@ const initialState = {
   isAuth: false,
   token: null,
   token_expire: null,
-  username: null,
+  firstname: null,
   email: null,
   isLoading: false,
   authErrMessage: null,
@@ -16,14 +16,15 @@ const initialState = {
 };
 
 const login = (state, action) => {
+  const accessLevel = subscriptionNumberToAccessLevel(action.payload.subscriptionNumber);
   return {
     ...state,
     isAuth: true,
     token: action.payload.token,
     token_expire: action.payload.token_expire,
-    username: action.payload.username,
+    firstname: action.payload.firstname,
     email: action.payload.email,
-    accessLevel: subscriptionNumberToAccessLevel(action.payload.subscriptionNumber), // Change this using the returned value from API
+    accessLevel: accessLevel, // Change this using the returned value from API
   };
 };
 

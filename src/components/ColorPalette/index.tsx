@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { ColorObject } from "utils/colors";
-import { hasPremiumPermission } from "utils/auth";
+import { hasPremiumPermission, hasBelieverPermission } from "utils/auth";
 import ACCESSLEVEL from "utils/auth";
 import { CHECK } from "components/contants";
 import Icon from "components/Icon";
@@ -122,7 +122,7 @@ const ColorPalette = ({
       <ColorPaletteStyle>
         {colors.map((color) =>
           color.accessLevel === ACCESSLEVEL.PREMIUM &&
-          !hasPremiumPermission() ? (
+          !hasPremiumPermission() && !hasBelieverPermission() ? (
             <LockedColor
               key={color.id}
               primary={color.color}

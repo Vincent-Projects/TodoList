@@ -1,3 +1,6 @@
+// SETTINGS
+export const SWITCH_THEME = "SWITCH_THEME";
+
 // Auth Action Types
 export const LOGIN = "LOGIN";
 export const SINGUP = "SIGNUP";
