@@ -34,11 +34,7 @@ const AppContainer = styled.div`
   }
 `;
 
-const app = ({
-  checkAuth,
-  isAuth,
-  theme
-}) => {
+const app = ({ checkAuth, isAuth, theme }) => {
   useEffect(() => {
     checkAuth();
   }, []);
@@ -91,7 +87,7 @@ const app = ({
 const mapStateToProps = (state) => {
   return {
     isAuth: state.auth.isAuth,
-    theme: state.settings.theme
+    theme: state.settings.theme,
   };
 };
 

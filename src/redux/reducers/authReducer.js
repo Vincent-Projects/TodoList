@@ -1,7 +1,5 @@
 import * as actionTypes from "../actions/actionTypes";
-import {
-  subscriptionNumberToAccessLevel
-} from "utils/auth";
+import { subscriptionNumberToAccessLevel } from "utils/auth";
 
 const initialState = {
   accessLevel: null,
@@ -16,7 +14,9 @@ const initialState = {
 };
 
 const login = (state, action) => {
-  const accessLevel = subscriptionNumberToAccessLevel(action.payload.subscriptionNumber);
+  const accessLevel = subscriptionNumberToAccessLevel(
+    action.payload.subscriptionNumber
+  );
   return {
     ...state,
     isAuth: true,

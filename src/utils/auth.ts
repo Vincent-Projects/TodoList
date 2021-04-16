@@ -1,6 +1,6 @@
 import store from "redux/store";
 
-// CONSTANTS 
+// CONSTANTS
 export type AccessLevelType = "FREE" | "PREMIUM" | "BELIEVER";
 
 const FREE: AccessLevelType = "FREE";
@@ -10,7 +10,7 @@ const BELIEVER: AccessLevelType = "BELIEVER";
 const CONSTANTS = {
   FREE,
   PREMIUM,
-  BELIEVER
+  BELIEVER,
 };
 
 export default CONSTANTS;
@@ -29,11 +29,15 @@ const hasPremiumPermission = checkAccess(PREMIUM);
 const hasBelieverPermission = checkAccess(BELIEVER);
 
 const subscriptionNumberToAccessLevel = (subscriptionNumber: number) => {
-  return subscriptionNumber === 2 ? BELIEVER : subscriptionNumber === 1 ? PREMIUM : FREE;
+  return subscriptionNumber === 2
+    ? BELIEVER
+    : subscriptionNumber === 1
+    ? PREMIUM
+    : FREE;
 };
 
 export {
   hasPremiumPermission,
   hasBelieverPermission,
-  subscriptionNumberToAccessLevel
+  subscriptionNumberToAccessLevel,
 };

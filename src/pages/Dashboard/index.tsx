@@ -5,6 +5,7 @@ import {
   getTasks,
   updateComplete,
   updateColor,
+  deleteTask,
 } from "redux/actions";
 import { filteredList, INTRANT_FILTER } from "utils/tasks";
 import { TaskType } from "utils/constants";
@@ -15,6 +16,7 @@ interface DashboardProps {
   getTasks: () => void;
   updateComplete: (itemId: string, complete: boolean) => void;
   updateColor: (itemId: string, colorId: string) => void;
+  handleDelete: (itemId: string) => void;
 }
 
 const Dashboard = ({
@@ -23,6 +25,7 @@ const Dashboard = ({
   getTasks,
   updateComplete,
   updateColor,
+  handleDelete,
 }: DashboardProps) => {
   useEffect(() => {
     getTasks();
@@ -33,7 +36,8 @@ const Dashboard = ({
     INTRANT_FILTER,
     addIntrant,
     updateComplete,
-    updateColor
+    updateColor,
+    handleDelete
   );
   return (
     <div
@@ -64,6 +68,7 @@ const mapDispatchToProps = (dispatch: any) => {
       dispatch(updateComplete(itemId, complete)),
     updateColor: (itemId: string, colorId: string) =>
       dispatch(updateColor(itemId, colorId)),
+    handleDelete: (itemId: string) => dispatch(deleteTask(itemId)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

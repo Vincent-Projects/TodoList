@@ -122,7 +122,8 @@ const ColorPalette = ({
       <ColorPaletteStyle>
         {colors.map((color) =>
           color.accessLevel === ACCESSLEVEL.PREMIUM &&
-          !hasPremiumPermission() && !hasBelieverPermission() ? (
+          !hasPremiumPermission() &&
+          !hasBelieverPermission() ? (
             <LockedColor
               key={color.id}
               primary={color.color}

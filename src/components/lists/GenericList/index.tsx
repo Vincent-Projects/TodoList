@@ -20,6 +20,7 @@ export interface GenericListProps {
   saveNewItem: (item: string) => void;
   updateComplete: (itemId: string, complete: boolean) => void;
   handleColorChange: (itemId: string, colorId: string) => void;
+  deleteTask: (itemId: string) => void;
 }
 
 const GenericList = ({
@@ -27,6 +28,7 @@ const GenericList = ({
   saveNewItem,
   updateComplete,
   handleColorChange,
+  deleteTask,
 }: GenericListProps) => {
   const [isAddingItem, setIsAddingItem] = useState(false);
   const [newItemValue, setNewItemValue] = useState("");
@@ -86,6 +88,7 @@ const GenericList = ({
             done={element.complete}
             text={element.task}
             color={colorId ?? ""}
+            handleDelete={() => deleteTask(element._id)}
             handleClick={() => handleClick(element._id, element.complete)}
             handleColorChange={(colorId) =>
               handleColorChange(element._id, colorId)

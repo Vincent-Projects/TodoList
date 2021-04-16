@@ -7,7 +7,7 @@ import settingsReducer from "./settingsReducer";
 const rootReducer = combineReducers({
   auth: authReducer,
   tasks: tasksReducer,
-  settings: settingsReducer
+  settings: settingsReducer,
 });
 
 export default rootReducer;

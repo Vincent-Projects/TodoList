@@ -11,7 +11,6 @@ export {
   addIntrant,
   updateComplete,
   updateColor,
+  deleteTask,
 } from "./tasksAction";
-export {
-  invertTheme
-} from "./settingsAction";
+export { invertTheme } from "./settingsAction";

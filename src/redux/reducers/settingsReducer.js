@@ -1,13 +1,13 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialValue = {
-  theme: {}
+  theme: {},
 };
 
 const invertTheme = (state, action) => {
   return {
     ...state,
-    theme: action.payload.theme
+    theme: action.payload.theme,
   };
 };
 
