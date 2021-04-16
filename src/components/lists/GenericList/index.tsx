@@ -13,8 +13,7 @@ const Input = styled.input`
   padding-left: 2.5rem;
 `;
 
-const List = styled.div`
-`;
+const List = styled.div``;
 
 export interface GenericListProps {
   elements: TaskType[];
@@ -64,7 +63,7 @@ const GenericList = ({
     } else {
       setIsAddingItem(false);
     }
-  }
+  };
 
   return (
     <List>
@@ -113,7 +112,7 @@ const GenericList = ({
             value={newItemValue}
             onChange={handleNewItemInput}
             onKeyPress={handleKeyPress}
-            onBlur={inputBlurHandler}  
+            onBlur={inputBlurHandler}
           />
         </div>
       )}

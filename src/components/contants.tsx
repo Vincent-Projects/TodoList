@@ -81,8 +81,8 @@ export const ICONS: IconList = [
   {
     name: "ELLIPSIS",
     url: "icons/ellipsis-h-solid.svg",
-    img: <ElipsisIcon />
-  }
+    img: <ElipsisIcon />,
+  },
 ];
 
 export const HOME = "HOME";
@@ -91,7 +91,7 @@ export const HABIT = "HABIT";
 export const GOALS = "GOALS";
 export const PROFILE = "PROFILE";
 export const CHECK = "CHECK";
-export const ELLIPSIS = "ELLIPSIS"
+export const ELLIPSIS = "ELLIPSIS";
 
 export const ICONS_ROUTES = {
   HOME,
@@ -99,5 +99,5 @@ export const ICONS_ROUTES = {
   HABIT,
   GOALS,
   PROFILE,
-  ELLIPSIS
+  ELLIPSIS,
 };

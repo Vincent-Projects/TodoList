@@ -73,57 +73,59 @@ const Text = styled.p`
   cursor: pointer;
 `;
 const InteractionBtnContainer = styled.div`
-    position: relative;
-    height: 100%;
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    jusitfy-content: center;
-    align-items: center;
-    cursor: pointer;
+  position: relative;
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  jusitfy-content: center;
+  align-items: center;
+  cursor: pointer;
 
-    &:active, &:focus {
-      transform: translate(-1px, -1px);
-    }
+  &:active,
+  &:focus {
+    transform: translate(-1px, -1px);
+  }
 `;
 
 const BtnContainer = styled.div`
-    position: absolute;
-    width: fit-content;
-    height: fit-content;
-    top: 100%;
-    right: 0;
-    background: rgb(var(--bg-24dp));
-    box-shadow: 1px 2px 2px rgb(var(--shadow));
-    color: rgb(var(--on-bg));
-    z-index: 100;
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  top: 100%;
+  right: 0;
+  background: rgb(var(--bg-24dp));
+  box-shadow: 1px 2px 2px rgb(var(--shadow));
+  color: rgb(var(--on-bg));
+  z-index: 100;
 `;
 
 const MenuBtn = styled.button`
-    background: transparent;
-    color: ${(props: { danger?: boolean }) => props.danger ? "rgb(var(--error))" : "inherit"};
-    border: none;
-    white-space: nowrap;
-    padding: 1rem;
+  background: transparent;
+  color: ${(props: { danger?: boolean }) =>
+    props.danger ? "rgb(var(--error))" : "inherit"};
+  border: none;
+  white-space: nowrap;
+  padding: 1rem;
+  width: 100%;
+  height: fit-content;
+  position: relative;
+
+  &:after {
+    background: linear-gradient(90deg, rgba(var(--primary), 0.15), transparent);
+    position: absolute;
+    content: "";
     width: 100%;
-    height: fit-content;
-    position: relative;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: 250ms;
+  }
 
-    &:after {
-      background: linear-gradient(90deg, rgba(var(--primary), 0.15), transparent);
-      position: absolute;
-      content: "";
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transition: 250ms;
-    }
-
-    &:hover:after {
-      opacity: 1;
-    }
+  &:hover:after {
+    opacity: 1;
+  }
 `;
 
 const GenericItem = ({
@@ -132,16 +134,16 @@ const GenericItem = ({
   color,
   handleClick,
   handleColorChange,
-  isNew
+  isNew,
 }: GenericItemProps) => {
   const [interactionVisible, setInteractionVisible] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
 
-  const mouseEnterHandler = (event: any) => {
+  const mouseEnterHandler = () => {
     setInteractionVisible(true);
-  }
+  };
 
-  const mouseLeaveHandler = (event: any) => {
+  const mouseLeaveHandler = () => {
     setInteractionVisible(false);
     setMenuVisible(false);
   };
@@ -150,7 +152,7 @@ const GenericItem = ({
     setMenuVisible((previousVisible) => {
       return !previousVisible;
     });
-  }
+  };
 
   return (
     <ItemContainer
@@ -158,30 +160,26 @@ const GenericItem = ({
       onMouseLeave={mouseLeaveHandler}
     >
       <ColorSelectContainer>
-        <ColorSelect color={color} handleColorChange={handleColorChange}/>
+        <ColorSelect color={color} handleColorChange={handleColorChange} />
       </ColorSelectContainer>
       <CheckBox done={done} />
       <Text done={done} onClick={handleClick}>
         {text}
       </Text>
-      { interactionVisible && !isNew
-        ? (
-          <InteractionBtnContainer>
-            <div onClick={clickHandler}>
-              <Icon iconName={ELLIPSIS} />
-            </div>
-            { menuVisible
-              ? (
-                <BtnContainer>
-                  <MenuBtn>Modify Task</MenuBtn>
-                  <MenuBtn>Change Tag Color</MenuBtn>
-                  <MenuBtn danger>Delete Task</MenuBtn>
-                </BtnContainer>
-              ) : null
-            }
-          </InteractionBtnContainer>
-        ) : null
-      }
+      {interactionVisible && !isNew ? (
+        <InteractionBtnContainer>
+          <div onClick={clickHandler}>
+            <Icon iconName={ELLIPSIS} />
+          </div>
+          {menuVisible ? (
+            <BtnContainer>
+              <MenuBtn>Modify Task</MenuBtn>
+              <MenuBtn>Change Tag Color</MenuBtn>
+              <MenuBtn danger>Delete Task</MenuBtn>
+            </BtnContainer>
+          ) : null}
+        </InteractionBtnContainer>
+      ) : null}
     </ItemContainer>
   );
 };
