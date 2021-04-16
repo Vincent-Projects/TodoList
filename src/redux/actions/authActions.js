@@ -11,7 +11,7 @@ export const login = (email, password) => {
 
     API.login(email, password)
       .then((result) => {
-        const { token, token_expire, username, email } = result.data.data;
+        const { token, token_expire, username, email, subscription } = result.data.data;
 
         const tokenExpire = new Date(
           new Date().getTime() + token_expire * 1000
@@ -23,6 +23,7 @@ export const login = (email, password) => {
           username,
           email,
           secret: AUTH_SECRET,
+          subscriptionNumber: subscription
         };
 
         const jwt_encoded = jwt.sign(auth_data, JWT_SECRET);
@@ -35,6 +36,7 @@ export const login = (email, password) => {
             token_expire: tokenExpire,
             username,
             email,
+            accessLevel: subscription
           },
         });
         dispatch(AUTH_STOP());

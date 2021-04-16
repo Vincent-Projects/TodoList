@@ -1,4 +1,7 @@
 import * as actionTypes from "../actions/actionTypes";
+import {
+  subscriptionNumberToAccessLevel
+} from "utils/auth";
 
 const initialState = {
   accessLevel: null,
@@ -20,7 +23,7 @@ const login = (state, action) => {
     token_expire: action.payload.token_expire,
     username: action.payload.username,
     email: action.payload.email,
-    accessLevel: "FREE", // Change this using the returned value from API
+    accessLevel: subscriptionNumberToAccessLevel(action.payload.subscriptionNumber), // Change this using the returned value from API
   };
 };
 

@@ -3,22 +3,22 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import AuthPage from "hoc/AuthPage";
-import Page from "hoc/Page";
-import Menu from "containers/Menu";
+import AuthPage from "layouts/AuthPage";
+import Page from "layouts/Page";
+import Menu from "layouts/Menu";
+
+import LandingPage from "pages/LandingPage";
+import ProtectedRoute from "components/ProtectedRoute";
+import PageNotFound from "pages/PageNotFound";
+const Dashboard = React.lazy(() => import("pages/Dashboard"));
+const Login = React.lazy(() => import("pages/auth/Login"));
+const Signup = React.lazy(() => import("pages/auth/Signup"));
+const ValidationAccount = React.lazy(() =>
+  import("pages/auth/ValidationAccount")
+);
 
 import { checkAuthState } from "redux/actions";
 import DiamondSpinner from "components/loaders/DiamondSpinner";
-import LandingPage from "containers/LandingPage";
-import ProtectedRoute from "components/ProtectedRoute";
-import PageNotFound from "containers/PageNotFound";
-
-const Dashboard = React.lazy(() => import("containers/Dashboard"));
-const Login = React.lazy(() => import("containers/auth/Login"));
-const Signup = React.lazy(() => import("containers/auth/Signup"));
-const ValidationAccount = React.lazy(() =>
-  import("containers/auth/ValidationAccount")
-);
 
 const AppContainer = styled.div`
   display: flex;

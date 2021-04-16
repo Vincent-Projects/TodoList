@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { ColorObject } from "utils/colors";
 import { hasPremiumPermission } from "utils/auth";
-import { ACCESSLEVEL } from "utils/constants";
+import ACCESSLEVEL from "utils/auth";
 import { CHECK } from "components/contants";
 import Icon from "components/Icon";
 import { sanitizeColorCSS } from "utils/colors";
