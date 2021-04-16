@@ -13,6 +13,9 @@ const Input = styled.input`
   padding-left: 2.5rem;
 `;
 
+const List = styled.div`
+`;
+
 export interface GenericListProps {
   elements: TaskType[];
   saveNewItem: (item: string) => void;
@@ -64,7 +67,7 @@ const GenericList = ({
   }
 
   return (
-    <div style={{}}>
+    <List>
       {elements.map((element) => {
         const hasColor = element.primaryTagColor || element.secondaryTagColor;
         let colorId;
@@ -114,7 +117,7 @@ const GenericList = ({
           />
         </div>
       )}
-    </div>
+    </List>
   );
 };
 
