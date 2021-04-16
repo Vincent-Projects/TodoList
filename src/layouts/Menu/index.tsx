@@ -17,13 +17,13 @@ const MenuContainer = styled.div`
   align-items: center;
 
   background: rgb(${(props: any) => props.theme.bg1dp});
-  box-shadow: 1px 1px 2px rgb(var(--shadow));
+  box-shadow: 1px 1px 2px rgb(${(props: any) => props.theme.shadow});
 
   @media only screen and (min-width: 786px) {
     & {
       width: 18%;
       height: 100vh;
-      box-shadow: 1px 1px 2px rgb(var(--shadow));
+      box-shadow: 1px 1px 2px rgb(${(props: any) => props.theme.shadow});
     }
   }
 
@@ -36,6 +36,7 @@ const MenuContainer = styled.div`
 
 const Title = styled.div`
   font-size: 2rem;
+  color: rgb(${(props: any) => props.theme.onBg});
 
   @media only screen and (min-width: 786px) {
     & {
@@ -58,7 +59,7 @@ const Versionning = styled.div`
   font-size: 0.65rem;
   margin: auto;
   margin-top: 0.5rem;
-  color: gray;
+  color: rgba(${(props: any) => props.theme.onBg}, 0.6);
 `;
 
 const LogoutContainer = styled.div`

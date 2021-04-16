@@ -26,6 +26,8 @@ import DiamondSpinner from "components/loaders/DiamondSpinner";
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: rgb(${(props) => props.theme.bg0dp});
+  color: rgb(${(props) => props.theme.onBg});
 
   @media only screen and (min-width: 786px) {
     & {
