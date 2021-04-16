@@ -26,7 +26,7 @@ const Dashboard = ({
 }: DashboardProps) => {
   useEffect(() => {
     getTasks();
-  }, []);
+  }, [getTasks]);
 
   const IntrantList = filteredList(
     tasks,
@@ -38,8 +38,6 @@ const Dashboard = ({
   return (
     <div
       style={{
-        width: "100%",
-        height: "100%",
         borderRadius: "5px",
         padding: "1rem",
       }}

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ColorPalette from "components/ColorPalette";
 import COLORS from "utils/colors";
-import withVisible, { VisibleProps } from "hooks/withVisible";
+import withVisible, { VisibleProps } from "hoc/withVisible";
 import { sanitizeColorCSS } from "utils/colors";
 
 interface SelectContainerProps {
