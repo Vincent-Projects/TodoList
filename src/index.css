@@ -2,9 +2,9 @@ html,
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 100%; /* 
   background-color: rgb(var(--bg-0dp));
-  color: rgb(var(--on-bg));
+  color: rgb(var(--on-bg)); */
   font-family: sans-serif;
 }
 

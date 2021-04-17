@@ -10,6 +10,7 @@ export interface GenericItemProps {
   color: string;
   handleClick: () => void;
   handleColorChange: (color: string) => void;
+  handleDelete?: () => void;
   isNew?: boolean;
 }
 
@@ -81,6 +82,7 @@ const InteractionBtnContainer = styled.div`
   jusitfy-content: center;
   align-items: center;
   cursor: pointer;
+  z-index: 200;
 
   &:active,
   &:focus {
@@ -97,7 +99,6 @@ const BtnContainer = styled.div`
   background: rgb(var(--bg-24dp));
   box-shadow: 1px 2px 2px rgb(var(--shadow));
   color: rgb(var(--on-bg));
-  z-index: 100;
 `;
 
 const MenuBtn = styled.button`
@@ -110,6 +111,7 @@ const MenuBtn = styled.button`
   width: 100%;
   height: fit-content;
   position: relative;
+  cursor: pointer;
 
   &:after {
     background: linear-gradient(90deg, rgba(var(--primary), 0.15), transparent);
@@ -121,6 +123,7 @@ const MenuBtn = styled.button`
     left: 0;
     opacity: 0;
     transition: 250ms;
+    pointer-events: none;
   }
 
   &:hover:after {
@@ -135,6 +138,7 @@ const GenericItem = ({
   handleClick,
   handleColorChange,
   isNew,
+  handleDelete,
 }: GenericItemProps) => {
   const [interactionVisible, setInteractionVisible] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
@@ -152,6 +156,14 @@ const GenericItem = ({
     setMenuVisible((previousVisible) => {
       return !previousVisible;
     });
+  };
+
+  const deleteHandler = (event: any) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (handleDelete) {
+      handleDelete();
+    }
   };
 
   return (
@@ -175,7 +187,9 @@ const GenericItem = ({
             <BtnContainer>
               <MenuBtn>Modify Task</MenuBtn>
               <MenuBtn>Change Tag Color</MenuBtn>
-              <MenuBtn danger>Delete Task</MenuBtn>
+              <MenuBtn danger onClick={deleteHandler}>
+                Delete Task
+              </MenuBtn>
             </BtnContainer>
           ) : null}
         </InteractionBtnContainer>

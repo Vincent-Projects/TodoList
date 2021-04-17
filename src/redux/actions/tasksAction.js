@@ -134,3 +134,27 @@ export const updateColor = (itemId, colorId) => {
       });
   };
 };
+
+export const deleteTask = (itemId) => {
+  return (dispatch, getState) => {
+    dispatch(startRequest());
+
+    const token = getState().auth.token;
+
+    api
+      .deleteTask(token, itemId)
+      .then((result) => {
+        dispatch(successRequest());
+        dispatch({
+          type: actionTypes.DELETE_TASK,
+          payload: {
+            id: result.data.data.task._id,
+          },
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(failRequest());
+      });
+  };
+};

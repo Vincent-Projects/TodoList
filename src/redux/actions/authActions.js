@@ -11,7 +11,13 @@ export const login = (email, password) => {
 
     API.login(email, password)
       .then((result) => {
-        const { token, token_expire, username, email } = result.data.data;
+        const {
+          token,
+          token_expire,
+          firstname,
+          email,
+          subscription,
+        } = result.data.data;
 
         const tokenExpire = new Date(
           new Date().getTime() + token_expire * 1000
@@ -20,21 +26,23 @@ export const login = (email, password) => {
         const auth_data = {
           token: token,
           tokenExpire: tokenExpire,
-          username,
+          firstname,
           email,
           secret: AUTH_SECRET,
+          subscriptionNumber: subscription,
         };
 
         const jwt_encoded = jwt.sign(auth_data, JWT_SECRET);
-        localStorage.setItem("token", jwt_encoded);
+        localStorage.setItem("flists-token", jwt_encoded);
 
         dispatch({
           type: actionTypes.LOGIN,
           payload: {
             token: token,
             token_expire: tokenExpire,
-            username,
+            firstname,
             email,
+            subscriptionNumber: subscription,
           },
         });
         dispatch(AUTH_STOP());
@@ -51,7 +59,7 @@ export const login = (email, password) => {
 
 export const logout = () => {
   return (dispatch) => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("flists-token");
 
     dispatch({
       type: actionTypes.LOGOUT,
@@ -121,7 +129,7 @@ export const validateAccount = (token) => {
 export const checkAuthState = () => {
   return (dispatch) => {
     dispatch(AUTH_START());
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("flists-token");
 
     if (!token) {
       dispatch(logout());
@@ -163,7 +171,8 @@ export const checkAuthState = () => {
       payload: {
         token: decodedToken.token,
         token_expire: decodedToken.tokenExpire,
-        username: decodedToken.username,
+        firstname: decodedToken.firstname,
+        subscriptionNumber: decodedToken.subscriptionNumber,
         email: decodedToken.email,
       },
     });

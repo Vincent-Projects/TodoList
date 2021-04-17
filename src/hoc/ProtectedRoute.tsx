@@ -2,12 +2,12 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
-/* interface ProtectedRoute {
-    isAuth: boolean;
-    children: React.ReactChildren
-} */
+interface ProtectedRouteProps {
+  isAuth: boolean;
+  children: React.ReactChildren;
+}
 
-const ProtectedRoute = ({ isAuth, children }) => {
+const ProtectedRoute = ({ isAuth, children }: ProtectedRouteProps) => {
   if (!isAuth) {
     return <Redirect to="/login" />;
   }
@@ -15,7 +15,7 @@ const ProtectedRoute = ({ isAuth, children }) => {
   return <>{children}</>;
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: any) => {
   return {
     isAuth: state.auth.isAuth,
   };

@@ -66,6 +66,16 @@ class API {
       config
     );
   }
+
+  static deleteTask(token, itemId) {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    return apiInstance.delete(`${apiRoutes.POST_TODO}/${itemId}`, config);
+  }
   // Projects calls
 }
 

@@ -55,6 +55,18 @@ const updateColor = (state, action) => {
   };
 };
 
+const deleteTask = (state, action) => {
+  const updatedTasks = [...state.tasks];
+  const filteredUpdatedTasks = updatedTasks.filter(
+    (task) => task._id !== action.payload.id
+  );
+
+  return {
+    ...state,
+    tasks: [...filteredUpdatedTasks],
+  };
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.INIT_TASKS:
@@ -65,6 +77,8 @@ const reducer = (state = initialState, action) => {
       return updateComplete(state, action);
     case actionTypes.UPDATE_COLOR:
       return updateColor(state, action);
+    case actionTypes.DELETE_TASK:
+      return deleteTask(state, action);
     default:
       return state;
   }

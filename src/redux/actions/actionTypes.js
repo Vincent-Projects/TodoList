@@ -1,3 +1,6 @@
+// SETTINGS
+export const SWITCH_THEME = "SWITCH_THEME";
+
 // Auth Action Types
 export const LOGIN = "LOGIN";
 export const SINGUP = "SIGNUP";
@@ -17,3 +20,4 @@ export const INIT_TASKS = "INIT_TASKS";
 export const ADD_INTRANT = "ADD_INTRANT";
 export const UPDATE_COMPLETE = "UPDATE_COMPLETE";
 export const UPDATE_COLOR = "UPDATE_COLOR";
+export const DELETE_TASK = "DELETE_TASK";
