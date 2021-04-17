@@ -36,13 +36,21 @@ export const getTheme = () => {
     bg12dp: selectPropertyOnTheme(themeConstant, "61, 65, 64", "213, 217, 217"),
     bg24dp: selectPropertyOnTheme(themeConstant, "65, 69, 69", "208, 212, 212"),
     onBg: selectPropertyOnTheme(themeConstant, "255, 255, 255", "0, 0, 0"),
-    primary: selectPropertyOnTheme(themeConstant, "154, 214, 207", "132, 184, 178"),
+    primary: selectPropertyOnTheme(
+      themeConstant,
+      "154, 214, 207",
+      "132, 184, 178"
+    ),
     primaryLight: "173, 245, 245",
     primaryDark: "79, 154, 148",
     onPrimary: "0, 0, 0",
     shadow: selectPropertyOnTheme(themeConstant, "20, 20, 20", "190, 190, 190"),
     success: selectPropertyOnTheme(themeConstant, "94, 209, 51", ""),
-    surface: selectPropertyOnTheme(themeConstant, "248, 252, 252", "29, 34, 33"),
+    surface: selectPropertyOnTheme(
+      themeConstant,
+      "248, 252, 252",
+      "29, 34, 33"
+    ),
     onSurface: selectPropertyOnTheme(themeConstant, "29, 34, 33", ""),
     error: selectPropertyOnTheme(themeConstant, "255, 97, 97", "239, 2, 2"),
   };

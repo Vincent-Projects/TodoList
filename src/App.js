@@ -10,8 +10,8 @@ import AuthPage from "layouts/AuthPage";
 import Page from "layouts/Page";
 import Menu from "layouts/Menu";
 
+import ProtectedRoute from "hoc/ProtectedRoute";
 import LandingPage from "pages/LandingPage";
-import ProtectedRoute from "components/ProtectedRoute";
 import PageNotFound from "pages/PageNotFound";
 const Dashboard = React.lazy(() => import("pages/Dashboard"));
 const Login = React.lazy(() => import("pages/auth/Login"));
@@ -28,6 +28,8 @@ const AppContainer = styled.div`
   flex-direction: column;
   background-color: rgb(${(props) => props.theme.bg0dp});
   color: rgb(${(props) => props.theme.onBg});
+  width: 100%;
+  height: 100vh;
 
   @media only screen and (min-width: 786px) {
     & {
