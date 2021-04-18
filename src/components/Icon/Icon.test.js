@@ -10,7 +10,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe("<Icon />", () => {
   it("should render the home icon if the HOME contant is provided", () => {
     const wrapper = mount(<Icon iconName={HOME} />);
-    const iconSvg = ICONS.find(icon => icon.name === HOME).img;
+    const iconSvg = ICONS.find((icon) => icon.name === HOME).img;
     const homeWrapper = mount(iconSvg);
     const svg = wrapper.find("svg");
     const homeSvg = homeWrapper.find("svg");

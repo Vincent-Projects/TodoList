@@ -10,7 +10,7 @@ describe("<GenericInput />", () => {
   let container = null;
 
   beforeEach(() => {
-    container = document.createElement('div');
+    container = document.createElement("div");
     document.body.appendChild(container);
   });
 
@@ -27,10 +27,13 @@ describe("<GenericInput />", () => {
     });
 
     act(() => {
-      render(<GenericInput value={value} handleChangeText={changeHandler} />, container);
+      render(
+        <GenericInput value={value} handleChangeText={changeHandler} />,
+        container
+      );
     });
 
-    const input = container.getElementsByTagName('input')[0];
+    const input = container.getElementsByTagName("input")[0];
 
     expect(input.value).toEqual(value);
 
@@ -54,7 +57,10 @@ describe("<GenericInput />", () => {
     const errMessage = "Something went wrong";
 
     act(() => {
-      render(<GenericInput errMessage={errMessage} isError={true} />, container);
+      render(
+        <GenericInput errMessage={errMessage} isError={true} />,
+        container
+      );
     });
 
     expect(getByText(container, errMessage)).toBeTruthy();
