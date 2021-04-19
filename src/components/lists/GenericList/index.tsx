@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import GenericItem from "./GenericItem";
 import { TaskType } from "utils/constants";
 import COLORS, { hexToColorId } from "utils/colors";

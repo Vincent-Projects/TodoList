@@ -1,16 +1,16 @@
 import React from "react";
 // SOCIAL MEDIA LOGO IMPORT
-import { ReactComponent as TwitterLogo } from "../assets/icons/social/twitter-brands.svg";
 import { ReactComponent as GithubLogo } from "../assets/icons/social/github-brands.svg";
+import { ReactComponent as TwitterLogo } from "../assets/icons/social/twitter-brands.svg";
 
 // ICON IMPORT
-import { ReactComponent as HomeIcon } from "../assets/icons/home-solid.svg";
-import { ReactComponent as ProjectIcon } from "../assets/icons/folder-solid.svg";
-import { ReactComponent as HabitIcon } from "../assets/icons/chart-bar-solid.svg";
-import { ReactComponent as GoalsIcon } from "../assets/icons/bullseye-solid.svg";
-import { ReactComponent as ProfileIcon } from "../assets/icons/user-solid.svg";
-import { ReactComponent as ElipsisIcon } from "../assets/icons/ellipsis-h-solid.svg";
 import { ReactComponent as CheckIcon } from "assets/icons/check-solid.svg";
+import { ReactComponent as ElipsisIcon } from "../assets/icons/ellipsis-h-solid.svg";
+import { ReactComponent as GoalsIcon } from "../assets/icons/bullseye-solid.svg";
+import { ReactComponent as HabitIcon } from "../assets/icons/chart-bar-solid.svg";
+import { ReactComponent as HomeIcon } from "../assets/icons/home-solid.svg";
+import { ReactComponent as ProfileIcon } from "../assets/icons/user-solid.svg";
+import { ReactComponent as ProjectIcon } from "../assets/icons/folder-solid.svg";
 
 export interface SocialMediaType {
   name: string;

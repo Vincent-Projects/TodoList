@@ -1,8 +1,8 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import GenericButton from "components/buttons/GenericButton";
 import Button from "hoc/Button";
+import GenericButton from "components/buttons/GenericButton";
+import React from "react";
 import classes from "./index.module.css";
+import { useHistory } from "react-router-dom";
 //import logo from "assets/icons/appicon.png";
 
 const LandingPage = () => {

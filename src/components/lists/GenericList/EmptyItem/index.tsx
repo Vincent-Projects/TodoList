@@ -1,4 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState
+} from "react";
 import { ItemContainer } from "components/lists/GenericList/GenericItem";
 import styled, { css } from "styled-components";
 import withVisible from "hoc/withVisible";

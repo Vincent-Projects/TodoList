@@ -1,11 +1,11 @@
+import DiamondSpinner from "components/loaders/DiamondSpinner";
+import GenericButton from "components/buttons/GenericButton";
+import GenericNotification from "components/notification/GenericNotification";
 import React from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { validateAccount } from "redux/actions";
-import styled from "styled-components";
-import GenericButton from "components/buttons/GenericButton";
-import DiamondSpinner from "components/loaders/DiamondSpinner";
-import GenericNotification from "components/notification/GenericNotification";
 
 const Container = styled.div`
   background-color: rgb(var(--surface));

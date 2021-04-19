@@ -1,6 +1,6 @@
+import GenericList from "components/lists/GenericList";
 import React from "react";
 import { TaskType } from "./constants";
-import GenericList from "components/lists/GenericList";
 
 export const INTRANT_FILTER = (task: TaskType) => {
   return task !== null;

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { ColorObject } from "utils/colors";
-import { hasPremiumPermission, hasBelieverPermission } from "utils/auth";
+import { hasBelieverPermission, hasPremiumPermission } from "utils/auth";
 import ACCESSLEVEL from "utils/auth";
 import { CHECK } from "components/contants";
 import Icon from "components/Icon";
