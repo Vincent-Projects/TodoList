@@ -6,7 +6,7 @@ import {
   getGETTodosRoute,
   getPOSTTodosRoute,
   getPUTTodosRoute,
-  getDELETETodosRoute
+  getDELETETodosRoute,
 } from "./apiRoutes";
 
 class API {

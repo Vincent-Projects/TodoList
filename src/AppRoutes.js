@@ -1,16 +1,12 @@
 import React, { Suspense } from "react";
-import {
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import {
   loginRoute,
   signupRoute,
   landingPageRoute,
   dashboardRoute,
-  validateAccountRoute
+  validateAccountRoute,
 } from "./routes";
 
 import AuthPage from "layouts/AuthPage";
@@ -72,4 +68,3 @@ const AppRoutes = ({ isAuth }) => {
 };
 
 export default AppRoutes;
-

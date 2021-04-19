@@ -100,7 +100,7 @@ const GenericList = ({
         <div style={{ opacity: "0.5" }}>
           <GenericItem
             done={false}
-            text={"Add Something..."}
+            text={"What is the next thing to do ?"}
             color={""}
             handleClick={handleAddItem}
             handleColorChange={() => false}

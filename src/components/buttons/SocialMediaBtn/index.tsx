@@ -1,11 +1,33 @@
 import React from "react";
+import styled from "styled-components";
 import * as constants from "components/contants";
-
-import classes from "./index.module.css";
+import { squeezeAnimation } from "components/animations";
 
 export interface SocialMediaBtnProps {
   name: string;
 }
+
+const Container = styled.div`
+  width: 35px;
+  height: 35px;
+`;
+
+const Button = styled.a`
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+
+  &:hover {
+    animation: ${squeezeAnimation} 300ms ease-in-out;
+  }
+
+  & * {
+    width: 100%;
+    height: 100%;
+    color: rgb(var(--primary));
+  }
+`;
 
 const SocialMediaBtn = ({ name }: SocialMediaBtnProps) => {
   const medias = constants.SOCIAL_MEDIA;
@@ -22,11 +44,9 @@ const SocialMediaBtn = ({ name }: SocialMediaBtnProps) => {
   }
 
   return (
-    <div className={classes.Container}>
-      <a className={classes.Link} href={link}>
-        {Logo ? Logo : null}
-      </a>
-    </div>
+    <Container>
+      <Button href={link}>{Logo ? Logo : null}</Button>
+    </Container>
   );
 };
 
