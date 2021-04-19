@@ -1,18 +1,68 @@
 import React from "react";
-
-import { configure, shallow } from "enzyme";
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
+import { fireEvent } from "@testing-library/dom";
+import { render, unmountComponentAtNode } from "react-dom";
+import { act } from "react-dom/test-utils";
 
 import GenericInput from "./index";
-
-configure({ adapter: new Adapter() });
+import { getByText } from "@testing-library/dom";
 
 describe("<GenericInput />", () => {
-  it("should render a div element with label and input inside", () => {
-    const wrapper = shallow(<GenericInput />);
+  let container = null;
 
-    expect(wrapper.find(HTMLDivElement)).toHaveLength(1);
-    expect(wrapper.find(HTMLLabelElement)).toHaveLength(1);
-    expect(wrapper.find(HTMLInputElement)).toHaveLength(1);
+  beforeEach(() => {
+    container = document.createElement("div");
+    document.body.appendChild(container);
+  });
+
+  afterEach(() => {
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
+  });
+
+  it("should change the value of passed value using provided function handler", () => {
+    let value = "";
+    const changeHandler = jest.fn((text) => {
+      value = text;
+    });
+
+    act(() => {
+      render(
+        <GenericInput value={value} handleChangeText={changeHandler} />,
+        container
+      );
+    });
+
+    const input = container.getElementsByTagName("input")[0];
+
+    expect(input.value).toEqual(value);
+
+    fireEvent.change(input, { target: { value: "Something" } });
+
+    expect(changeHandler).toHaveBeenCalledTimes(1);
+    expect(value).toEqual("Something");
+  });
+
+  it("should show the label provided through props", () => {
+    let label = "Email";
+
+    act(() => {
+      render(<GenericInput label={label} />, container);
+    });
+
+    expect(getByText(container, label)).toBeTruthy();
+  });
+
+  it("should display the error message if one is provided", () => {
+    const errMessage = "Something went wrong";
+
+    act(() => {
+      render(
+        <GenericInput errMessage={errMessage} isError={true} />,
+        container
+      );
+    });
+
+    expect(getByText(container, errMessage)).toBeTruthy();
   });
 });
