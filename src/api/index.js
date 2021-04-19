@@ -1,12 +1,20 @@
 import apiInstance from "./apiInstance";
-import apiRoutes from "./apiRoutes";
+import {
+  getLoginRoute,
+  getSignupRoute,
+  getValidateAccountRoute,
+  getGETTodosRoute,
+  getPOSTTodosRoute,
+  getPUTTodosRoute,
+  getDELETETodosRoute,
+} from "./apiRoutes";
 
 class API {
   // Auth calls
   static login(email, password) {
     const data = { email, password };
 
-    return apiInstance.post(apiRoutes.LOGIN, data);
+    return apiInstance.post(getLoginRoute(), data);
   }
 
   static signup(firstname, lastname, email, password, confirmPassword, code) {
@@ -18,11 +26,11 @@ class API {
       confirmPassword,
     };
 
-    return apiInstance.post(`${apiRoutes.SIGNUP}/${code}`, data);
+    return apiInstance.post(getSignupRoute(code), data);
   }
 
   static validateAccount(token) {
-    return apiInstance.get(`${apiRoutes.VALIDATE_ACCOUNT}/${token}`);
+    return apiInstance.get(getValidateAccountRoute(token));
   }
 
   // Todos calls
@@ -33,7 +41,7 @@ class API {
       },
     };
 
-    return apiInstance.get(`${apiRoutes.GET_TODO}`, config);
+    return apiInstance.get(getGETTodosRoute(), config);
   }
 
   static postTodo(token, task) {
@@ -47,7 +55,7 @@ class API {
       task: task,
     };
 
-    return apiInstance.post(apiRoutes.POST_TODO, data, config);
+    return apiInstance.post(getPOSTTodosRoute(), data, config);
   }
 
   static updateTask(token, itemId, updatedData) {
@@ -61,7 +69,7 @@ class API {
     const urlParams = fields.join(";");
 
     return apiInstance.put(
-      `${apiRoutes.POST_TODO}/${itemId}?fields=${urlParams}`,
+      getPUTTodosRoute(itemId, urlParams),
       updatedData,
       config
     );
@@ -74,7 +82,7 @@ class API {
       },
     };
 
-    return apiInstance.delete(`${apiRoutes.POST_TODO}/${itemId}`, config);
+    return apiInstance.delete(getDELETETodosRoute(itemId), config);
   }
   // Projects calls
 }

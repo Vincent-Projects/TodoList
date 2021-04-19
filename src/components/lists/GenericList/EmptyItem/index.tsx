@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import { ItemContainer } from "components/lists/GenericList/GenericItem";
 import styled, { css } from "styled-components";
 import withVisible from "hoc/withVisible";
@@ -46,7 +46,7 @@ const EmptyItem = ({
     }
   };
 
-  useEffect(focusInput, [isVisible]);
+  useLayoutEffect(focusInput, [isVisible]);
 
   const handleClick = (event: any) => {
     event.stopPropagation();

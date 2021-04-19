@@ -63,6 +63,7 @@ const ColorSelectContainer = styled.div`
 interface TextProps {
   done: boolean;
 }
+
 const Text = styled.p`
   padding: 0.1rem;
   margin: 0;
@@ -73,6 +74,7 @@ const Text = styled.p`
   opacity: ${(props) => (props.done ? "0.6" : "1")};
   cursor: pointer;
 `;
+
 const InteractionBtnContainer = styled.div`
   position: relative;
   height: 100%;
@@ -97,7 +99,7 @@ const BtnContainer = styled.div`
   top: 100%;
   right: 0;
   background: rgb(var(--bg-24dp));
-  box-shadow: 1px 2px 2px rgb(var(--shadow));
+  box-shadow: 1px 1px 1px rgb(var(--shadow));
   color: rgb(var(--on-bg));
 `;
 
@@ -187,6 +189,7 @@ const GenericItem = ({
             <BtnContainer>
               <MenuBtn>Modify Task</MenuBtn>
               <MenuBtn>Change Tag Color</MenuBtn>
+              <MenuBtn>Change Due Date</MenuBtn>
               <MenuBtn danger onClick={deleteHandler}>
                 Delete Task
               </MenuBtn>

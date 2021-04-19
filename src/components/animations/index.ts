@@ -1,0 +1,1 @@
+export { squeezeAnimation } from "./squeeze";

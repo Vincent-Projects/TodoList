@@ -1,13 +1,3 @@
-import { DefaultTheme } from "styled-components";
-
-const theme: DefaultTheme = {
-  borderRadius: "4px",
-  colors: {
-    main: "",
-    secondary: "",
-  },
-};
-
 const DARK = "DARK";
 const LIGTH = "LIGTH";
 
@@ -44,7 +34,7 @@ export const getTheme = () => {
     primaryLight: "173, 245, 245",
     primaryDark: "79, 154, 148",
     onPrimary: "0, 0, 0",
-    shadow: selectPropertyOnTheme(themeConstant, "20, 20, 20", "190, 190, 190"),
+    shadow: selectPropertyOnTheme(themeConstant, "38, 38, 38", "190, 190, 190"),
     success: selectPropertyOnTheme(themeConstant, "94, 209, 51", ""),
     surface: selectPropertyOnTheme(
       themeConstant,
@@ -64,5 +54,3 @@ export const switchTheme = () => {
   localStorage.setItem("flists-theme", nextTheme);
   return getTheme();
 };
-
-export { theme };

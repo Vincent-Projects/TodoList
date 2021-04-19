@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import GenericItem from "./GenericItem";
 import { TaskType } from "utils/constants";
 import COLORS, { hexToColorId } from "utils/colors";
@@ -100,7 +100,7 @@ const GenericList = ({
         <div style={{ opacity: "0.5" }}>
           <GenericItem
             done={false}
-            text={"Add Something..."}
+            text={"What is the next thing to do ?"}
             color={""}
             handleClick={handleAddItem}
             handleColorChange={() => false}

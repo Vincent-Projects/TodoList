@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
 import {
   addIntrant,
-  getTasks,
-  updateComplete,
-  updateColor,
   deleteTask,
+  getTasks,
+  updateColor,
+  updateComplete,
 } from "redux/actions";
-import { filteredList, INTRANT_FILTER } from "utils/tasks";
+import { INTRANT_FILTER, filteredList } from "utils/tasks";
+import React, { useEffect } from "react";
 import { TaskType } from "utils/constants";
+import { connect } from "react-redux";
 
 interface DashboardProps {
   tasks: TaskType[];

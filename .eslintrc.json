@@ -62,6 +62,21 @@
             ],
             "rules": {
                 "semi": "warn",
+                "sort-imports": [
+                    0,
+                    {
+                        "ignoreCase": false,
+                        "ignoreDeclarationSort": false,
+                        "ignoreMemberSort": false,
+                        "memberSyntaxSortOrder": [
+                            "none",
+                            "all",
+                            "multiple",
+                            "single"
+                        ],
+                        "allowSeparatedGroups": true
+                    }
+                ],
                 "linebreak-style": [
                     "warn",
                     "unix"
