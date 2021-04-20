@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useHistory, Redirect } from "react-router-dom";
-import classes from "./index.module.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { passwordRequirements } from "utils/constants";
@@ -16,6 +15,17 @@ import GenericNotification from "components/notification/GenericNotification";
 import * as constants from "components/contants";
 
 import { signup, authErrReset } from "redux/actions";
+
+import {
+  Form,
+  Title,
+  Margin,
+  ErrorMessage,
+  InfoText,
+  BtnGroup,
+  SocialMediaBar
+} from "./Login";
+
 
 const Signup = ({
   isAuth,
@@ -130,14 +140,14 @@ const Signup = ({
     <>
       {SuccessMessage ?? null}{" "}
       {/* Replace with notification component + absolute position top of screen and 90% || 80% || 65% width screen */}
-      <form className={classes.Form}>
-        <h1 className={classes.Title}>Welcome to Flists !</h1>
+      <Form>
+        <Title>Welcome to Flists !</Title>
 
         {authErrMessage ? (
-          <p className={classes.Error}>{authErrMessage} </p>
+          <ErrorMessage>{authErrMessage} </ErrorMessage>
         ) : null}
 
-        <div className={classes.Margin}></div>
+        <Margin />
         {/* Find a new way of doing this */}
 
         <div
@@ -161,6 +171,7 @@ const Signup = ({
             isError={firstnameErr}
             errMessage={firstnameErrMessage}
           />
+          <div style={{margin: "0.5rem"}}></div>
           <GenericInput
             id="lastname"
             value={lastname}
@@ -188,7 +199,7 @@ const Signup = ({
           errMessage={emailErrMessage}
         />
 
-        <div className={classes.Margin}></div>
+<Margin />
         {/* Find a new way of doing this */}
 
         <GenericInput
@@ -205,7 +216,7 @@ const Signup = ({
           requirements={passwordRequirements}
         />
 
-        <div className={classes.Margin}></div>
+<Margin />
         {/* Find a new way of doing this */}
 
         <GenericInput
@@ -226,7 +237,7 @@ const Signup = ({
           errMessage={confirmPasswordErrMessage}
         />
 
-        <div className={classes.Margin}></div>
+<Margin />
         {/* Find a new way of doing this */}
 
         <GenericInput
@@ -243,37 +254,33 @@ const Signup = ({
           requirements={"Code provided by email sent by @Vincent"}
         />
 
-        <div className={classes.Margin}></div>
+<Margin />
         {/* Find a new way of doing this */}
 
-        <div className={classes.BtnGroup}>
+        <BtnGroup>
           {isLoading ? (
             <DiamondSpinner mode="circle" />
           ) : (
             <GenericButton text="Signup" handleClick={onSignup} />
           )}
-          <p className={classes.InfosText}>
+          <InfoText>
             {"Already have an account ? "}
             <InTextBtn
               text="Login here"
               handleClick={handleLoginClick}
               darkTheme={false}
             />
-          </p>
-        </div>
+          </InfoText>
+        </BtnGroup>
 
-        <div className={classes.Margin}></div>
+        <Margin />
         {/* Find a new way of doing this */}
 
-        <div className={classes.SocialMediaBar}>
-          <div className={classes.SocialMediaBtn}>
+        <SocialMediaBar>
             <SocialMediaBtn name={constants.TWITTER} />
-          </div>
-          <div className={classes.SocialMediaBtn}>
             <SocialMediaBtn name={constants.GITHUB} />
-          </div>
-        </div>
-      </form>
+        </SocialMediaBar>
+      </Form>
     </>
   );
 };

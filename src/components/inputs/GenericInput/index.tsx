@@ -1,10 +1,49 @@
 import React from "react";
-import classes from "./index.module.css";
 import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+`; 
 
 const Requirements = styled.p`
   opacity: 0.8;
   font-size: 0.8rem;
+`;
+
+const Label = styled.label<FieldsProps>`
+  padding: 0.3rem;
+  font-size: 0.8rem;
+  color: rgb(${props => props.isError ? props.theme.error : props.theme.onBg});
+`;
+
+interface FieldsProps {
+  isError: boolean;
+}
+
+const Input = styled.input<FieldsProps>`
+  padding: 0.55rem;
+  font-size: 1.05rem;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-bottom: 1px solid rgb(${props => props.isError ? props.theme.error : props.theme.primary});
+  outline: none;
+  background: transparent;
+  color: rgb(${props =>  props.theme.onBg});
+  box-sizing: border-box;
+
+  &:active,
+  &:focus {
+    border-width: 3px;
+    padding-bottom: calc(0.55rem - 2px);
+  }
+`;
+
+const ErrorMessage = styled.p`
+  color: rgb(${props => props.theme.error});
+  margin-top: 0.2rem;
 `;
 
 type InputType = "text" | "password";
@@ -18,7 +57,6 @@ interface Props {
   isError: boolean;
   errMessage: string | null;
   type?: InputType;
-  darkTheme?: boolean;
   requirements?: string;
 }
 
@@ -31,43 +69,36 @@ const GenericInput = ({
   isError = false,
   errMessage = null,
   type = "text",
-  darkTheme = true,
   requirements = "",
 }: Props) => {
-  const labelClasses = [
-    isError ? classes.LabelError : null,
-    darkTheme ? null : classes.LabelLight,
-    classes.Label,
-  ].join(" ");
-
-  const inputClasses = [
-    isError ? classes.InputError : null,
-    darkTheme ? null : classes.InputLight,
-    classes.Input,
-  ].join(" ");
 
   const errComponent = isError ? (
-    <p className={classes.ErrorMessage}>{errMessage}</p>
+    <ErrorMessage>{errMessage}</ErrorMessage>
+  ) : null;
+
+  const requirementsComponent = requirements ? (
+    <Requirements>{requirements}</Requirements>
   ) : null;
 
   return (
-    <div className={classes.Container}>
-      <label className={labelClasses} htmlFor={id}>
+    <Container>
+      <Label htmlFor={id} isError={isError}>
         <span>
           {label}
-          {requirements ? <Requirements>{requirements}</Requirements> : null}
+          {requirementsComponent}
         </span>
-      </label>
-      <input
+      </Label>
+      <Input
         id={id}
-        className={inputClasses}
         value={value}
         type={type}
         onChange={(e) => handleChangeText(e.target.value)}
         placeholder={placeholder}
+        isError={isError}
+        autoComplete="off"
       />
       {errComponent}
-    </div>
+    </Container>
   );
 };
 
