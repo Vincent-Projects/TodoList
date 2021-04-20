@@ -5,7 +5,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 95%;
-`; 
+`;
 
 const Requirements = styled.p`
   opacity: 0.8;
@@ -15,7 +15,9 @@ const Requirements = styled.p`
 const Label = styled.label<FieldsProps>`
   padding: 0.3rem;
   font-size: 0.8rem;
-  color: rgb(${props => props.isError ? props.theme.error : props.theme.onBg});
+  color: rgb(
+    ${(props) => (props.isError ? props.theme.error : props.theme.onBg)}
+  );
 `;
 
 interface FieldsProps {
@@ -28,10 +30,11 @@ const Input = styled.input<FieldsProps>`
   width: 100%;
   height: 100%;
   border: none;
-  border-bottom: 1px solid rgb(${props => props.isError ? props.theme.error : props.theme.primary});
+  border-bottom: 1px solid
+    rgb(${(props) => (props.isError ? props.theme.error : props.theme.primary)});
   outline: none;
   background: transparent;
-  color: rgb(${props =>  props.theme.onBg});
+  color: rgb(${(props) => props.theme.onBg});
   box-sizing: border-box;
 
   &:active,
@@ -42,7 +45,7 @@ const Input = styled.input<FieldsProps>`
 `;
 
 const ErrorMessage = styled.p`
-  color: rgb(${props => props.theme.error});
+  color: rgb(${(props) => props.theme.error});
   margin-top: 0.2rem;
 `;
 
@@ -71,7 +74,6 @@ const GenericInput = ({
   type = "text",
   requirements = "",
 }: Props) => {
-
   const errComponent = isError ? (
     <ErrorMessage>{errMessage}</ErrorMessage>
   ) : null;

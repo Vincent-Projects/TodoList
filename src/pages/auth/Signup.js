@@ -23,9 +23,8 @@ import {
   ErrorMessage,
   InfoText,
   BtnGroup,
-  SocialMediaBar
+  SocialMediaBar,
 } from "./Login";
-
 
 const Signup = ({
   isAuth,
@@ -143,9 +142,7 @@ const Signup = ({
       <Form>
         <Title>Welcome to Flists !</Title>
 
-        {authErrMessage ? (
-          <ErrorMessage>{authErrMessage} </ErrorMessage>
-        ) : null}
+        {authErrMessage ? <ErrorMessage>{authErrMessage} </ErrorMessage> : null}
 
         <Margin />
         {/* Find a new way of doing this */}
@@ -171,7 +168,7 @@ const Signup = ({
             isError={firstnameErr}
             errMessage={firstnameErrMessage}
           />
-          <div style={{margin: "0.5rem"}}></div>
+          <div style={{ margin: "0.5rem" }}></div>
           <GenericInput
             id="lastname"
             value={lastname}
@@ -199,7 +196,7 @@ const Signup = ({
           errMessage={emailErrMessage}
         />
 
-<Margin />
+        <Margin />
         {/* Find a new way of doing this */}
 
         <GenericInput
@@ -216,7 +213,7 @@ const Signup = ({
           requirements={passwordRequirements}
         />
 
-<Margin />
+        <Margin />
         {/* Find a new way of doing this */}
 
         <GenericInput
@@ -237,7 +234,7 @@ const Signup = ({
           errMessage={confirmPasswordErrMessage}
         />
 
-<Margin />
+        <Margin />
         {/* Find a new way of doing this */}
 
         <GenericInput
@@ -254,7 +251,7 @@ const Signup = ({
           requirements={"Code provided by email sent by @Vincent"}
         />
 
-<Margin />
+        <Margin />
         {/* Find a new way of doing this */}
 
         <BtnGroup>
@@ -277,8 +274,8 @@ const Signup = ({
         {/* Find a new way of doing this */}
 
         <SocialMediaBar>
-            <SocialMediaBtn name={constants.TWITTER} />
-            <SocialMediaBtn name={constants.GITHUB} />
+          <SocialMediaBtn name={constants.TWITTER} />
+          <SocialMediaBtn name={constants.GITHUB} />
         </SocialMediaBar>
       </Form>
     </>

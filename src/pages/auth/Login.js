@@ -34,15 +34,15 @@ export const PageContainer = styled.div`
 export const Form = styled.form`
   width: 95%;
   border-radius: 3px;
-  background-color: rgb(${props => props.theme.bg2dp});
-  box-shadow: 1px 1px 3px rgb(${props => props.theme.shadow});
+  background-color: rgb(${(props) => props.theme.bg2dp});
+  box-shadow: 1px 1px 3px rgb(${(props) => props.theme.shadow});
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 98%;
-  color: rgb(${props => props.theme.onBg});
+  color: rgb(${(props) => props.theme.onBg});
 
   @media only screen and (min-width: 768px) {
     & {
@@ -69,7 +69,7 @@ export const Title = styled.h1`
       font-size: 3.2rem;
     }
   }
-  
+
   @media only screen and (min-width: 1024px) {
     & {
       font-size: 3.6rem;
@@ -95,7 +95,6 @@ export const SocialMediaBar = styled.div`
   width: 50%;
   justify-content: space-around;
 `;
-
 
 export const InfoText = styled.p`
   font-size: 0.85rem;
@@ -167,9 +166,7 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
       <Form>
         <Title>Welcome Back !</Title>
 
-        {authErrMessage ? (
-          <ErrorMessage>{authErrMessage}</ErrorMessage>
-        ) : null}
+        {authErrMessage ? <ErrorMessage>{authErrMessage}</ErrorMessage> : null}
 
         <Margin />
         {/* Find a new way of doing this */}
@@ -184,7 +181,7 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
           errMessage={emailErrMessage}
         />
 
-        <Margin/>
+        <Margin />
         {/* Find a new way of doing this */}
 
         <GenericInput
@@ -204,7 +201,7 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
           />
         </InfoText>
 
-        <Margin/>
+        <Margin />
         {/* Find a new way of doing this */}
 
         <BtnGroup>
@@ -216,19 +213,16 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
 
           <InfoText>
             {"Doesn't have an account yet ? "}
-            <InTextBtn
-              text="Sign up here"
-              handleClick={handleSignupClick}
-            />
+            <InTextBtn text="Sign up here" handleClick={handleSignupClick} />
           </InfoText>
         </BtnGroup>
 
-        <Margin/>
+        <Margin />
         {/* Find a new way of doing this */}
 
         <SocialMediaBar>
-            <SocialMediaBtn name={constants.TWITTER} />
-            <SocialMediaBtn name={constants.GITHUB} />
+          <SocialMediaBtn name={constants.TWITTER} />
+          <SocialMediaBtn name={constants.GITHUB} />
         </SocialMediaBar>
       </Form>
     </PageContainer>
