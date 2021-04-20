@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useHistory, Redirect } from "react-router-dom";
-import classes from "./index.module.css";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 import GenericButton from "components/buttons/GenericButton";
 import GenericInput from "components/inputs/GenericInput";
@@ -14,6 +14,97 @@ import DiamondSpinner from "components/loaders/DiamondSpinner";
 import * as constants from "components/contants";
 import * as actions from "redux/actions";
 import { authErrReset } from "redux/actions";
+
+export const PageContainer = styled.div`
+  width: 100%;
+  height: 100vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media only screen and (min-width: 768px) {
+    & {
+      align-items: flex-end;
+    }
+  }
+`;
+
+export const Form = styled.form`
+  width: 95%;
+  border-radius: 3px;
+  background-color: rgb(${(props) => props.theme.bg2dp});
+  box-shadow: 1px 1px 3px rgb(${(props) => props.theme.shadow});
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 98%;
+  color: rgb(${(props) => props.theme.onBg});
+
+  @media only screen and (min-width: 768px) {
+    & {
+      width: 65%;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    & {
+      margin-right: 5rem;
+      width: 38%;
+      min-height: 80%;
+      height: fit-content;
+    }
+  }
+`;
+
+export const Title = styled.h1`
+  font-size: 3rem;
+  font-family: "port-lligat-slab";
+
+  @media only screen and (min-width: 768px) {
+    & {
+      font-size: 3.2rem;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    & {
+      font-size: 3.6rem;
+    }
+  }
+`;
+
+export const Margin = styled.div`
+  margin: 1.1rem;
+
+  @media only screen and (min-width: 768px) {
+    margin: 0.8rem;
+  }
+`;
+
+export const ErrorMessage = styled.p`
+  color: rgb(var(--error));
+`;
+
+export const SocialMediaBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: space-around;
+`;
+
+export const InfoText = styled.p`
+  font-size: 0.85rem;
+  margin-top: 0.6rem;
+`;
+
+export const BtnGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
   if (isAuth) {
@@ -71,15 +162,13 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
   const handleForgotPasswordClick = () => {};
 
   return (
-    <div className={classes.PageContainer}>
-      <form className={classes.Form}>
-        <h1 className={classes.Title}>Welcome Back !</h1>
+    <PageContainer>
+      <Form>
+        <Title>Welcome Back !</Title>
 
-        {authErrMessage ? (
-          <p className={classes.Error}>{authErrMessage}</p>
-        ) : null}
+        {authErrMessage ? <ErrorMessage>{authErrMessage}</ErrorMessage> : null}
 
-        <div className={classes.Margin}></div>
+        <Margin />
         {/* Find a new way of doing this */}
 
         <GenericInput
@@ -88,12 +177,11 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
           handleChangeText={handleEmailInput}
           label="Email"
           placeholder="sample@email.com"
-          darkTheme={false}
           isError={emailErr}
           errMessage={emailErrMessage}
         />
 
-        <div className={classes.Margin}></div>
+        <Margin />
         {/* Find a new way of doing this */}
 
         <GenericInput
@@ -102,52 +190,42 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
           label="Password"
           handleChangeText={handlePasswordInput}
           type="password"
-          darkTheme={false}
           isError={passErr}
           errMessage={passErrMessage}
         />
 
-        <p className={classes.InfosText}>
+        <InfoText>
           <InTextBtn
             text="forgot passord ?"
             handleClick={handleForgotPasswordClick}
-            darkTheme={false}
           />
-        </p>
+        </InfoText>
 
-        <div className={classes.Margin}></div>
+        <Margin />
         {/* Find a new way of doing this */}
 
-        <div className={classes.BtnGroup}>
+        <BtnGroup>
           {isLoading ? (
             <DiamondSpinner mode="circle" />
           ) : (
             <GenericButton text="Login" handleClick={onLogin} />
           )}
 
-          <p className={classes.InfosText}>
+          <InfoText>
             {"Doesn't have an account yet ? "}
-            <InTextBtn
-              text="Sign up here"
-              handleClick={handleSignupClick}
-              darkTheme={false}
-            />
-          </p>
-        </div>
+            <InTextBtn text="Sign up here" handleClick={handleSignupClick} />
+          </InfoText>
+        </BtnGroup>
 
-        <div className={classes.Margin}></div>
+        <Margin />
         {/* Find a new way of doing this */}
 
-        <div className={classes.SocialMediaBar}>
-          <div className={classes.SocialMediaBtn}>
-            <SocialMediaBtn name={constants.TWITTER} />
-          </div>
-          <div className={classes.SocialMediaBtn}>
-            <SocialMediaBtn name={constants.GITHUB} />
-          </div>
-        </div>
-      </form>
-    </div>
+        <SocialMediaBar>
+          <SocialMediaBtn name={constants.TWITTER} />
+          <SocialMediaBtn name={constants.GITHUB} />
+        </SocialMediaBar>
+      </Form>
+    </PageContainer>
   );
 };
 
