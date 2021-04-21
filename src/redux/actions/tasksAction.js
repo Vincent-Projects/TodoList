@@ -77,6 +77,47 @@ export const addIntrant = (task) => {
   };
 };
 
+export const addTaskToday = (task) => {
+  return async (dispatch, getState) => {
+    dispatch(startRequest());
+    const token = getState().auth.token;
+
+    let result;
+    try {
+      result = await api.postTodo(token, task);
+    } catch (err) {
+      dispatch(failRequest());
+    }
+
+    if (!result.data.data.todo) {
+      dispatch(failRequest());
+      throw new Error("Some error occured");
+    }
+
+    const todo = result.data.data.todo;
+
+    result = null;
+    try {
+      result = await api.updateTask(token, todo._id, { dueDate: new Date(Date.now()) });
+    } catch (err) {
+      dispatch(failRequest());
+    }
+
+    if (!result.data.data.todo) {
+      dispatch(failRequest());
+      throw new Error("Some error occured");
+    }
+
+    dispatch(successRequest());
+    dispatch({
+      type: actionTypes.ADD_INTRANT,
+      payload: {
+        task: result.data.data.todo
+      }
+    });
+  };
+};
+
 export const updateComplete = (itemId, complete) => {
   return (dispatch, getState) => {
     dispatch(startRequest());

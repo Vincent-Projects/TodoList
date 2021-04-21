@@ -9,6 +9,7 @@ export {
 export {
   getTasks,
   addIntrant,
+  addTaskToday,
   updateComplete,
   updateColor,
   deleteTask,

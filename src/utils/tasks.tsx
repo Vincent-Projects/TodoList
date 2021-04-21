@@ -1,10 +1,20 @@
 import GenericList from "components/lists/GenericList";
 import React from "react";
-import { TaskType } from "./constants";
+import TaskType from "types/task";
+import { isToday } from "utils/date";
+import { WEEK_GOAL } from "./constants";
 
 export const INTRANT_FILTER = (task: TaskType) => {
-  return task !== null;
+  return task.dueDate === null;
 };
+
+export const WEEK_GOALS_FILTER = (task: TaskType) => {
+  return task.projectId ? task.projectId===WEEK_GOAL : false;
+}
+
+export const TODAY_FILTER = (task: TaskType) => {
+  return task.dueDate ? isToday(new Date(task.dueDate)) : false;
+}
 
 export const filteredList = (
   tasks: TaskType[],

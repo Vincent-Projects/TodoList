@@ -12,17 +12,12 @@ const initTasks = (state, action) => {
 };
 
 const addIntrant = (state, action) => {
-  const { _id, task, complete, userId } = action.payload.task;
-
   return {
     ...state,
     tasks: [
       ...state.tasks,
       {
-        _id,
-        task,
-        complete,
-        userId,
+        ...action.payload.task
       },
     ],
   };
