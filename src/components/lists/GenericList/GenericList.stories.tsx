@@ -20,7 +20,7 @@ Default.args = {
       complete: false,
       userId: "something",
       createdAt: new Date(Date.now()),
-      lastUpdate: new Date(Date.now())
+      lastUpdate: new Date(Date.now()),
     },
     {
       _id: "dzaddaz",
@@ -28,7 +28,7 @@ Default.args = {
       complete: true,
       userId: "something",
       createdAt: new Date(Date.now()),
-      lastUpdate: new Date(Date.now())
+      lastUpdate: new Date(Date.now()),
     },
   ],
 };

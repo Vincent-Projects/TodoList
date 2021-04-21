@@ -99,7 +99,9 @@ export const addTaskToday = (task) => {
 
     result = null;
     try {
-      result = await api.updateTask(token, todo._id, { dueDate: new Date(Date.now()) });
+      result = await api.updateTask(token, todo._id, {
+        dueDate: new Date(Date.now()),
+      });
     } catch (err) {
       dispatch(failRequest());
     }
@@ -113,8 +115,8 @@ export const addTaskToday = (task) => {
     dispatch({
       type: actionTypes.ADD_INTRANT,
       payload: {
-        task: result.data.data.todo
-      }
+        task: result.data.data.todo,
+      },
     });
   };
 };
@@ -154,8 +156,8 @@ export const addGoalNextWeek = (goal) => {
     dispatch({
       type: actionTypes.ADD_INTRANT,
       payload: {
-        task: result.data.data.todo
-      }
+        task: result.data.data.todo,
+      },
     });
   };
 };

@@ -11,7 +11,7 @@ import {
   INTRANT_FILTER,
   WEEK_GOALS_FILTER,
   TODAY_FILTER,
-  filteredList
+  filteredList,
 } from "utils/tasks";
 import React, { useEffect } from "react";
 import TaskType from "types/task";
@@ -50,7 +50,7 @@ const SquareSpace = styled.div<SquareSpaceProps>`
 
   @media only screen and (min-width: 1024px) {
     & {
-      height: ${props => props.height}%;
+      height: ${(props) => props.height}%;
     }
   }
 `;
@@ -98,7 +98,7 @@ const Dashboard = ({
     handleDelete
   );
 
-   const TodayList = filteredList(
+  const TodayList = filteredList(
     tasks,
     TODAY_FILTER,
     addTaskToday,
@@ -112,7 +112,7 @@ const Dashboard = ({
         borderRadius: "5px",
         padding: "0.6rem",
         height: "100%",
-        width: "100%"
+        width: "100%",
       }}
     >
       <RowDesktop>
@@ -121,14 +121,14 @@ const Dashboard = ({
             <h2 style={{ marginBottom: "1rem" }}>Today</h2>
             <TodayList />
           </SquareSpace>
-        
+
           <SquareSpace height={45}>
             <h2 style={{ marginBottom: "1rem" }}>Week Goals</h2>
             <WeekGoalsList />
           </SquareSpace>
         </Column>
         <Column>
-          { /* Here the calendar place */}
+          {/* Here the calendar place */}
           <SquareSpace height={55}></SquareSpace>
           <SquareSpace height={45}>
             <h2 style={{ marginBottom: "1rem" }}>Inbox</h2>
@@ -156,7 +156,7 @@ const mapDispatchToProps = (dispatch: any) => {
     updateColor: (itemId: string, colorId: string) =>
       dispatch(updateColor(itemId, colorId)),
     handleDelete: (itemId: string) => dispatch(deleteTask(itemId)),
-    addGoalNextWeek: (goal: string) => dispatch(addGoalNextWeek(goal))
+    addGoalNextWeek: (goal: string) => dispatch(addGoalNextWeek(goal)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

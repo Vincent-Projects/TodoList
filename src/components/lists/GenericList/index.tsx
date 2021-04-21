@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import GenericItem from "./GenericItem";
-import TaskType  from "types/task";
+import TaskType from "types/task";
 import COLORS, { hexToColorId } from "utils/colors";
 import styled from "styled-components";
-import VerticalSlider from "components/sliders/VerticalSlider"
+import VerticalSlider from "components/sliders/VerticalSlider";
 
 const Input = styled.input`
   background: transparent;

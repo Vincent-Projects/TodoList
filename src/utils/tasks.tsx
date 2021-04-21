@@ -9,12 +9,12 @@ export const INTRANT_FILTER = (task: TaskType) => {
 };
 
 export const WEEK_GOALS_FILTER = (task: TaskType) => {
-  return task.projectId ? task.projectId===WEEK_GOAL : false;
-}
+  return task.projectId ? task.projectId === WEEK_GOAL : false;
+};
 
 export const TODAY_FILTER = (task: TaskType) => {
   return task.dueDate ? isToday(new Date(task.dueDate)) : false;
-}
+};
 
 export const filteredList = (
   tasks: TaskType[],

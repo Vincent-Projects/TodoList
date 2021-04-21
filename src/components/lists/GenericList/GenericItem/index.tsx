@@ -50,7 +50,7 @@ const CheckBox = styled.div<CheckBoxProps>`
   align-self: center;
   margin-right: 0.5rem;
   border-radius: 50%;
-  border: 2px solid rgb(${props => props.theme.primary});
+  border: 2px solid rgb(${(props) => props.theme.primary});
   background-color: ${(props) =>
     props.done ? `rgb(${props.theme.primary})` : "transparent"};
 `;

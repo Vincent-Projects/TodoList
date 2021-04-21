@@ -17,7 +17,7 @@ const addIntrant = (state, action) => {
     tasks: [
       ...state.tasks,
       {
-        ...action.payload.task
+        ...action.payload.task,
       },
     ],
   };
