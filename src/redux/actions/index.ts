@@ -10,6 +10,7 @@ export {
   getTasks,
   addIntrant,
   addTaskToday,
+  addGoalNextWeek,
   updateComplete,
   updateColor,
   deleteTask,

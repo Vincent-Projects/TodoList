@@ -1,6 +1,7 @@
 import {
   addIntrant,
   addTaskToday,
+  addGoalNextWeek,
   deleteTask,
   getTasks,
   updateColor,
@@ -62,12 +63,14 @@ interface DashboardProps {
   updateColor: (itemId: string, colorId: string) => void;
   handleDelete: (itemId: string) => void;
   addTaskToday: (task: string) => void;
+  addGoalNextWeek: (goal: string) => void;
 }
 
 const Dashboard = ({
   tasks,
   addIntrant,
   addTaskToday,
+  addGoalNextWeek,
   getTasks,
   updateComplete,
   updateColor,
@@ -89,7 +92,7 @@ const Dashboard = ({
   const WeekGoalsList = filteredList(
     tasks,
     WEEK_GOALS_FILTER,
-    addIntrant,
+    addGoalNextWeek,
     updateComplete,
     updateColor,
     handleDelete
@@ -153,6 +156,7 @@ const mapDispatchToProps = (dispatch: any) => {
     updateColor: (itemId: string, colorId: string) =>
       dispatch(updateColor(itemId, colorId)),
     handleDelete: (itemId: string) => dispatch(deleteTask(itemId)),
+    addGoalNextWeek: (goal: string) => dispatch(addGoalNextWeek(goal))
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

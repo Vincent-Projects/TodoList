@@ -5,7 +5,7 @@ import { isToday } from "utils/date";
 import { WEEK_GOAL } from "./constants";
 
 export const INTRANT_FILTER = (task: TaskType) => {
-  return task.dueDate === null;
+  return task.dueDate === null && task.projectId === null;
 };
 
 export const WEEK_GOALS_FILTER = (task: TaskType) => {
