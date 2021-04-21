@@ -35,14 +35,18 @@ const Link = styled(NavLink).attrs((props) => ({
   }
 
   &.${(props) => props.activeClassName} {
-    border-left: 2px solid rgb(var(--primary));
-    color: rgb(var(--primary));
+    border-left: 2px solid rgb(${(props) => props.theme.primary});
+    color: rgb(${(props) => props.theme.primary});
   }
 
   &.${(props) => props.activeClassName}:after {
     opacity: 0.1;
     width: 100%;
-    background: linear-gradient(90deg, rgb(var(--primary)), transparent);
+    background: linear-gradient(
+      90deg,
+      rgb(${(props) => props.theme.primary}),
+      transparent
+    );
   }
 
   &:hover:after {

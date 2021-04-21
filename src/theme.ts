@@ -29,7 +29,7 @@ export const getTheme = () => {
     primary: selectPropertyOnTheme(
       themeConstant,
       "154, 214, 207",
-      "132, 184, 178"
+      "77, 132, 125"
     ),
     primaryLight: "173, 245, 245",
     primaryDark: "79, 154, 148",

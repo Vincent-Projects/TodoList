@@ -1,6 +1,7 @@
 import * as actionTypes from "./actionTypes";
 import api from "api";
 import COLORS, { colorIdToHex } from "utils/colors";
+import { WEEK_GOAL } from "utils/constants";
 
 export const startRequest = () => {
   return (dispatch) => {
@@ -74,6 +75,90 @@ export const addIntrant = (task) => {
         console.log(err);
         dispatch(failRequest());
       });
+  };
+};
+
+export const addTaskToday = (task) => {
+  return async (dispatch, getState) => {
+    dispatch(startRequest());
+    const token = getState().auth.token;
+
+    let result;
+    try {
+      result = await api.postTodo(token, task);
+    } catch (err) {
+      dispatch(failRequest());
+    }
+
+    if (!result.data.data.todo) {
+      dispatch(failRequest());
+      throw new Error("Some error occured");
+    }
+
+    const todo = result.data.data.todo;
+
+    result = null;
+    try {
+      result = await api.updateTask(token, todo._id, {
+        dueDate: new Date(Date.now()),
+      });
+    } catch (err) {
+      dispatch(failRequest());
+    }
+
+    if (!result.data.data.todo) {
+      dispatch(failRequest());
+      throw new Error("Some error occured");
+    }
+
+    dispatch(successRequest());
+    dispatch({
+      type: actionTypes.ADD_INTRANT,
+      payload: {
+        task: result.data.data.todo,
+      },
+    });
+  };
+};
+
+export const addGoalNextWeek = (goal) => {
+  return async (dispatch, getState) => {
+    dispatch(startRequest());
+    const token = getState().auth.token;
+
+    let result;
+    try {
+      result = await api.postTodo(token, goal);
+    } catch (err) {
+      dispatch(failRequest());
+    }
+
+    if (!result.data.data.todo) {
+      dispatch(failRequest());
+      throw new Error("Some error occured");
+    }
+
+    const todo = result.data.data.todo;
+
+    result = null;
+    try {
+      result = await api.updateTask(token, todo._id, { projectId: WEEK_GOAL });
+    } catch (err) {
+      dispatch(failRequest());
+    }
+
+    if (!result.data.data.todo) {
+      dispatch(failRequest());
+      throw new Error("Some error occured");
+    }
+
+    dispatch(successRequest());
+    dispatch({
+      type: actionTypes.ADD_INTRANT,
+      payload: {
+        task: result.data.data.todo,
+      },
+    });
   };
 };
 

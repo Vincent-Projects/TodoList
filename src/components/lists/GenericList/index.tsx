@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import GenericItem from "./GenericItem";
-import { TaskType } from "utils/constants";
+import TaskType from "types/task";
 import COLORS, { hexToColorId } from "utils/colors";
 import styled from "styled-components";
+import VerticalSlider from "components/sliders/VerticalSlider";
 
 const Input = styled.input`
   background: transparent;
@@ -13,7 +14,11 @@ const Input = styled.input`
   padding-left: 2.5rem;
 `;
 
-const List = styled.div``;
+const List = styled(VerticalSlider)`
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+`;
 
 export interface GenericListProps {
   elements: TaskType[];

@@ -44,15 +44,15 @@ interface CheckBoxProps {
   done: boolean;
 }
 
-const CheckBox = styled.div`
+const CheckBox = styled.div<CheckBoxProps>`
   width: 1rem;
   height: 1rem;
   align-self: center;
   margin-right: 0.5rem;
   border-radius: 50%;
-  border: 2px solid rgb(var(--primary));
-  background-color: ${(props: CheckBoxProps) =>
-    props.done ? "rgb(var(--primary))" : "transparent"};
+  border: 2px solid rgb(${(props) => props.theme.primary});
+  background-color: ${(props) =>
+    props.done ? `rgb(${props.theme.primary})` : "transparent"};
 `;
 
 const ColorSelectContainer = styled.div`

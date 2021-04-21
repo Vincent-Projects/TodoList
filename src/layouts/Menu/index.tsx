@@ -16,7 +16,7 @@ const MenuContainer = styled.div`
   justify-content: space-around;
   align-items: center;
 
-  background: rgb(${(props: any) => props.theme.bg1dp});
+  background: rgb(${(props: any) => props.theme.bg4dp});
   box-shadow: 1px 1px 2px rgb(${(props: any) => props.theme.shadow});
 
   @media only screen and (min-width: 786px) {
