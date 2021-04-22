@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export interface GenericButtonProps {
   text: string;
-  handleClick: () => void;
+  handleClick: (event: any) => void;
   isSubmit?: boolean;
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { connect, ConnectedProps } from "react-redux";
 import styled, { ThemeProvider } from "styled-components";
 
 import { getTheme } from "./theme";
@@ -26,10 +26,33 @@ const AppContainer = styled.div`
   }
 `;
 
-const app = ({ checkAuth, isAuth, theme }) => {
+const mapStateToProps = (state: any) => {
+  return {
+    isAuth: state.auth.isAuth,
+    theme: state.settings.theme,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    checkAuth: () => dispatch(checkAuthState()),
+  };
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type PropsFromStore = ConnectedProps<typeof connector>;
+
+type AppProps = PropsFromStore & {
+  checkAuth: () => void;
+  isAuth: boolean;
+  theme: any;
+};
+
+const App = ({ checkAuth, isAuth, theme }: AppProps) => {
   useEffect(() => {
     checkAuth();
-  }, []);
+  }, [checkAuth]);
   return (
     <ThemeProvider theme={!objectIsEmpty(theme) ? theme : getTheme()}>
       <AppContainer>
@@ -39,16 +62,5 @@ const app = ({ checkAuth, isAuth, theme }) => {
     </ThemeProvider>
   );
 };
-const mapStateToProps = (state) => {
-  return {
-    isAuth: state.auth.isAuth,
-    theme: state.settings.theme,
-  };
-};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    checkAuth: () => dispatch(checkAuthState()),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(app);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

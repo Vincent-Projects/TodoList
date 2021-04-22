@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useHistory, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import { connect, ConnectedProps } from "react-redux";
 import styled from "styled-components";
 
 import GenericButton from "components/buttons/GenericButton";
@@ -77,12 +76,13 @@ export const Title = styled.h1`
   }
 `;
 
-export const Margin = styled.div`
-  margin: 1.1rem;
-
-  @media only screen and (min-width: 768px) {
-    margin: 0.8rem;
-  }
+export const FormContent = styled.div`
+  display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 100%;
+          height: 100%;
+          align-items: center;
 `;
 
 export const ErrorMessage = styled.p`
@@ -106,12 +106,30 @@ export const BtnGroup = styled.div`
   flex-direction: column;
 `;
 
-const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
-  if (isAuth) {
-    return <Redirect to="/dashboard" />;
-  }
+const mapStateToProps = (state: any) => {
+  return {
+    isAuth: state.auth.isAuth,
+    isLoading: state.auth.isLoading,
+    authErrMessage: state.auth.authErrMessage,
+  };
+};
 
-  let history = useHistory();
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    login: (email: string, password: string) => dispatch(actions.login(email, password)),
+    authErrReset: () => dispatch(authErrReset()),
+  };
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type LoginProps = PropsFromRedux & {
+};
+
+const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }: LoginProps) => {
+  const history = useHistory();
 
   const [email, setEmail] = useState("");
   const [emailErr, setEmailErr] = useState(false);
@@ -121,7 +139,7 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
   const [passErr, setPassErr] = useState(false);
   const [passErrMessage, setPassErrMessage] = useState("");
 
-  const handleEmailInput = (text) => {
+  const handleEmailInput = (text: string) => {
     setEmail(text);
 
     if (emailErr) {
@@ -130,7 +148,7 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
     }
   };
 
-  const handlePasswordInput = (text) => {
+  const handlePasswordInput = (text: string) => {
     setPassword(text);
 
     if (passErr) {
@@ -139,7 +157,7 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
     }
   };
 
-  const onLogin = (event) => {
+  const onLogin = (event: any) => {
     event.preventDefault();
     if (!email) {
       setEmailErr(true);
@@ -159,7 +177,13 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
     history.push("/signup");
   };
 
-  const handleForgotPasswordClick = () => {};
+  const handleForgotPasswordClick = () => {
+    console.log("something");
+  };
+
+  if (isAuth) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <PageContainer>
@@ -168,88 +192,59 @@ const Login = ({ isAuth, login, isLoading, authErrMessage, authErrReset }) => {
 
         {authErrMessage ? <ErrorMessage>{authErrMessage}</ErrorMessage> : null}
 
-        <Margin />
-        {/* Find a new way of doing this */}
+        <FormContent>
 
-        <GenericInput
-          id="email"
-          value={email}
-          handleChangeText={handleEmailInput}
-          label="Email"
-          placeholder="sample@email.com"
-          isError={emailErr}
-          errMessage={emailErrMessage}
-        />
-
-        <Margin />
-        {/* Find a new way of doing this */}
-
-        <GenericInput
-          id="password"
-          value={password}
-          label="Password"
-          handleChangeText={handlePasswordInput}
-          type="password"
-          isError={passErr}
-          errMessage={passErrMessage}
-        />
-
-        <InfoText>
-          <InTextBtn
-            text="forgot passord ?"
-            handleClick={handleForgotPasswordClick}
+          <GenericInput
+            id="email"
+            value={email}
+            handleChangeText={handleEmailInput}
+            label="Email"
+            placeholder="sample@email.com"
+            isError={emailErr}
+            errMessage={emailErrMessage}
           />
-        </InfoText>
 
-        <Margin />
-        {/* Find a new way of doing this */}
 
-        <BtnGroup>
-          {isLoading ? (
-            <DiamondSpinner mode="circle" />
-          ) : (
-            <GenericButton text="Login" handleClick={onLogin} />
-          )}
+          <GenericInput
+            id="password"
+            value={password}
+            label="Password"
+            handleChangeText={handlePasswordInput}
+            type="password"
+            isError={passErr}
+            errMessage={passErrMessage}
+          />
 
           <InfoText>
-            {"Doesn't have an account yet ? "}
-            <InTextBtn text="Sign up here" handleClick={handleSignupClick} />
+            <InTextBtn
+              text="forgot passord ?"
+              handleClick={handleForgotPasswordClick}
+            />
           </InfoText>
-        </BtnGroup>
 
-        <Margin />
-        {/* Find a new way of doing this */}
 
-        <SocialMediaBar>
-          <SocialMediaBtn name={constants.TWITTER} />
-          <SocialMediaBtn name={constants.GITHUB} />
-        </SocialMediaBar>
+          <BtnGroup>
+            {isLoading ? (
+              <DiamondSpinner mode="circle" />
+            ) : (
+              <GenericButton text="Login" handleClick={onLogin} />
+            )}
+
+            <InfoText>
+              {"Doesn't have an account yet ? "}
+              <InTextBtn text="Sign up here" handleClick={handleSignupClick} />
+            </InfoText>
+          </BtnGroup>
+
+
+          <SocialMediaBar>
+            <SocialMediaBtn name={constants.TWITTER} />
+            <SocialMediaBtn name={constants.GITHUB} />
+          </SocialMediaBar>
+        </FormContent>
       </Form>
     </PageContainer>
   );
 };
 
-Login.propTypes = {
-  login: PropTypes.func,
-  isAuth: PropTypes.bool,
-  isLoading: PropTypes.bool,
-  authErrMessage: PropTypes.string,
-  authErrReset: PropTypes.func,
-};
-
-const mapStateToProps = (state) => {
-  return {
-    isAuth: state.auth.isAuth,
-    isLoading: state.auth.isLoading,
-    authErrMessage: state.auth.authErrMessage,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    login: (email, password) => dispatch(actions.login(email, password)),
-    authErrReset: () => dispatch(authErrReset()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connector(Login);

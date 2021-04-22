@@ -11,13 +11,13 @@ import {
 
 class API {
   // Auth calls
-  static login(email, password) {
+  static login(email: string, password: string) {
     const data = { email, password };
 
     return apiInstance.post(getLoginRoute(), data);
   }
 
-  static signup(firstname, lastname, email, password, confirmPassword, code) {
+  static signup(firstname: string, lastname: string, email: string, password: string, confirmPassword: string, code: string) {
     const data = {
       firstname,
       lastname,
@@ -29,12 +29,12 @@ class API {
     return apiInstance.post(getSignupRoute(code), data);
   }
 
-  static validateAccount(token) {
+  static validateAccount(token: string) {
     return apiInstance.get(getValidateAccountRoute(token));
   }
 
   // Todos calls
-  static getTasks(token) {
+  static getTasks(token: string) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -44,7 +44,7 @@ class API {
     return apiInstance.get(getGETTodosRoute(), config);
   }
 
-  static postTodo(token, task) {
+  static postTodo(token: string, task: string) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -58,7 +58,7 @@ class API {
     return apiInstance.post(getPOSTTodosRoute(), data, config);
   }
 
-  static updateTask(token, itemId, updatedData) {
+  static updateTask(token: string, itemId: string, updatedData: string) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -75,7 +75,7 @@ class API {
     );
   }
 
-  static deleteTask(token, itemId) {
+  static deleteTask(token: string, itemId: string) {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
